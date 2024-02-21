@@ -9,6 +9,6 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://rcn.sh",
   integrations: [tailwind(), react(), sitemap()],
-  output: "static",
+  output: "server",
   adapter: vercel()
 });
