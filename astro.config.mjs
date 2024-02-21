@@ -8,6 +8,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://rcn.sh",
+  redirects: {"/github": "https://github.com/RCNOverwatcher"},
   integrations: [tailwind(), react(), sitemap()],
   output: "server",
   adapter: vercel()
