@@ -1,16 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const rText = await fetch("https://gist.githubusercontent.com/RCNOverwatcher/9a0474af985c350e551effeeb10ffda5/raw/eaafbf8b9484f1ad76bcd592e14814b166615543/r.txt")
-	.then((response) => response.text());
-const cText = await fetch("https://gist.githubusercontent.com/RCNOverwatcher/87d6aae558377e7963bdf0100a7ab42d/raw/3b761bb8fc424da4f233402a361ce3fdc389b146/c.txt")
-	.then((response) => response.text());
-const nText = await fetch("https://gist.githubusercontent.com/RCNOverwatcher/c55b70e6346388015cfe3b37a8b4e45a/raw/a5e978162e8113691986fbddc093103c85563de0/n.txt")
-	.then((response) => response.text());
+const rText = "radiant ragged rapid rare rash raw recent reckless rectangular ready real realistic reasonable red reflecting regal regular reliable relieved remarkable remorseful remote repentant required respectful responsible repulsive revolving rewarding rich rigid right ringed ripe roasted robust rosy rotating rotten rough round rowdy royal rubbery rundown ruddy rude runny rural rusty"
+const cText = "cut clever close closed cloudy clueless clumsy cluttered coarse cold colorful colorless colossal comfortable common compassionate competent complete complex complicated composed concerned concrete confused conscious considerate constant content conventional cool cooperative coordinated corny corrupt costly courageous courteous crafty crazy creative creepy criminal crisp critical crooked crowded cruel crushing cuddly cultivated cultured cumbersome curly cute cylindrical"
+const nText = "naturist newscaster night-owl nation newspaper negotiator number-lover namer nothing note-taker networker notice novelist NHS-Worker native nurse nationalist negativity nobody neurologist nuclear-engineer narcissist nihilist"
 
-const rWords = rText.split("\n").filter((word) => word.trim() !== "");
-const cWords = cText.split("\n").filter((word) => word.trim() !== "");
-const nWords = nText.split("\n").filter((word) => word.trim() !== "");
+const rWords = rText.split(" ").filter((word) => word.trim() !== "");
+const cWords = cText.split(" ").filter((word) => word.trim() !== "");
+const nWords = nText.split(" ").filter((word) => word.trim() !== "");
 
 const randomRWord = rWords[Math.floor(Math.random() * rWords.length)];
 const randomCWord = cWords[Math.floor(Math.random() * cWords.length)];
