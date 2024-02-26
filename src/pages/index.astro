@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { SiSpotify } from "react-icons/si";
-import Image from 'astro/components/Image.astro';
+import Spotify from '../components/Spotify.astro';
 
 const rText = "radiant ragged rapid rare rash raw recent reckless rectangular ready real realistic reasonable red reflecting regal regular reliable relieved remarkable remorseful remote repentant required respectful responsible repulsive revolving rewarding rich rigid right ringed ripe roasted robust rosy rotating rotten rough round rowdy royal rubbery rundown ruddy rude runny rural rusty"
 const cText = "cut clever close closed cloudy clueless clumsy cluttered coarse cold colorful colorless colossal comfortable common compassionate competent complete complex complicated composed concerned concrete confused conscious considerate constant content conventional cool cooperative coordinated corny corrupt costly courageous courteous crafty crazy creative creepy criminal crisp critical crooked crowded cruel crushing cuddly cultivated cultured cumbersome curly cute cylindrical"
@@ -55,44 +54,7 @@ const {album,
 				My GitHub Repositories
 			  </h2>
 			</section>
-			<section class={"py-5 text-[#cdc8c2]"}>
-				<a
-				  target="_blank"
-				  rel="noopener noreferer"
-				  href={
-					isPlaying
-					  ? songUrl
-					  : "https://open.spotify.com/user/nz3i2a30ep85rv5ymcpglhndj"
-				  }
-				  class="relative m-auto flex w-72 items-center space-x-4 rounded-md p-5 transition-shadow hover:shadow-md"
-				>
-				  <div class="w-16">
-					{isPlaying ? (
-					  <Image
-						class="w-16 shadow-sm"
-						src={albumImageUrl}
-						alt={album}
-						width={64}
-						height={64}
-						loading={"eager"}
-					  />
-					) : (
-					  <SiSpotify size={64} color={"#1ED760"} />
-					)}
-				  </div>
-				  <div class="flex-1">
-					<p class="component font-bold">
-					  {isPlaying ? title : "Not Listening"}
-					</p>
-					<p class="font-dark text-xs">
-					  {isPlaying ? artist : "Spotify"}
-					</p>
-				  </div>
-				  <div class="absolute bottom-1.5 right-1.5">
-					<SiSpotify size={20} color={"#1ED760"} />
-				  </div>
-				</a>
-			</section>
+			<Spotify/>
 		  </section>
 	</main>
 </Layout>
