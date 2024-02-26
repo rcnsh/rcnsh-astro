@@ -13,15 +13,6 @@ const nWords = nText.split(" ").filter((word) => word.trim() !== "");
 const randomRWord = rWords[Math.floor(Math.random() * rWords.length)];
 const randomCWord = cWords[Math.floor(Math.random() * cWords.length)];
 const randomNWord = nWords[Math.floor(Math.random() * nWords.length)];
-
-const {album,
-    albumImageUrl,
-    artist,
-    isPlaying,
-    songUrl,
-    title} = await fetch(
-  "https://api.rcn.sh/api/spotify"
-).then((res) => res.json());
 ---
 
 <Layout title="rcn.sh">
