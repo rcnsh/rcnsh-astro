@@ -1,27 +1,36 @@
 ---
 import { SiSpotify } from "react-icons/si";
-import Image from "astro/components/Image.astro";
-const { album, albumImageUrl, artist, isPlaying, songUrl, title } = await fetch(
-  "https://api.rcn.sh/api/spotify",
-).then((res) => res.json()).catch((error) => {console.error(error)});
+
+interface songData {
+  isPlaying: boolean;
+  title: string;
+  artist: string;
+  album: string;
+  albumImageUrl: string;
+  songUrl: string;
+}
+
+const song: songData = await fetch("https://api.rcn.sh/api/spotify").then(
+  (res) => res.json(),
+);
 ---
 
 <section class={"py-5 text-[#cdc8c2]"}>
   <a
     target="_blank"
     rel="noopener noreferer"
-    href={isPlaying
-      ? songUrl
+    href={song.isPlaying
+      ? song.songUrl
       : "https://open.spotify.com/user/nz3i2a30ep85rv5ymcpglhndj"}
     class="relative m-auto flex w-72 items-center space-x-4 rounded-md p-5 transition-shadow hover:shadow-md"
   >
     <div class="w-16">
       {
-        isPlaying ? (
-          <Image
+        song.isPlaying ? (
+          <img
             class="w-16 shadow-sm"
-            src={albumImageUrl}
-            alt={album}
+            src={song.albumImageUrl}
+            alt={song.album}
             width={64}
             height={64}
             loading={"eager"}
@@ -33,10 +42,10 @@ const { album, albumImageUrl, artist, isPlaying, songUrl, title } = await fetch(
     </div>
     <div class="flex-1">
       <p class="component font-bold">
-        {isPlaying ? title : "Not Listening"}
+        {song.isPlaying ? song.title : "Not Listening"}
       </p>
       <p class="font-dark text-xs">
-        {isPlaying ? artist : "Spotify"}
+        {song.isPlaying ? song.artist : "Spotify"}
       </p>
     </div>
     <div class="absolute bottom-1.5 right-1.5">
