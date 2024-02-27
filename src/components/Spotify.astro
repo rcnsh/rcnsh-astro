@@ -3,7 +3,7 @@ import { SiSpotify } from "react-icons/si";
 import Image from "astro/components/Image.astro";
 const { album, albumImageUrl, artist, isPlaying, songUrl, title } = await fetch(
   "https://api.rcn.sh/api/spotify",
-).then((res) => res.json());
+).then((res) => res.json()).catch((error) => {console.error(error)});
 ---
 
 <section class={"py-5 text-[#cdc8c2]"}>

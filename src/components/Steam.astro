@@ -15,39 +15,58 @@ type Game = {
 type Response = {
   response: {
     total_count: number;
-  games: Game[];
+    games: Game[];
   };
 };
 
-const steamRecentGames = await fetch("https://api.rcn.sh/api/recent_steam").then((response) => response.json()) as Response;
+interface MyGames extends Omit<Game, "appid"> {
+  game_image_url: string;
+}
 
+const steamRecentGames = (await fetch(
+  "https://api.rcn.sh/api/recent_steam",
+).then((response) => response.json())) as Response;
 
-const steamRecentGamesList = steamRecentGames.response.games.map(async (game) => {
-  return {
-    name: game.name,
-    playtime_2weeks: game.playtime_2weeks,
-    playtime_forever: game.playtime_forever,
-    game_url: await fetch(`https://api.rcn.sh/api/steam_big_picture?q=${game.appid}`).then((response) => response.text()),
-    playtime_windows_forever: game.playtime_windows_forever,
-    playtime_mac_forever: game.playtime_mac_forever,
-    playtime_linux_forever: game.playtime_linux_forever,
-
-  };
-});
-const finaldata = await Promise.all(steamRecentGamesList);
-
+const steamRecentGamesList = steamRecentGames.response.games.map(
+  async (game) => {
+    return {
+      name: game.name,
+      playtime_2weeks: game.playtime_2weeks,
+      playtime_forever: game.playtime_forever,
+      game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
+      playtime_windows_forever: game.playtime_windows_forever,
+      playtime_mac_forever: game.playtime_mac_forever,
+      playtime_linux_forever: game.playtime_linux_forever,
+    };
+  },
+);
+const Finaldata = (await Promise.all(steamRecentGamesList)).slice(0,6) as MyGames[];
 ---
 
-<div>
-  {finaldata.map((game) => {
-    <div class="">
-      <Image src={game.game_url} alt={game.name} width={600} height={900} />
-      <h2>{game.name}</h2>
-      <p>Playtime in the last 2 weeks: {game.playtime_2weeks}</p>
-      <p>Playtime forever: {game.playtime_forever}</p>
-      <p>Playtime on Windows: {game.playtime_windows_forever}</p>
-      <p>Playtime on Mac: {game.playtime_mac_forever}</p>
-      <p>Playtime on Linux: {game.playtime_linux_forever}</p>
+<section class={"container p-2 py-5 font-mono"}>
+  <h2 class={"flex justify-center py-4 text-xl font-bold text-white"}>
+    My Steam Games
+  </h2>
+  <div class={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
+    {Finaldata.map((game) => (
+      <div class={"flex flex-col items-center p-4 rounded-lg shadow-lg bg-black"}>
+      <Image
+        src={game.game_image_url}
+        alt={game.name}
+        class={"w-300 h-450 rounded-lg"}
+        width={600}
+        height={900}
+        loading={"eager"}
+      />
+      <h3 class={"text-white font-bold text-center text-lg py-1"}>{game.name}</h3>
+      <p class={"text-white text-sm py-1 text-center"}>
+        Playtime in last 2 weeks: {game.playtime_2weeks} minutes
+      </p>
+      <p class={"text-white py-1 text-sm text-center"}>
+        Total playtime: {game.playtime_forever} minutes
+      </p>
     </div>
-  })}
-</div>
+    ))}
+    
+  </div>
+</section>
