@@ -60,10 +60,10 @@ const Finaldata = (await Promise.all(steamRecentGamesList)).slice(0,6) as MyGame
       />
       <h3 class={"text-white font-bold text-center text-lg py-1"}>{game.name}</h3>
       <p class={"text-white text-sm py-1 text-center"}>
-        Playtime in last 2 weeks: {game.playtime_2weeks} minutes
+        Playtime in last 2 weeks: {game.playtime_2weeks >= 60 ? Math.round(game.playtime_2weeks / 60)+ " hours" : game.playtime_2weeks + " minutes"}
       </p>
       <p class={"text-white py-1 text-sm text-center"}>
-        Total playtime: {game.playtime_forever} minutes
+        Total playtime: {game.playtime_forever >= 60 ? Math.round(game.playtime_forever / 60)+ " hours" : game.playtime_forever + " minutes"} 
       </p>
     </div>
     ))}
