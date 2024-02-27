@@ -1,0 +1,31 @@
+---
+type Repo = {
+  name: string;
+  description: string;
+  html_url: string;
+  stargazers_count: number;
+};
+
+const githubpromise = fetch("https://api.rcn.sh/api/github").then((res) =>
+  res.json(),
+);
+
+const data: Repo[] = await githubpromise;
+---
+
+<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3">
+  {
+    data.map((repo) => (
+      <div class="flex-col rounded-xl p-6 shadow-md">
+        <a
+          class={"text-[#737dbb] underline hover:text-[#cdc8c2]"}
+          href={repo.html_url}
+        >
+          {repo.name}
+        </a>
+        <br />
+        <span class={"text-[#cdc8c2]"}>{repo.description}</span>
+      </div>
+    ))
+  }
+</div>

@@ -1,29 +1,23 @@
 ---
 import { SiSpotify } from "react-icons/si";
-import Image from 'astro/components/Image.astro';
-const {album,
-    albumImageUrl,
-    artist,
-    isPlaying,
-    songUrl,
-    title} = await fetch(
-  "https://api.rcn.sh/api/spotify"
+import Image from "astro/components/Image.astro";
+const { album, albumImageUrl, artist, isPlaying, songUrl, title } = await fetch(
+  "https://api.rcn.sh/api/spotify",
 ).then((res) => res.json());
 ---
 
 <section class={"py-5 text-[#cdc8c2]"}>
-    <a
-      target="_blank"
-      rel="noopener noreferer"
-      href={
-        isPlaying
-          ? songUrl
-          : "https://open.spotify.com/user/nz3i2a30ep85rv5ymcpglhndj"
-      }
-      class="relative m-auto flex w-72 items-center space-x-4 rounded-md p-5 transition-shadow hover:shadow-md"
-    >
-      <div class="w-16">
-        {isPlaying ? (
+  <a
+    target="_blank"
+    rel="noopener noreferer"
+    href={isPlaying
+      ? songUrl
+      : "https://open.spotify.com/user/nz3i2a30ep85rv5ymcpglhndj"}
+    class="relative m-auto flex w-72 items-center space-x-4 rounded-md p-5 transition-shadow hover:shadow-md"
+  >
+    <div class="w-16">
+      {
+        isPlaying ? (
           <Image
             class="w-16 shadow-sm"
             src={albumImageUrl}
@@ -34,18 +28,19 @@ const {album,
           />
         ) : (
           <SiSpotify size={64} color={"#1ED760"} />
-        )}
-      </div>
-      <div class="flex-1">
-        <p class="component font-bold">
-          {isPlaying ? title : "Not Listening"}
-        </p>
-        <p class="font-dark text-xs">
-          {isPlaying ? artist : "Spotify"}
-        </p>
-      </div>
-      <div class="absolute bottom-1.5 right-1.5">
-        <SiSpotify size={20} color={"#1ED760"} />
-      </div>
-    </a>
+        )
+      }
+    </div>
+    <div class="flex-1">
+      <p class="component font-bold">
+        {isPlaying ? title : "Not Listening"}
+      </p>
+      <p class="font-dark text-xs">
+        {isPlaying ? artist : "Spotify"}
+      </p>
+    </div>
+    <div class="absolute bottom-1.5 right-1.5">
+      <SiSpotify size={20} color={"#1ED760"} />
+    </div>
+  </a>
 </section>
