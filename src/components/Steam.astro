@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+
+type Game = {
+  appid: number;
+  name: string;
+  playtime_2weeks: number;
+  playtime_forever: number;
+  img_icon_url: string;
+  playtime_windows_forever: number;
+  playtime_mac_forever: number;
+  playtime_linux_forever: number;
+};
+
+type Response = {
+  response: {
+    total_count: number;
+  games: Game[];
+  };
+};
+
+const steamRecentGames = await fetch("https://api.rcn.sh/api/recent_steam").then((response) => response.json()) as Response;
+
+
+const steamRecentGamesList = steamRecentGames.response.games.map(async (game) => {
+  return {
+    name: game.name,
+    playtime_2weeks: game.playtime_2weeks,
+    playtime_forever: game.playtime_forever,
+    game_url: await fetch(`https://api.rcn.sh/api/steam_big_picture?q=${game.appid}`).then((response) => response.text()),
+    playtime_windows_forever: game.playtime_windows_forever,
+    playtime_mac_forever: game.playtime_mac_forever,
+    playtime_linux_forever: game.playtime_linux_forever,
+
+  };
+});
+const finaldata = await Promise.all(steamRecentGamesList);
+
+---
+
+<div>
+  {finaldata.map((game) => {
+    <div class="">
+      <Image src={game.game_url} alt={game.name} width={600} height={900} />
+      <h2>{game.name}</h2>
+      <p>Playtime in the last 2 weeks: {game.playtime_2weeks}</p>
+      <p>Playtime forever: {game.playtime_forever}</p>
+      <p>Playtime on Windows: {game.playtime_windows_forever}</p>
+      <p>Playtime on Mac: {game.playtime_mac_forever}</p>
+      <p>Playtime on Linux: {game.playtime_linux_forever}</p>
+    </div>
+  })}
+</div>

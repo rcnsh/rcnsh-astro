@@ -2,6 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import Spotify from "@components/Spotify.astro";
 import Github from "@components/Github.astro";
+import Steam from "@components/Steam.astro";
 
 const rWords =
   "radiant ragged rapid rare rash raw recent reckless rectangular ready real realistic reasonable red reflecting regal regular reliable relieved remarkable remorseful remote repentant required respectful responsible repulsive revolving rewarding rich rigid right ringed ripe roasted robust rosy rotating rotten rough round rowdy royal rubbery rundown ruddy rude runny rural rusty"
@@ -64,6 +65,12 @@ const randomNWord = nWords[Math.floor(Math.random() * nWords.length)];
           My GitHub Repositories
         </h2>
         <Github />
+      </section>
+      <section class={"container p-2 py-5"}>
+        <h2 class={"flex justify-center py-4 text-xl font-bold text-white"}>
+          My Steam Games
+        </h2>
+      <Steam/>
       </section>
       <Spotify />
     </section>
