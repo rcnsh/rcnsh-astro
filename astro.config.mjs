@@ -11,4 +11,7 @@ export default defineConfig({
   integrations: [tailwind(), react(), sitemap()],
   output: "server",
   adapter: vercel(),
+  image: {
+    domains: ["steamcdn-a.akamaihd.net"],
+  }
 });
