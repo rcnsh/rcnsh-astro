@@ -20,8 +20,6 @@ const nWords =
 const randomRWord = rWords[Math.floor(Math.random() * rWords.length)];
 const randomCWord = cWords[Math.floor(Math.random() * cWords.length)];
 const randomNWord = nWords[Math.floor(Math.random() * nWords.length)];
-
-Astro.response.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=30');
 ---
 
 <Layout title="rcn.sh">
