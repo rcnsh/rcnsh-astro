@@ -6,6 +6,8 @@ interface Props {
 const { title } = Astro.props;
 
 import "@fontsource/geist-mono";
+
+import { ViewTransitions } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -59,6 +61,7 @@ import "@fontsource/geist-mono";
     <meta name="theme-color" content="#ffffff" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body class="bg-[#171717]">
     <slot />
