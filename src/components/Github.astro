@@ -11,6 +11,8 @@ const githubpromise = fetch("https://api.rcn.sh/api/github").then((res) =>
 );
 
 const data: Repo[] = await githubpromise;
+
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=30');
 ---
 
 <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3">
