@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@types/bun": "^1.0.7",
+    "cypress": "^13.6.6",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0"
   }
