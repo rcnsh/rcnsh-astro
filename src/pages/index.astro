@@ -3,6 +3,9 @@ import Layout from "@layouts/Layout.astro";
 import Spotify from "@components/Spotify.astro";
 import Github from "@components/Github.astro";
 import Steam from "@components/Steam.astro";
+import { Image } from "astro:assets";
+
+import rcnLogo from "../../public/rcnLogo.svg";
 
 const chance = Math.random();
 
@@ -44,8 +47,8 @@ Astro.response.headers.set(
   <main
     class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8"
   >
-    <img
-      src="/rcnLogo.svg"
+    <Image
+      src={rcnLogo}
       alt="rcn.sh logo"
       class="w-[40%] md:w-[30%] lg:w-[25%] xl:w-[15%] mx-auto"
       height="500"
