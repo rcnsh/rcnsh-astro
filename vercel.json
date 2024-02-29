@@ -1,7 +1,7 @@
 {
     "crons": [
       {
-        "path": "https://api.rcn.sh/api/cron",
+        "path": "/load",
         "schedule": "* * * * *"
       }
     ]
