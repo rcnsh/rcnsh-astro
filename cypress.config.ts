@@ -6,4 +6,6 @@ export default defineConfig({
     baseUrl: "http://localhost:4321",
   },
   projectId: "wpihsa",
+  video: true,
+  videoCompression: true,
 });
