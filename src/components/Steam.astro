@@ -43,48 +43,43 @@ const Finaldata = (await Promise.all(steamRecentGamesList)).slice(
 ) as Game[];
 ---
 
-<section class={"py-5 font-mono"}>
-  <h2 class={"flex justify-center py-4 text-xl font-bold text-white"}>
-    My Steam Games
-  </h2>
-  <div class={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
-    {
-      Finaldata.map((game) => (
-        <div
-          class={
-            "flex flex-col items-center p-4 rounded-lg shadow-lg bg-[#101010] hover:scale-[1.03] transition-transform duration-300 ease-in-out"
-          }
+<div class={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
+  {
+    Finaldata.map((game) => (
+      <div
+        class={
+          "flex flex-col items-center p-4 rounded-lg shadow-lg bg-[#101010] hover:scale-[1.03] transition-transform duration-300 ease-in-out"
+        }
+      >
+        <a
+          href={`https://store.steampowered.com/app/${game.appid}`}
+          target="_blank"
         >
-          <a
-            href={`https://store.steampowered.com/app/${game.appid}`}
-            target="_blank"
-          >
-            <Image
-              src={game.game_image_url}
-              alt={game.name}
-              class={"w-300 h-450 rounded-lg"}
-              width={600}
-              height={900}
-              loading={"eager"}
-            />
-          </a>
-          <h3 class={"text-white font-bold text-center text-lg py-1"}>
-            {game.name}
-          </h3>
-          <p class={"text-white text-sm py-1 text-center"}>
-            Playtime in last 2 weeks:{" "}
-            {game.playtime_2weeks >= 60
-              ? Math.round(game.playtime_2weeks / 60) + " hours"
-              : game.playtime_2weeks + " minutes"}
-          </p>
-          <p class={"text-white py-1 text-sm text-center"}>
-            Total playtime:{" "}
-            {game.playtime_forever >= 60
-              ? Math.round(game.playtime_forever / 60) + " hours"
-              : game.playtime_forever + " minutes"}
-          </p>
-        </div>
-      ))
-    }
-  </div>
-</section>
+          <Image
+            src={game.game_image_url}
+            alt={game.name}
+            class={"w-300 h-450 rounded-lg"}
+            width={600}
+            height={900}
+            loading={"eager"}
+          />
+        </a>
+        <h3 class={"text-white font-bold text-center text-lg py-1"}>
+          {game.name}
+        </h3>
+        <p class={"text-white text-sm py-1 text-center"}>
+          Playtime in last 2 weeks:{" "}
+          {game.playtime_2weeks >= 60
+            ? Math.round(game.playtime_2weeks / 60) + " hours"
+            : game.playtime_2weeks + " minutes"}
+        </p>
+        <p class={"text-white py-1 text-sm text-center"}>
+          Total playtime:{" "}
+          {game.playtime_forever >= 60
+            ? Math.round(game.playtime_forever / 60) + " hours"
+            : game.playtime_forever + " minutes"}
+        </p>
+      </div>
+    ))
+  }
+</div>
