@@ -25,7 +25,6 @@ export default function Spotify() {
       try {
         const response = await fetch("https://api.rcn.sh/api/spotify");
         const songPromise = await response.json();
-        console.log("API Response:", songPromise);
 
         const newSongData: songData = {
           isPlaying: songPromise.isPlaying,
