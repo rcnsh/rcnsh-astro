@@ -45,7 +45,7 @@ const random = RCN(chance);
     <Image
       src={rcnLogo}
       alt="rcn.sh logo"
-      class="w-[40%] md:w-[30%] lg:w-[25%] xl:w-[15%] mx-auto text-[#171717]"
+      class="w-[40%] md:w-[30%] lg:w-[25%] xl:w-[15%] mx-auto text-[#171717] justify-center"
       height="500"
       width="500"
       loading="eager"
@@ -54,7 +54,7 @@ const random = RCN(chance);
       {random}
     </h1>
     <section
-      class="m-auto w-[80%] text-[#cdc8c2] md:w-[65%] md:text-left text-center"
+      class="mx-auto w-[100%] text-[#cdc8c2] md:w-[65%] md:text-left text-center"
     >
       <br />
       <section class="justify-center p-2 py-5 text-base text-center">
@@ -73,16 +73,18 @@ const random = RCN(chance);
         framework being Next.js, but I've also used frameworks such as Astro.
         I'm also familiar with Rust and Python.
       </section>
-      <section class={"container p-2 py-5"}>
+      <section class={"py-5"}>
         <h2
-          class={"flex justify-center py-4 text-xl font-bold text-white text-center"}
+          class={"flex justify-center py-4 text-xl font-bold text-white font-mono text-center"}
         >
           My GitHub Repositories
         </h2>
-        <Github />
+        
       </section>
+      <Github />
       <Steam />
+      <Spotify client:idle />
     </section>
-    <Spotify client:idle />
+    
   </main>
 </Layout>
