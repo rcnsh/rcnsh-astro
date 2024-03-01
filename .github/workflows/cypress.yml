@@ -20,8 +20,8 @@ jobs:
       - name: node
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'pnpm'
+          node-version: "18"
+          cache: "pnpm"
       - run: pnpm install
       - name: Cypress run
         # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
