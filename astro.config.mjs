@@ -10,5 +10,14 @@ export default defineConfig({
   site: "https://rcn.sh",
   integrations: [tailwind(), react(), sitemap()],
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({
+    isr: {
+      expiration: 60,
+    },
+    webAnalytics: {
+      enabled: true,
+    },
+    imageService: true,
+
+  }),
 });

@@ -36,11 +36,6 @@ function RCN(chance: number) {
   }
 }
 const random = RCN(chance);
-
-Astro.response.headers.set(
-  "Cache-Control",
-  "public, s-maxage=60, stale-while-revalidate=30",
-);
 ---
 
 <Layout title="rcn.sh">
