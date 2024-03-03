@@ -8,11 +8,14 @@ const { title } = Astro.props;
 import "@fontsource/geist-mono";
 
 import { ViewTransitions } from "astro:transitions";
+import { fade } from "astro:transitions";
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <ViewTransitions transition:animate={fade({duration: "0.2s"})} />
     <meta charset="UTF-8" />
     <meta name="description" content="My personal website" />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -61,7 +64,7 @@ import { ViewTransitions } from "astro:transitions";
     <meta name="theme-color" content="#ffffff" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
+    <SpeedInsights/>
   </head>
   <body class="bg-[#171717]">
     <slot />
