@@ -43,7 +43,7 @@ async function SteamGameRenderCount() {
         }),
       )
     ).slice(0, 8) as Game[];
-  } else {
+  } else if (steamRecentGames.response.total_count >= 6) {
     return (
       await Promise.all(
         steamRecentGames.response.games.map(async (game, index) => {
@@ -61,22 +61,42 @@ async function SteamGameRenderCount() {
         }),
       )
     ).slice(0, 6) as Game[];
+  } else {
+    return (
+      await Promise.all(
+        steamRecentGames.response.games.map(async (game, index) => {
+          return {
+            name: game.name,
+            appid: game.appid,
+            playtime_2weeks: game.playtime_2weeks,
+            playtime_forever: game.playtime_forever,
+            game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
+            playtime_windows_forever: game.playtime_windows_forever,
+            playtime_mac_forever: game.playtime_mac_forever,
+            playtime_linux_forever: game.playtime_linux_forever,
+            loading: index < 2 ? "eager" : "lazy",
+          };
+        }),
+      )
+    ).slice(0, 4) as Game[];
   }
 }
 
 const Finaldata = await SteamGameRenderCount();
 ---
+
 <script>
   if (window.innerWidth <= 640) {
-    const gameImages = document.querySelectorAll('.game-image');
+    const gameImages = document.querySelectorAll(".game-image");
     gameImages.forEach((image) => {
-      (image as HTMLImageElement).loading = 'lazy';
+      (image as HTMLImageElement).loading = "lazy";
     });
   }
 </script>
 <div>
   {
-    steamRecentGames.response.total_count >= 8 ? (
+    steamRecentGames.response.total_count >= 8 ||
+    steamRecentGames.response.total_count < 6 ? (
       <div class={"grid grid-cols-2 gap-4 lg:grid-cols-4"}>
         {Finaldata.map((game) => (
           <div
