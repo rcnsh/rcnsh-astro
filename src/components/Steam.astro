@@ -1,7 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import { getImage } from "astro:assets";
-import { format } from "path";
 
 type Game = {
   appid: number;
@@ -43,34 +41,11 @@ const Finaldata = (await Promise.all(steamRecentGamesList)).slice(
   0,
   6,
 ) as Game[];
-
-const FinalOptimsedDataPromise = Finaldata.map(async (game) => {
-  return {
-    name: game.name,
-    appid: game.appid,
-    playtime_2weeks: game.playtime_2weeks,
-    playtime_forever: game.playtime_forever,
-    game_image_url: await getImage({
-      src: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
-      format: "webp",
-      width: 600,
-      height: 900
-    }),
-    playtime_windows_forever: game.playtime_windows_forever,
-    playtime_mac_forever: game.playtime_mac_forever,
-    playtime_linux_forever: game.playtime_linux_forever,
-  };
-});
-
-const FinalOptimsedData = (await Promise.all(FinalOptimsedDataPromise)).slice(
-  0,
-  6,
-);
 ---
 
 <div class={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
   {
-    FinalOptimsedData.map((game) => (
+    Finaldata.map((game) => (
       <div
         class={
           "flex flex-col items-center p-4 rounded-lg shadow-lg bg-[#101010] hover:scale-[1.03] transition-transform duration-300 ease-in-out"
@@ -81,11 +56,11 @@ const FinalOptimsedData = (await Promise.all(FinalOptimsedDataPromise)).slice(
           target="_blank"
         >
           <Image
-            src={game.game_image_url.src}
+            src={game.game_image_url}
             alt={game.name}
             class={"w-300 h-450 rounded-lg"}
-            width={600}
-            height={900}
+            width={300}
+            height={450}
             loading={"eager"}
           />
         </a>
