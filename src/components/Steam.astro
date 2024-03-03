@@ -84,15 +84,6 @@ async function SteamGameRenderCount() {
 
 const Finaldata = await SteamGameRenderCount();
 ---
-
-<script>
-  if (window.innerWidth <= 640) {
-    const gameImages = document.querySelectorAll(".game-image");
-    gameImages.forEach((image) => {
-      (image as HTMLImageElement).loading = "lazy";
-    });
-  }
-</script>
 <div>
   {
     steamRecentGames.response.total_count >= 8 ||
