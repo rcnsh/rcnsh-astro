@@ -13,13 +13,15 @@ const githubpromise = fetch("https://api.rcn.sh/api/github").then((res) =>
 const data: Repo[] = await githubpromise;
 ---
 
-<div class="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3">
+<div class="grid grid-cols-2 gap-4 xl:grid-cols-3">
   {
     data.map((repo) => (
-      <div class="flex-col rounded-xl p-6 shadow-md">
+      <div class="flex-col rounded-xl p-4 shadow-md text-center">
         <a
           class={"text-[#737dbb] underline hover:text-[#cdc8c2]"}
           href={repo.html_url}
+          target="_blank"
+          rel="noopener noreferer"
         >
           {repo.name}
         </a>

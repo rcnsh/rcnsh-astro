@@ -37,49 +37,100 @@ const steamRecentGamesList = steamRecentGames.response.games.map(
     };
   },
 );
-const Finaldata = (await Promise.all(steamRecentGamesList)).slice(
-  0,
-  6,
-) as Game[];
+
+async function eightorsix() {
+  if (steamRecentGames.response.total_count >= 8) {
+    return (await Promise.all(steamRecentGamesList)).slice(0, 8) as Game[];
+  } else {
+    return (await Promise.all(steamRecentGamesList)).slice(0, 6) as Game[];
+  }
+}
+
+const Finaldata = await eightorsix();
 ---
 
-<div class={"grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"}>
+<div>
   {
-    Finaldata.map((game) => (
-      <div
-        class={
-          "flex flex-col items-center p-4 rounded-lg shadow-lg bg-[#101010] hover:scale-[1.03] transition-transform duration-300 ease-in-out"
-        }
-      >
-        <a
-          href={`https://store.steampowered.com/app/${game.appid}`}
-          target="_blank"
-        >
-          <Image
-            src={game.game_image_url}
-            alt={game.name}
-            class={"w-300 h-450 rounded-lg"}
-            width={300}
-            height={450}
-            loading={"eager"}
-          />
-        </a>
-        <h3 class={"text-white font-bold text-center text-lg py-1"}>
-          {game.name}
-        </h3>
-        <p class={"text-white text-sm py-1 text-center"}>
-          Playtime in last 2 weeks:{" "}
-          {game.playtime_2weeks >= 60
-            ? Math.round(game.playtime_2weeks / 60) + " hours"
-            : game.playtime_2weeks + " minutes"}
-        </p>
-        <p class={"text-white py-1 text-sm text-center"}>
-          Total playtime:{" "}
-          {game.playtime_forever >= 60
-            ? Math.round(game.playtime_forever / 60) + " hours"
-            : game.playtime_forever + " minutes"}
-        </p>
+    steamRecentGames.response.total_count >= 8 ? (
+      <div class={"grid grid-cols-2 gap-4 lg:grid-cols-4"}>
+        {Finaldata.map((game) => (
+          <div
+            class={
+              "flex flex-col items-center p-4 rounded-lg shadow-lg bg-[#101010] hover:scale-[1.03] transition-transform duration-300 ease-in-out m-[6px]"
+            }
+          >
+            <a
+              href={`https://store.steampowered.com/app/${game.appid}`}
+              target="_blank"
+              rel="noopener noreferer"
+            >
+              <Image
+                src={game.game_image_url}
+                alt={game.name}
+                class={"w-300 h-450 rounded-lg"}
+                width={300}
+                height={450}
+                loading={"eager"}
+              />
+            </a>
+            <h3 class={"text-white font-bold text-center text-lg py-1"}>
+              {game.name}
+            </h3>
+            <p class={"text-white text-sm py-1 text-center"}>
+              Playtime in last 2 weeks:{" "}
+              {game.playtime_2weeks >= 60
+                ? Math.round(game.playtime_2weeks / 60) + " hours"
+                : game.playtime_2weeks + " minutes"}
+            </p>
+            <p class={"text-white py-1 text-sm text-center"}>
+              Total playtime:{" "}
+              {game.playtime_forever >= 60
+                ? Math.round(game.playtime_forever / 60) + " hours"
+                : game.playtime_forever + " minutes"}
+            </p>
+          </div>
+        ))}
       </div>
-    ))
+    ) : (
+      <div class={"grid grid-cols-2 gap-4 lg:grid-cols-3"}>
+        {Finaldata.map((game) => (
+          <div
+            class={
+              "flex flex-col items-center p-4 rounded-lg shadow-lg bg-[#101010] hover:scale-[1.03] transition-transform duration-300 ease-in-out m-[6px]"
+            }
+          >
+            <a
+              href={`https://store.steampowered.com/app/${game.appid}`}
+              target="_blank"
+              rel="noopener noreferer"
+            >
+              <Image
+                src={game.game_image_url}
+                alt={game.name}
+                class={"w-300 h-450 rounded-lg"}
+                width={300}
+                height={450}
+                loading={"eager"}
+              />
+            </a>
+            <h3 class={"text-white font-bold text-center text-lg py-1"}>
+              {game.name}
+            </h3>
+            <p class={"text-white text-sm py-1 text-center"}>
+              Playtime in last 2 weeks:{" "}
+              {game.playtime_2weeks >= 60
+                ? Math.round(game.playtime_2weeks / 60) + " hours"
+                : game.playtime_2weeks + " minutes"}
+            </p>
+            <p class={"text-white py-1 text-sm text-center"}>
+              Total playtime:{" "}
+              {game.playtime_forever >= 60
+                ? Math.round(game.playtime_forever / 60) + " hours"
+                : game.playtime_forever + " minutes"}
+            </p>
+          </div>
+        ))}
+      </div>
+    )
   }
 </div>
