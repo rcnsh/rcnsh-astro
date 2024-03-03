@@ -10,6 +10,7 @@ type Game = {
   playtime_windows_forever: number;
   playtime_mac_forever: number;
   playtime_linux_forever: number;
+  loading: "eager" | "lazy";
 };
 
 type Response = {
@@ -23,30 +24,47 @@ const steamRecentGames = (await fetch(
   "https://api.rcn.sh/api/recent_steam",
 ).then((response) => response.json())) as Response;
 
-const steamRecentGamesList = steamRecentGames.response.games.map(
-  async (game) => {
-    return {
-      name: game.name,
-      appid: game.appid,
-      playtime_2weeks: game.playtime_2weeks,
-      playtime_forever: game.playtime_forever,
-      game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
-      playtime_windows_forever: game.playtime_windows_forever,
-      playtime_mac_forever: game.playtime_mac_forever,
-      playtime_linux_forever: game.playtime_linux_forever,
-    };
-  },
-);
-
-async function eightorsix() {
+async function SteamGameRenderCount() {
   if (steamRecentGames.response.total_count >= 8) {
-    return (await Promise.all(steamRecentGamesList)).slice(0, 8) as Game[];
+    return (
+      await Promise.all(
+        steamRecentGames.response.games.map(async (game, index) => {
+          return {
+            name: game.name,
+            appid: game.appid,
+            playtime_2weeks: game.playtime_2weeks,
+            playtime_forever: game.playtime_forever,
+            game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
+            playtime_windows_forever: game.playtime_windows_forever,
+            playtime_mac_forever: game.playtime_mac_forever,
+            playtime_linux_forever: game.playtime_linux_forever,
+            loading: index < 4 ? "eager" : "lazy",
+          };
+        }),
+      )
+    ).slice(0, 8) as Game[];
   } else {
-    return (await Promise.all(steamRecentGamesList)).slice(0, 6) as Game[];
+    return (
+      await Promise.all(
+        steamRecentGames.response.games.map(async (game, index) => {
+          return {
+            name: game.name,
+            appid: game.appid,
+            playtime_2weeks: game.playtime_2weeks,
+            playtime_forever: game.playtime_forever,
+            game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
+            playtime_windows_forever: game.playtime_windows_forever,
+            playtime_mac_forever: game.playtime_mac_forever,
+            playtime_linux_forever: game.playtime_linux_forever,
+            loading: index < 3 ? "eager" : "lazy",
+          };
+        }),
+      )
+    ).slice(0, 6) as Game[];
   }
 }
 
-const Finaldata = await eightorsix();
+const Finaldata = await SteamGameRenderCount();
 ---
 
 <div>
@@ -70,7 +88,7 @@ const Finaldata = await eightorsix();
                 class={"w-300 h-450 rounded-lg"}
                 width={300}
                 height={450}
-                loading={"eager"}
+                loading={game.loading}
               />
             </a>
             <h3 class={"text-white font-bold text-center text-lg py-1"}>
@@ -110,7 +128,7 @@ const Finaldata = await eightorsix();
                 class={"w-300 h-450 rounded-lg"}
                 width={300}
                 height={450}
-                loading={"eager"}
+                loading={game.loading}
               />
             </a>
             <h3 class={"text-white font-bold text-center text-lg py-1"}>
