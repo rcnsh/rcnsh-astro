@@ -62,7 +62,7 @@ export default function Spotify() {
               alt={song.album}
               width={16}
               height={16}
-              loading={"eager"}
+              loading={"lazy"}
             />
           ) : (
             <SiSpotify size={64} color={"#1ED760"} />
