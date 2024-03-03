@@ -60,8 +60,8 @@ export default function Spotify() {
               className="w-16 shadow-sm"
               src={song.albumImageUrl}
               alt={song.album}
-              width={64}
-              height={64}
+              width={16}
+              height={16}
               loading={"eager"}
             />
           ) : (
