@@ -9,7 +9,6 @@ import "@fontsource/geist-mono";
 
 import { ViewTransitions } from "astro:transitions";
 import { fade } from "astro:transitions";
-import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
@@ -64,7 +63,6 @@ import SpeedInsights from "@vercel/speed-insights/astro";
     <meta name="theme-color" content="#ffffff" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <SpeedInsights />
   </head>
   <body class="bg-[#171717]">
     <slot />
