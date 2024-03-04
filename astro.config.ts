@@ -7,7 +7,6 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://rcn.sh",
-  prefetch: true,
   integrations: [tailwind(), react(), sitemap()],
   image: {
     service: squooshImageService(),
