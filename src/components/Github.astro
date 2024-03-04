@@ -1,16 +1,7 @@
 ---
-type Repo = {
-  name: string;
-  description: string;
-  html_url: string;
-  stargazers_count: number;
-};
+import { githubRepos } from "../lib/github";
 
-const githubpromise = fetch("https://api.rcn.sh/api/github").then((res) =>
-  res.json(),
-);
-
-const data: Repo[] = await githubpromise;
+const data = await githubRepos();
 ---
 
 <div class="grid grid-cols-2 gap-4 xl:grid-cols-3">

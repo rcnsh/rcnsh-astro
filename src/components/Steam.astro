@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { getSteam } from "../lib/steam";
 
 type Game = {
   appid: number;
@@ -20,9 +21,7 @@ type Response = {
   };
 };
 
-const steamRecentGames = (await fetch(
-  "https://api.rcn.sh/api/recent_steam",
-).then((response) => response.json())) as Response;
+const steamRecentGames = (await getSteam()) as Response;
 
 async function SteamGameRenderCount() {
   if (steamRecentGames.response.total_count >= 8) {

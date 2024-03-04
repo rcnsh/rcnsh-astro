@@ -67,7 +67,7 @@ export default function Spotify() {
             <svg
               stroke="currentColor"
               fill="currentColor"
-              stroke-width="0"
+              strokeWidth="0"
               role="img"
               viewBox="0 0 24 24"
               color="#1ED760"
@@ -91,7 +91,7 @@ export default function Spotify() {
           <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             role="img"
             viewBox="0 0 24 24"
             color="#1ED760"
