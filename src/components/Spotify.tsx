@@ -22,7 +22,7 @@ export default function Spotify() {
   useEffect(() => {
     async function getSpotify() {
       try {
-        const response = await fetch("/spotify.json");
+        const response = await fetch("https://api.rcn.sh/api/spotify");
         const songPromise = await response.json();
 
         const newSongData: songData = {
