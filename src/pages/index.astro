@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Spotify from "@components/Spotify";
 import Github from "@components/Github.astro";
 import Steam from "@components/Steam.astro";
+import Konami from "@components/Konami";
 
 const chance = Math.random();
 
@@ -39,6 +40,7 @@ const random = RCN(chance);
   <main
     class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8"
   >
+    <Konami client:load />
     <svg
       class="w-[40%] md:w-[30%] lg:w-[25%] xl:w-[15%] mx-auto justify-center"
       xmlns="http://www.w3.org/2000/svg"
