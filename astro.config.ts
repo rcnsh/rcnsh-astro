@@ -4,8 +4,6 @@ import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
 
-import pageInsight from "astro-page-insight";
-
 // https://astro.build/config
 export default defineConfig({
   site: "https://rcn.sh",
@@ -16,14 +14,14 @@ export default defineConfig({
   experimental: {
     clientPrerender: true,
   },
-  integrations: [tailwind(), react(), sitemap(), pageInsight()],
+  integrations: [tailwind(), react(), sitemap()],
   image: {
     service: squooshImageService(),
   },
   output: "server",
   adapter: vercel({
     isr: {
-      expiration: 60,
+      expiration: 5,
     },
     webAnalytics: {
       enabled: true,
