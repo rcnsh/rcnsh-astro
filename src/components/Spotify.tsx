@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import React from "react";
 
 interface songData {
   isPlaying: boolean;
@@ -23,7 +22,15 @@ export default function Spotify() {
   useEffect(() => {
     async function getSpotify() {
       try {
-        const response = await fetch("https://api.rcn.sh/api/spotify");
+        const response = await fetch("https://api.rcn.sh/api/spotify",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Cache-Control": "s-maxage=1, stale-while-revalidate=59"
+            },
+          }
+        );
         const songPromise = await response.json();
 
         const newSongData: songData = {
