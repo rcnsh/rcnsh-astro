@@ -3,7 +3,7 @@ export default function Footer({ children }: { children: React.ReactNode }) {
     <footer className="p-4">
       <hr className="bg-[#c5c0b8] h-[1px] w-full" />
       <div className="mt-4">
-        <p className="flex flex-row justify-evenly text-[#c5c0b8] font-mono">
+        <p className="flex flex-row text-[#c5c0b8] font-mono text-center lg:px-12 justify-between">
           <span> rcn.sh © 2024 </span>
           {children}
         </p>
