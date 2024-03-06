@@ -1,6 +1,6 @@
-<span class="w-[40%]"> Nice argument, however <b class="ip-replace">this broke</b> </span>
+<span class="w-[40%]"> Nice argument, however <b id="ip-replace">this broke</b> </span>
 <script>
-    const ipReplace = document.querySelector('.ip-replace');
+    const ipReplace = document.getElementById('ip-replace');
     if (ipReplace) {
     ipReplace.textContent = Astro.clientAddress;
     }
