@@ -73,7 +73,7 @@ export default function Joke() {
   useEffect(() => {
     if (currentJoke === "ip") {
       const interval = setInterval(() => {
-        setIpStage((prev) => (prev + 1) % 18);
+        setIpStage((prev) => (prev + 1) % 19);
       }, 950);
       return () => clearInterval(interval);
     }
