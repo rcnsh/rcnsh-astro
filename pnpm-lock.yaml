@@ -44,12 +44,18 @@ dependencies:
   astro:
     specifier: ^4.4.12
     version: 4.4.12(@types/node@20.11.24)(typescript@5.3.3)
+  astro-feather:
+    specifier: ^1.0.0
+    version: 1.0.0
   astro-page-insight:
     specifier: ^0.1.1
     version: 0.1.1(astro@4.4.12)(react@18.2.0)
   dotenv:
     specifier: ^16.4.5
     version: 16.4.5
+  lucide-react:
+    specifier: ^0.344.0
+    version: 0.344.0(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -1816,6 +1822,10 @@ packages:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
     dev: true
+
+  /astro-feather@1.0.0:
+    resolution: {integrity: sha512-PVIDwuKOv+sw/pqYysOVY4m77fUOYEKBn8R4l280muXXUuYZUoPRFYx8WoAigI+Yp3cKFY5pJecmtyT4RCnblA==}
+    dev: false
 
   /astro-integration-kit@0.5.1(astro@4.4.12)(react@18.2.0):
     resolution: {integrity: sha512-ef309UUNOjxUe0jjsDP5O3p+jkt53HAcrKOsWJ2NIgdUTOp5P/YKnAjbatfyu3bAuLFDfj5xhXm/rrwSe9d/hw==}
@@ -3969,6 +3979,14 @@ packages:
 
   /lru_map@0.3.3:
     resolution: {integrity: sha512-Pn9cox5CsMYngeDbmChANltQl+5pi6XmTrraMSzhPmMBbmgcxmqWry0U3PGapCU1yB4/LqCcom7qhHZiF/jGfQ==}
+    dev: false
+
+  /lucide-react@0.344.0(react@18.2.0):
+    resolution: {integrity: sha512-6YyBnn91GB45VuVT96bYCOKElbJzUHqp65vX8cDcu55MQL9T969v4dhGClpljamuI/+KMO9P6w9Acq1CVQGvIQ==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /magic-string@0.30.7:

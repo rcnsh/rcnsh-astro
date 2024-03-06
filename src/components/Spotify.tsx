@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { PauseIcon, PlayIcon } from "lucide-react"
 
 interface songData {
   isPlaying: boolean;
@@ -25,7 +26,6 @@ export default function Spotify() {
         const response = await fetch("https://api.rcn.sh/api/spotify", {
           method: "GET",
           headers: {
-            "Content-Type": "application/json",
             "Cache-Control": "s-maxage=1, stale-while-revalidate=59",
           },
         });
@@ -60,7 +60,7 @@ export default function Spotify() {
         className="relative m-auto flex w-72 items-center space-x-4 rounded-md p-5 transition-shadow hover:shadow-md"
       >
         <div className="w-16">
-          {song.isPlaying ? (
+          {song.album ? (
             <img
               className="w-16 shadow-sm"
               src={song.albumImageUrl}
@@ -87,13 +87,21 @@ export default function Spotify() {
         </div>
         <div className="flex-1">
           <p className="component font-bold">
-            {song.isPlaying ? song.title : "Not Listening"}
+            {song.title ? song.title : "Not Listening"}
           </p>
           <p className="font-dark text-xs">
-            {song.isPlaying ? song.artist : "Spotify"}
+            {song.artist ? song.artist : "Spotify"}
           </p>
         </div>
+        <div className="flex float-end">
+                  {song.isPlaying ? (
+            <PauseIcon size={24} />
+          ) : (
+            <PlayIcon size={24} />
+          )}
+          </div>  
         <div className="absolute bottom-1.5 right-1.5">
+          
           <svg
             stroke="currentColor"
             fill="currentColor"
