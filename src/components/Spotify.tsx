@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { PauseIcon, PlayIcon } from "lucide-react"
+import { PauseIcon, PlayIcon } from "lucide-react";
 
 interface songData {
   isPlaying: boolean;
@@ -23,12 +23,7 @@ export default function Spotify() {
   useEffect(() => {
     async function getSpotify() {
       try {
-        const response = await fetch("https://api.rcn.sh/api/spotify", {
-          method: "GET",
-          headers: {
-            "Cache-Control": "s-maxage=1, stale-while-revalidate=59",
-          },
-        });
+        const response = await fetch("https://api.rcn.sh/api/spotify");
         const songPromise = await response.json();
 
         const newSongData: songData = {
@@ -94,14 +89,9 @@ export default function Spotify() {
           </p>
         </div>
         <div className="flex float-end">
-                  {song.isPlaying ? (
-            <PauseIcon size={24} />
-          ) : (
-            <PlayIcon size={24} />
-          )}
-          </div>  
+          {song.isPlaying ? <PauseIcon size={24} /> : <PlayIcon size={24} />}
+        </div>
         <div className="absolute bottom-1.5 right-1.5">
-          
           <svg
             stroke="currentColor"
             fill="currentColor"
