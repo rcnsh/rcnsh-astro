@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useKonami from "react-use-konami";
+import { motion } from "framer-motion";
 
 export default function Joke() {
   const [ip, setIp] = useState(".......");
@@ -29,16 +30,39 @@ export default function Joke() {
     },
     { code: ["r", "c", "n"] },
   );
+    useKonami(
+    () => {
+      setCurrentJoke("why");
+    },
+    { code: ["e", "m", "i","l","i","j","a"] },
+  );
+
+  useKonami(
+    () => {
+      setCurrentJoke("");
+    },
+    { code: ["Backspace"] },
+  );
 
   return (
     <div>
       {currentJoke === "ip" && (
-        <span className="w-[40%]">
+        <motion.span
+          className="w-[40%]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
           Nice argument, however <b>{ip}</b>
-        </span>
+        </motion.span>
       )}
       {currentJoke === "rcn" && (
-        <span className="w-[40%]">
+        <motion.span
+          className="w-[40%]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
           <svg
             className="w-[50%] md:w-[30%] lg:w-[25%] xl:w-[15%] mx-auto justify-center"
             xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +81,24 @@ export default function Joke() {
               ></polygon>
             </g>
           </svg>
-        </span>
+        </motion.span>
+      )}
+      {currentJoke === "why" && (
+        <motion.span
+          className="w-[40%] flex flex-col"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <img
+            src="https://res.cloudinary.com/dtqhs8nvm/image/upload/v1709586709/miku2.jpg"
+            alt="Why?"
+            width={128}
+            height={128}
+            loading="eager"
+          />
+          <b>Why?</b>
+        </motion.span>
       )}
     </div>
   );
