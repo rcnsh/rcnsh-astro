@@ -8,7 +8,9 @@ export default function Joke() {
   const [currentJoke, setCurrentJoke] = useState("");
   const [ipStage, setIpStage] = useState(0);
 
-  const ipmusic = new Audio("https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/omxdiolty5wvzq4ocedh")
+  const stopAllAudio = () => {
+    document.querySelectorAll('audio').forEach(el => el.pause());
+  }
 
   useEffect(() => {
     async function fetchIp() {
@@ -25,6 +27,8 @@ export default function Joke() {
   useKonami(
     () => {
       setCurrentJoke("ip");
+      const ipmusic = new Audio("https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/omxdiolty5wvzq4ocedh")
+      ipmusic.volume = 0.1;
       ipmusic.play();
     },
     { code: ["i", "p"] },
@@ -32,14 +36,14 @@ export default function Joke() {
   useKonami(
     () => {
       setCurrentJoke("rcn");
-      ipmusic.pause();
+      stopAllAudio();
     },
     { code: ["r", "c", "n"] },
   );
   useKonami(
     () => {
       setCurrentJoke("why");
-      ipmusic.pause();
+      stopAllAudio();
     },
     { code: ["e", "m", "i", "l", "i", "j", "a"] },
   );
@@ -47,21 +51,21 @@ export default function Joke() {
   useKonami(
     () => {
       setCurrentJoke("");
-      ipmusic.pause();
+      stopAllAudio();
     },
     { code: ["Backspace"] },
   );
   useKonami(
     () => {
       setCurrentJoke("coldrain");
-      ipmusic.pause();
+      stopAllAudio();
     },
     { code: ["n", "i", "e", "r"] },
   );
   useKonami(
     () => {
       setCurrentJoke("veli");
-      ipmusic.pause();
+      stopAllAudio();
     },
     { code: ["v", "e", "l", "i"] },
   );
@@ -70,7 +74,7 @@ export default function Joke() {
     if (currentJoke === "ip") {
       const interval = setInterval(() => {
         setIpStage((prev) => (prev + 1) % 18);
-      }, 1000);
+      }, 950);
       return () => clearInterval(interval);
     }
   }, [currentJoke]);
