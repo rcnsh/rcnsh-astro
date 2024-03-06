@@ -8,6 +8,8 @@ export default function Joke() {
   const [currentJoke, setCurrentJoke] = useState("");
   const [ipStage, setIpStage] = useState(0);
 
+  const ipmusic = new Audio("https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/omxdiolty5wvzq4ocedh")
+
   useEffect(() => {
     async function fetchIp() {
       setIp(
@@ -23,18 +25,21 @@ export default function Joke() {
   useKonami(
     () => {
       setCurrentJoke("ip");
+      ipmusic.play();
     },
     { code: ["i", "p"] },
   );
   useKonami(
     () => {
       setCurrentJoke("rcn");
+      ipmusic.pause();
     },
     { code: ["r", "c", "n"] },
   );
   useKonami(
     () => {
       setCurrentJoke("why");
+      ipmusic.pause();
     },
     { code: ["e", "m", "i", "l", "i", "j", "a"] },
   );
@@ -42,18 +47,21 @@ export default function Joke() {
   useKonami(
     () => {
       setCurrentJoke("");
+      ipmusic.pause();
     },
     { code: ["Backspace"] },
   );
   useKonami(
     () => {
       setCurrentJoke("coldrain");
+      ipmusic.pause();
     },
     { code: ["n", "i", "e", "r"] },
   );
   useKonami(
     () => {
       setCurrentJoke("veli");
+      ipmusic.pause();
     },
     { code: ["v", "e", "l", "i"] },
   );
