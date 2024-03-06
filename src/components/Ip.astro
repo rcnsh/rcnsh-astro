@@ -1,5 +1,7 @@
----
-const ip = Astro.clientAddress;
----
-
-<span class="w-[40%]"> Nice argument, however <b>{ip}</b> </span>
+<span class="w-[40%]"> Nice argument, however <b class="ip-replace">this broke</b> </span>
+<script>
+    const ipReplace = document.querySelector('.ip-replace');
+    if (ipReplace) {
+    ipReplace.textContent = Astro.clientAddress;
+    }
+</script>
