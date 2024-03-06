@@ -72,6 +72,12 @@ export default function Joke() {
     },
     { code: ["v", "e", "l", "i"] },
   );
+  useKonami(
+    () => {
+      window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    },
+    { code: ["a", "l", "a", "s", "t", "a", "i", "r"] },
+  );
 
   useEffect(() => {
     if (currentJoke === "ip") {
