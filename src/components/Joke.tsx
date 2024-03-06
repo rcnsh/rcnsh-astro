@@ -30,11 +30,11 @@ export default function Joke() {
     },
     { code: ["r", "c", "n"] },
   );
-    useKonami(
+  useKonami(
     () => {
       setCurrentJoke("why");
     },
-    { code: ["e", "m", "i","l","i","j","a"] },
+    { code: ["e", "m", "i", "l", "i", "j", "a"] },
   );
 
   useKonami(
@@ -42,6 +42,12 @@ export default function Joke() {
       setCurrentJoke("");
     },
     { code: ["Backspace"] },
+  );
+  useKonami(
+    () => {
+      setCurrentJoke("coldrain");
+    },
+    { code: ["n", "i", "e", "r"] },
   );
 
   return (
@@ -64,7 +70,7 @@ export default function Joke() {
           transition={{ duration: 1, ease: "easeOut" }}
         >
           <svg
-            className="w-[50%] md:w-[30%] lg:w-[25%] xl:w-[15%] mx-auto justify-center"
+            className="w-[50%] md:w-[30%] mx-auto justify-center"
             xmlns="http://www.w3.org/2000/svg"
             id="Layer_1"
             data-name="Layer 1"
@@ -98,6 +104,16 @@ export default function Joke() {
             loading="eager"
           />
           <b>Why?</b>
+        </motion.span>
+      )}
+      {currentJoke === "coldrain" && (
+        <motion.span
+          className="w-[40%]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <audio controls src="https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/coldrain"/>
         </motion.span>
       )}
     </div>
