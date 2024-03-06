@@ -4,7 +4,6 @@ import Spotify from "@components/Spotify";
 import Github from "@components/Github.astro";
 import Steam from "@components/Steam.astro";
 import Footer from "@components/Footer";
-import Ip from "@components/Ip.astro";
 import Credits from "@components/Credits.astro";
 import RCN from "../server/rcn";
 
@@ -109,8 +108,8 @@ const random = RCN();
       <Spotify client:idle />
     </section>
     <Footer client:load>
-      <Ip />
       <Credits />
     </Footer>
   </main>
 </Layout>
+@components/Joke
