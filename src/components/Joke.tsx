@@ -49,6 +49,12 @@ export default function Joke() {
     },
     { code: ["n", "i", "e", "r"] },
   );
+  useKonami(
+    () => {
+      setCurrentJoke("veli");
+    },
+    { code: ["v", "e", "l", "i"] },
+  );
 
   return (
     <div>
@@ -59,7 +65,7 @@ export default function Joke() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          Nice argument, however <b>{ip}</b>
+          Nice argument, however unfortunately <b>{ip}</b>
         </motion.span>
       )}
       {currentJoke === "rcn" && (
@@ -114,6 +120,22 @@ export default function Joke() {
           transition={{ duration: 1, ease: "easeOut" }}
         >
           <audio controls src="https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/coldrain"/>
+        </motion.span>
+      )}
+      {currentJoke === "veli" && (
+        <motion.span
+          className="w-[40%]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <img
+            src="https://res.cloudinary.com/dtqhs8nvm/image/upload/f_auto,q_auto/veli"
+            alt="Veli"
+            width={128}
+            height={128}
+            loading="eager"
+          />
         </motion.span>
       )}
     </div>
