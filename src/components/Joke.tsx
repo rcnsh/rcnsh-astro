@@ -9,8 +9,8 @@ export default function Joke() {
   const [ipStage, setIpStage] = useState(0);
 
   const stopAllAudio = () => {
-    document.querySelectorAll('audio').forEach(el => el.pause());
-  }
+    document.querySelectorAll("audio").forEach((el) => el.pause());
+  };
 
   useEffect(() => {
     async function fetchIp() {
@@ -27,8 +27,11 @@ export default function Joke() {
   useKonami(
     () => {
       setCurrentJoke("ip");
-      const ipmusic = new Audio("https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/omxdiolty5wvzq4ocedh")
+      const ipmusic = new Audio(
+        "https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/omxdiolty5wvzq4ocedh",
+      );
       ipmusic.volume = 0.1;
+      ipmusic.loop = true;
       ipmusic.play();
     },
     { code: ["i", "p"] },
