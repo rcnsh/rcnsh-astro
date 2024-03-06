@@ -8,6 +8,8 @@ import Credits from "@components/Credits.astro";
 import RCN from "../server/rcn";
 
 const random = RCN();
+
+Astro.response.headers.set("Cache-Control", "public, max-age=3600, s-maxage=3600, stale-while-revalidate=3600, stale-if-error=3600");
 ---
 
 <Layout title="rcn.sh">
