@@ -5,7 +5,7 @@ export default function FadeIn({ children }: { children: React.ReactNode }) {
     <motion.b
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       {children}
     </motion.b>
