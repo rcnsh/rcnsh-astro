@@ -67,6 +67,22 @@ export default function Joke() {
     },
     { code: ["t", "h", "o", "m", "a", "s"] },
   );
+  useKonami(
+    () => {
+      let status = "offline";
+
+      const program = () => {
+        status = "Crashed";
+        console.log(status);
+      };
+
+      for (let i = 0; i < 10000000; i++) {
+        status = status + 1000;
+        program();
+      }
+    },
+    { code: ["c", "r", "a", "s", "h"] },
+  );
 
   return (
     <div>
