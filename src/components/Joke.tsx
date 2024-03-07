@@ -78,6 +78,13 @@ export default function Joke() {
     },
     { code: ["a", "l", "a", "s", "t", "a", "i", "r"] },
   );
+  useKonami(
+    () => {
+      window.location.href = "http://lol.zip/";
+    },
+    { code: ["r", "o", "n", "n", "i", "e"] },
+  );
+  
 
   useEffect(() => {
     if (currentJoke === "ip") {
