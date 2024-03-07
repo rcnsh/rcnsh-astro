@@ -84,6 +84,18 @@ export default function Joke() {
     },
     { code: ["r", "o", "n", "n", "i", "e"] },
   );
+  useKonami(
+    () => {
+      window.location.href = "https://medal.tv/clips/1Xh4BKUK-4CTho/vp6N01F6h";
+    },
+    { code: ["e", "t", "h", "a", "n"] },
+  );
+  useKonami(
+    () => {
+      window.location.href = "https://thomashawkins.vercel.app/";
+    },
+    { code: ["t", "h", "o", "m", "a", "s"] },
+  );
 
   useEffect(() => {
     if (currentJoke === "ip") {
