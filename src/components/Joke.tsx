@@ -91,6 +91,15 @@ export default function Joke() {
   return (
     <div>
       <AnimatePresence>
+        {window.screen.width < 768 && currentJoke === "" && (
+          <button
+            onClick={() => {
+              setCurrentJoke("ip");
+            }}
+          >
+            Press me :)
+          </button>
+        )}
         {currentJoke === "ip" && (
           <span className="w-[40%]">
             Nice argument, however unfortunately
