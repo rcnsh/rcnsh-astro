@@ -4,6 +4,11 @@ import { useEffect, useState } from "react";
 export default function Ip() {
   const [ip, setIp] = useState(".......");
   const [ipStage, setIpStage] = useState(0);
+  const ipmusic = new Audio(
+    "https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/omxdiolty5wvzq4ocedh",
+  );
+  ipmusic.volume = 0.1;
+  ipmusic.loop = true;
 
   useEffect(() => {
     async function fetchIp() {
@@ -14,6 +19,8 @@ export default function Ip() {
       );
     }
 
+    ipmusic.play();
+
     fetchIp();
   }, []);
 
@@ -22,6 +29,12 @@ export default function Ip() {
       setIpStage((prev) => (prev + 1) % 19);
     }, 950);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      ipmusic.pause();
+    };
   }, []);
 
   return (

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useState } from "react";
 import useKonami from "react-use-konami";
 import { motion, AnimatePresence } from "framer-motion";
+import Ip from "./Ip";
 import Ip from "./Ip";
 
 export default function Joke() {
@@ -9,12 +11,6 @@ export default function Joke() {
   useKonami(
     () => {
       setCurrentJoke("ip");
-      const ipmusic = new Audio(
-        "https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/omxdiolty5wvzq4ocedh",
-      );
-      ipmusic.volume = 0.1;
-      ipmusic.loop = true;
-      ipmusic.play();
     },
     { code: ["i", "p"] },
   );
@@ -80,6 +76,7 @@ export default function Joke() {
             Press me :)
           </button>
         )}
+        {currentJoke === "ip" && <Ip />}
         {currentJoke === "ip" && <Ip />}
         {currentJoke === "rcn" && (
           <motion.span
