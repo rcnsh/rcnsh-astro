@@ -9,6 +9,7 @@ import "@fontsource/geist-mono";
 
 import { ViewTransitions } from "astro:transitions";
 import { fade } from "astro:transitions";
+import Sidebar from "../components/Sidebar.astro";
 ---
 
 <!doctype html>
@@ -60,11 +61,12 @@ import { fade } from "astro:transitions";
     <link rel="manifest" href="/manifest.json" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#171717" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-[#171717]">
+  <body class="bg-[#171717] flex">
+    <Sidebar />
     <slot />
   </body>
 </html>

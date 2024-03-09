@@ -1,0 +1,99 @@
+---
+import { cn } from "../lib/utils";
+import Spotify from "./Spotify";
+
+const href = Astro.url.href;
+const title = Astro.url.pathname;
+const url = Astro.url.toString();
+
+const LINKS = [
+  {
+    href: "/",
+    label: "Home",
+  },
+];
+
+const getLabelByHref = (title: string) => {
+  const link = LINKS.find((link) => link.href === title);
+  return link ? link.label : null;
+};
+---
+
+<main
+  class={"hidden bg-[#1b1d1e] lg:flex lg:flex-col lg:border-r lg:w-96 h-screen"}
+>
+  <div class="sticky top-0 z-10 border-b bg-[#1b1d1e] px-5 py-3">
+    <div class="flex items-center justify-between">
+      <div class="text-sm font-semibold tracking-tight text-[#cdc8c2]">
+        <a href={href}>{getLabelByHref(title)}</a>
+      </div>
+    </div>
+  </div>
+  <div class="bg-[#1b1d1e] p-3">
+    <div class="flex w-full flex-col text-sm">
+      <div class="gap-4">
+        <a href="/" class="link-card inline-flex items-center gap-2 p-2">
+          <svg
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1080 1080"
+            class="w-[64px] h-[64px] rounded-full"
+          >
+            <rect class="fill-[#181818] stroke-none" width="1080" height="1080"
+            ></rect>
+            <g>
+              <polygon
+                class="fill-[#5b66af] stroke-none"
+                points="947.67 500.78 902.38 579.22 857.08 657.67 766.48 657.67 811.77 579.22 857.07 500.78 766.48 500.78 721.19 579.22 675.88 657.67 585.3 657.67 630.59 579.22 539.99 579.22 585.28 500.78 675.88 500.78 675.88 500.76 721.17 422.31 902.38 422.31 902.38 422.33 947.67 500.78"
+              ></polygon>
+              <polygon
+                class="fill-[#305b99] stroke-none"
+                points="494.7 500.78 449.41 579.22 494.7 657.67 494.7 657.69 404.1 657.69 404.1 657.67 358.81 579.22 404.1 500.78 313.52 500.78 268.23 579.22 222.92 657.69 132.33 657.69 177.62 579.24 177.64 579.22 222.93 500.78 268.23 422.33 268.23 422.31 539.99 422.31 494.7 500.78"
+              ></polygon>
+            </g>
+          </svg>
+          <div class="flex flex-col">
+            <span class="font-semibold tracking-tight text-[#cdc8c2]"
+              >Jacob Wiltshire</span
+            >
+            <span class="text-[#cdc8c2]">Student</span>
+          </div>
+        </a>
+        <div class="flex flex-col gap-1">
+          {
+            LINKS.map((link) => (
+              <a
+                href={link.href}
+                class={cn(
+                  "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
+                  url.split("/")[3] === link.href.substring(1)
+                    ? "bg-[#25282a] text-[#181818]"
+                    : "hover:bg-[#25282a]",
+                )}
+              >
+                <span class="flex items-center gap-2">
+                  <span
+                    class={cn(
+                      "font-medium",
+                      url.split("/")[3] === link.href.substring(1) &&
+                        "text-[#cdc8c2]",
+                    )}
+                  >
+                    {link.label}
+                  </span>
+                </span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <hr />
+      <div class="flex flex-col gap-2 text-sm flex-1">
+        <div class="absolute bottom-0 left-0">
+          <Spotify client:idle />
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

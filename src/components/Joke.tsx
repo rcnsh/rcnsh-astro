@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useState } from "react";
 import useKonami from "react-use-konami";
 import { motion, AnimatePresence } from "framer-motion";
-import Ip from "./Ip";
 import Ip from "./Ip";
 
 export default function Joke() {
