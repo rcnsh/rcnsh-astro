@@ -96,29 +96,28 @@ export const InfiniteMovingCardsAll = ({
             }}
             key={item.name}
           >
-
-              <a
-                href={`https://store.steampowered.com/app/${item.appid}`}
-                target="_blank"
-                rel="noopener noreferer"
-              >
-                <img
-                  src={item.game_image_url}
-                  alt={item.name}
-                  className={"w-150 h-225 rounded-lg"}
-                  width={150}
-                  height={225}
-                />
-              </a>
-              <h3 className={"text-white font-bold text-center text-lg py-1"}>
-                {item.name}
-              </h3>
-              <p className={"text-white py-1 text-sm text-center"}>
-                Total playtime:{" "}
-                {item.playtime_forever >= 60
-                  ? Math.round(item.playtime_forever / 60) + " hours"
-                  : item.playtime_forever + " minutes"}
-              </p>
+            <a
+              href={`https://store.steampowered.com/app/${item.appid}`}
+              target="_blank"
+              rel="noopener noreferer"
+            >
+              <img
+                src={item.game_image_url}
+                alt={item.name}
+                className={"w-150 h-225 rounded-lg"}
+                width={150}
+                height={225}
+              />
+            </a>
+            <h3 className={"text-white font-bold text-center text-lg py-1"}>
+              {item.name}
+            </h3>
+            <p className={"text-white py-1 text-sm text-center"}>
+              Total playtime:{" "}
+              {item.playtime_forever >= 60
+                ? Math.round(item.playtime_forever / 60) + " hours"
+                : item.playtime_forever + " minutes"}
+            </p>
           </li>
         ))}
       </ul>
