@@ -90,10 +90,6 @@ export const InfiniteMovingCardsTwoWeeks = ({
         {items.map((item) => (
           <li
             className="flex flex-col items-center p-4 rounded-lg shadow-lg bg-[#101010] hover:scale-[1.03] transition-transform duration-300 ease-in-out m-[6px]"
-            style={{
-              background:
-                "linear-gradient(180deg, var(--slate-800), var(--slate-900)",
-            }}
             key={item.name}
           >
             <a
@@ -104,7 +100,7 @@ export const InfiniteMovingCardsTwoWeeks = ({
               <img
                 src={item.game_image_url}
                 alt={item.name}
-                className={"w-150 h-225 rounded-lg"}
+                className={"w-150 h-225 rounded-lg pointer-events-none"}
                 width={150}
                 height={225}
               />
@@ -112,13 +108,13 @@ export const InfiniteMovingCardsTwoWeeks = ({
             <h3 className={"text-white font-bold text-center text-lg py-1"}>
               {item.name}
             </h3>
-            <p className={"text-white text-sm py-1 text-center"}>
+            <p className={"text-white text-sm py-1 text-center pointer-events-none"}>
               Playtime in last 2 weeks:{" "}
               {item.playtime_2weeks >= 60
                 ? Math.round(item.playtime_2weeks / 60) + " hours"
                 : item.playtime_2weeks + " minutes"}
             </p>
-            <p className={"text-white py-1 text-sm text-center"}>
+            <p className={"text-white py-1 text-sm text-center pointer-events-none"}>
               Total playtime:{" "}
               {item.playtime_forever >= 60
                 ? Math.round(item.playtime_forever / 60) + " hours"

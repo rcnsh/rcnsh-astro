@@ -16,14 +16,13 @@ const canonicalUrl = removeTrailingSlash(
 import "@fontsource/geist-mono";
 
 import { ViewTransitions } from "astro:transitions";
-import { fade } from "astro:transitions";
 import Sidebar from "../components/Sidebar.astro";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <ViewTransitions transition:animate={fade({ duration: "0.2s" })} />
+    <ViewTransitions />
     <meta charset="UTF-8" />
     <meta name="description" content="My personal website" />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -75,7 +74,7 @@ import Sidebar from "../components/Sidebar.astro";
     <title>{title}</title>
   </head>
   <body class="bg-[#171717] flex">
-    <Sidebar />
+    <Sidebar transition:persist />
     <slot />
   </body>
 </html>
