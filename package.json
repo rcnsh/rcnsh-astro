@@ -26,6 +26,7 @@
     "astro": "^4.4.13",
     "astro-feather": "^1.0.0",
     "astro-page-insight": "^0.1.1",
+    "clsx": "^2.1.0",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.0.8",
     "lucide-react": "^0.350.0",
@@ -34,6 +35,7 @@
     "react-icons": "^5.0.1",
     "react-use-konami": "^1.1.0",
     "sharp": "^0.33.2",
+    "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.4.1",
     "vite": "^5.1.5",
     "zod": "^3.22.4"
