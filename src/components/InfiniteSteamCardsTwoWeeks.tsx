@@ -12,7 +12,7 @@ type Game = {
 export const InfiniteMovingCardsTwoWeeks = ({
   items,
   direction = "left",
-  speed = "slow",
+  speed = "normal",
   pauseOnHover = true,
   className,
 }: {
