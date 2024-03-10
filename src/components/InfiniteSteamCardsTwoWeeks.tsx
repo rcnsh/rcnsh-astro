@@ -13,7 +13,7 @@ export const InfiniteMovingCardsTwoWeeks = ({
   items,
   direction = "left",
   speed = "normal",
-  pauseOnHover = true,
+  pauseOnHover = false,
   className,
 }: {
   items: Game[];
