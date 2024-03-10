@@ -13,7 +13,7 @@ export const InfiniteMovingCardsAll = ({
   items,
   direction = "left",
   speed = "slow",
-  pauseOnHover = true,
+  pauseOnHover = false,
   className,
 }: {
   items: Game[];
@@ -67,7 +67,7 @@ export const InfiniteMovingCardsAll = ({
       } else if (speed === "normal") {
         containerRef.current.style.setProperty("--animation-duration", "40s");
       } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
+        containerRef.current.style.setProperty("--animation-duration", "70s");
       }
     }
   };
