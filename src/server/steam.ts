@@ -14,10 +14,11 @@ type Response = {
 };
 
 function shufflegames(array: Game[]) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
 
   while (0 !== currentIndex) {
-
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
 
@@ -67,19 +68,22 @@ export async function steamRecentGamesPromise() {
 }
 
 export async function steamAllGamesPromise() {
-  return shufflegames(await Promise.all(
-    steamAllGamesResponse.response.games
-      .map((game) => {
-        return {
-          name: game.name,
-          appid: game.appid,
-          playtime_2weeks: game.playtime_2weeks,
-          playtime_forever: game.playtime_forever,
-          game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
-        };
-      })
-      .filter((game) => game.playtime_forever > 0)
-      .sort((a, b) => b.playtime_forever - a.playtime_forever)
-      .slice(0, 20),
-      )) as Game[];
+  return shufflegames(
+    await Promise.all(
+      steamAllGamesResponse.response.games
+        .map((game) => {
+          return {
+            name: game.name,
+            appid: game.appid,
+            playtime_2weeks: game.playtime_2weeks,
+            playtime_forever: game.playtime_forever,
+            game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
+          };
+        })
+        .filter((game) => game.appid !== 400040 || 431960)
+        .filter((game) => game.playtime_forever > 0)
+        .sort((a, b) => b.playtime_forever - a.playtime_forever)
+        .slice(0, 20),
+    ),
+  ) as Game[];
 }
