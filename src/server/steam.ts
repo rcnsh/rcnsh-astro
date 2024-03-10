@@ -79,6 +79,5 @@ export async function steamAllGamesPromise() {
         };
       })
       .filter((game) => game.playtime_forever > 0)
-      .slice(0, 20),
   )) as Game[];
 }

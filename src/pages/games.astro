@@ -45,7 +45,7 @@ const steamAllGames = await steamAllGamesPromise();
         My Steam Games
       </h1>
       <InfiniteMovingCardsAll
-        items={steamAllGames}
+        items={steamAllGames.slice(0, 15)}
         speed="normal"
         client:load
         className="w-full"
