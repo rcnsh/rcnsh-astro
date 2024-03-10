@@ -55,15 +55,18 @@ const steamAllGamesResponse = (await getAllSteam()) as Response;
 
 export async function steamRecentGamesPromise() {
   return (await Promise.all(
-    steamRecentGamesResponse.response.games.map((game) => {
-      return {
-        name: game.name,
-        appid: game.appid,
-        playtime_2weeks: game.playtime_2weeks,
-        playtime_forever: game.playtime_forever,
-        game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
-      };
-    }),
+    steamRecentGamesResponse.response.games
+      .map((game) => {
+        return {
+          name: game.name,
+          appid: game.appid,
+          playtime_2weeks: game.playtime_2weeks,
+          playtime_forever: game.playtime_forever,
+          game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
+        };
+      })
+      .filter((game) => game.appid !== 400040 || 431960)
+      .sort((a, b) => b.playtime_2weeks - a.playtime_2weeks),
   )) as Game[];
 }
 
