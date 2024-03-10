@@ -23,6 +23,20 @@ const getLabelByHref = (title: string) => {
 };
 ---
 
+<script>
+  document.addEventListener("keydown", (event) => {
+    const { code } = event;
+    const keyCodePathnameMapping: { [key: string]: string } = {
+      Digit1: "/",
+      Digit2: "/games",
+      Digit3: "/music",
+    };
+    const pathname = keyCodePathnameMapping[code];
+    if (pathname && pathname !== window.location.pathname) {
+      window.location.href = pathname;
+    }
+  });
+</script>
 <main
   class={"hidden bg-[#1b1d1e] lg:flex lg:flex-col lg:border-r lg:w-96 h-screen lg:border-[#cdc8c2]"}
 >
@@ -76,16 +90,19 @@ const getLabelByHref = (title: string) => {
                 : "hover:bg-[#25282a]",
             )}
           >
-            <span class="flex items-center gap-2 text-[#cdc8c2]">
-              <HomeIcon />
-              <span
-                class={cn(
-                  "font-medium",
-                  url.split("/")[3] === "" && "text-[#cdc8c2]",
-                )}
-              >
-                Home
+            <span class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
+              <span class="flex items-center gap-2">
+                <HomeIcon />
+                <span
+                  class={cn(
+                    "font-medium",
+                    url.split("/")[3] === "" && "text-[#cdc8c2]",
+                  )}
+                >
+                  Home
+                </span>
               </span>
+              <span class="text-[#cdc8c2] border border-[#cdc8c2] rounded-lg px-4 py-2 bg-[#3a3e41] text-center">1</span>
             </span>
           </a>
           <a
@@ -97,17 +114,20 @@ const getLabelByHref = (title: string) => {
                 : "hover:bg-[#25282a]",
             )}
           >
+          <span class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
             <span class="flex items-center gap-2">
               <MonitorIcon />
               <span
                 class={cn(
                   "font-medium",
-                  url.split("/")[3] === "/games" && "text-[#cdc8c2]",
+                  url.split("/")[3] === "games" && "text-[#cdc8c2]",
                 )}
               >
                 Games
               </span>
             </span>
+            <span class="text-[#cdc8c2] border border-[#cdc8c2] rounded-lg px-4 py-2 bg-[#3a3e41] text-center">2</span>
+          </span>
           </a>
           <a
             href={"/music"}
@@ -118,17 +138,20 @@ const getLabelByHref = (title: string) => {
                 : "hover:bg-[#25282a]",
             )}
           >
+          <span class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
             <span class="flex items-center gap-2">
               <MusicIcon />
               <span
                 class={cn(
                   "font-medium",
-                  url.split("/")[3] === "/music" && "text-[#cdc8c2]",
+                  url.split("/")[3] === "music" && "text-[#cdc8c2]",
                 )}
               >
                 Music
               </span>
             </span>
+            <span class="text-[#cdc8c2] border border-[#cdc8c2] rounded-lg px-4 py-2 bg-[#3a3e41] text-center">3</span>
+          </span>
           </a>
         </div>
       </div>
