@@ -105,10 +105,18 @@ export const InfiniteMovingCardsAll = ({
                 height={225}
               />
             </a>
-            <h3 className={"text-white font-bold text-center text-lg py-1 pointer-events-none"}>
+            <h3
+              className={
+                "text-white font-bold text-center text-lg py-1 pointer-events-none"
+              }
+            >
               {item.name}
             </h3>
-            <p className={"text-white py-1 text-sm text-center pointer-events-none"}>
+            <p
+              className={
+                "text-white py-1 text-sm text-center pointer-events-none"
+              }
+            >
               Total playtime:{" "}
               {item.playtime_forever >= 60
                 ? Math.round(item.playtime_forever / 60) + " hours"
