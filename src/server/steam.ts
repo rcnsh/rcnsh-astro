@@ -65,7 +65,7 @@ export async function steamRecentGamesPromise() {
           game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
         };
       })
-      .filter((game) => game.appid !== 400040 || 431960)
+      .filter((game) => game.appid !== 400040 && game.appid !== 431960)
       .sort((a, b) => b.playtime_2weeks - a.playtime_2weeks),
   )) as Game[];
 }
@@ -83,7 +83,7 @@ export async function steamAllGamesPromise() {
             game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
           };
         })
-        .filter((game) => game.appid !== 400040 || 431960)
+        .filter((game) => game.appid !== 400040 && game.appid !== 431960)
         .filter((game) => game.playtime_forever > 0)
         .sort((a, b) => b.playtime_forever - a.playtime_forever)
         .slice(0, 20),
