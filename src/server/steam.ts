@@ -80,6 +80,6 @@ export async function steamAllGamesPromise() {
       })
       .filter((game) => game.playtime_forever > 0)
       .sort((a, b) => b.playtime_forever - a.playtime_forever)
-      .slice(0, 15),
+      .slice(0, 20),
       )) as Game[];
 }
