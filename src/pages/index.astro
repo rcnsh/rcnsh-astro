@@ -1,7 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Github from "@components/Github.astro";
-import Steam from "@components/Steam.astro";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import RCN from "../server/rcn";
@@ -16,7 +15,7 @@ Astro.response.headers.set(
 
 <Layout title="rcn.sh">
   <main
-    class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8"
+    class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8 flex flex-col"
   >
     <svg
       class="w-[40%] md:w-[30%] lg:w-[25%] xl:w-[15%] mx-auto justify-center"
@@ -102,8 +101,10 @@ Astro.response.headers.set(
         <Github />
       </section>
     </section>
+    <div class="mt-auto">
     <Footer client:only>
       <Credits />
     </Footer>
+  </div>
   </main>
 </Layout>
