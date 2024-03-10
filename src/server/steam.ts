@@ -13,6 +13,22 @@ type Response = {
   };
 };
 
+function shufflegames(array: Game[]) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  while (0 !== currentIndex) {
+
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 async function getRecentSteam() {
   const steamGames = await fetch(
     `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${
@@ -51,7 +67,7 @@ export async function steamRecentGamesPromise() {
 }
 
 export async function steamAllGamesPromise() {
-  return (await Promise.all(
+  return shufflegames(await Promise.all(
     steamAllGamesResponse.response.games
       .map((game) => {
         return {
@@ -63,7 +79,6 @@ export async function steamAllGamesPromise() {
         };
       })
       .filter((game) => game.playtime_forever > 0)
-      .sort((a, b) => b.playtime_forever - a.playtime_forever)
       .slice(0, 20),
   )) as Game[];
 }
