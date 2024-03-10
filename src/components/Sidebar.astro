@@ -1,6 +1,7 @@
 ---
 import { cn } from "../lib/utils";
 import Spotify from "./Spotify";
+import {HomeIcon, MusicIcon, MonitorIcon} from "astro-feather"
 
 const href = Astro.url.href;
 const title = Astro.url.pathname;
@@ -10,6 +11,10 @@ const LINKS = [
   {
     href: "/",
     label: "Home",
+  },
+  {
+    href: "/games",
+    label: "Games",
   },
 ];
 
@@ -61,37 +66,75 @@ const getLabelByHref = (title: string) => {
           </div>
         </a>
         <div class="flex flex-col gap-1">
-          {
-            LINKS.map((link) => (
-              <a
-                href={link.href}
+          <a
+            href={"/"}
+            class={cn(
+              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
+              url.split("/")[3] === ""
+                ? "bg-[#25282a] text-[#181818] pointer-events-none"
+                : "hover:bg-[#25282a]",
+            )}
+          >
+            <span class="flex items-center gap-2 text-[#cdc8c2]">
+              <HomeIcon />
+              <span
                 class={cn(
-                  "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
-                  url.split("/")[3] === link.href.substring(1)
-                    ? "bg-[#25282a] text-[#181818]"
-                    : "hover:bg-[#25282a]",
+                  "font-medium",
+                  url.split("/")[3] ===  "" && "text-[#cdc8c2]",
                 )}
               >
-                <span class="flex items-center gap-2">
-                  <span
-                    class={cn(
-                      "font-medium",
-                      url.split("/")[3] === link.href.substring(1) &&
-                        "text-[#cdc8c2]",
-                    )}
-                  >
-                    {link.label}
-                  </span>
-                </span>
-              </a>
-            ))
-          }
+                Home
+              </span>
+            </span>
+          </a>
+          <a
+            href={"/games"}
+            class={cn(
+              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
+              url.split("/")[3] === "/games"
+              ? "bg-[#25282a] text-[#181818] pointer-events-none"
+                : "hover:bg-[#25282a]",
+            )}
+          >
+            <span class="flex items-center gap-2">
+              <MonitorIcon/>
+              <span
+                class={cn(
+                  "font-medium",
+                  url.split("/")[3] === "/games" && "text-[#cdc8c2]",
+                )}
+              >
+                Games
+              </span>
+            </span>
+          </a>
+          <a
+          href={"/music"}
+          class={cn(
+            "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
+            url.split("/")[3] === "/music"
+            ? "bg-[#25282a] text-[#181818] pointer-events-none"
+              : "hover:bg-[#25282a]",
+          )}
+        >
+          <span class="flex items-center gap-2">
+            <MusicIcon/>
+            <span
+              class={cn(
+                "font-medium",
+                url.split("/")[3] === "/music" && "text-[#cdc8c2]",
+              )}
+            >
+              Music
+            </span>
+          </span>
+        </a>
         </div>
       </div>
-      <hr />
+      <hr class="bg-[#363b3d] border-none h-[2px] mt-2" />
       <div class="flex flex-col gap-2 text-sm flex-1">
         <div class="absolute bottom-0 left-0">
-          <Spotify client:idle />
+          <Spotify client:load />
         </div>
       </div>
     </div>

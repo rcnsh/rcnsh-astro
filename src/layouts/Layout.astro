@@ -5,6 +5,12 @@ interface Props {
 
 const { title } = Astro.props;
 
+function removeTrailingSlash(str: string) {
+  return str.replace(/\/+$/, '');
+}
+
+const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site).toString());
+
 import "@fontsource/geist-mono";
 
 import { ViewTransitions } from "astro:transitions";
@@ -63,6 +69,7 @@ import Sidebar from "../components/Sidebar.astro";
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
     <meta name="theme-color" content="#171717" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalUrl} />
     <title>{title}</title>
   </head>
   <body class="bg-[#171717] flex">

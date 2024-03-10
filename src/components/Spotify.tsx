@@ -62,7 +62,7 @@ export default function Spotify() {
               alt={song.album}
               width={64}
               height={64}
-              loading={"lazy"}
+              loading={"eager"}
             />
           ) : (
             <svg

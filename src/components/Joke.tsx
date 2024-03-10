@@ -75,7 +75,6 @@ export default function Joke() {
           </button>
         )}
         {currentJoke === "ip" && <Ip />}
-        {currentJoke === "ip" && <Ip />}
         {currentJoke === "rcn" && (
           <motion.span
             className="w-[40%]"
