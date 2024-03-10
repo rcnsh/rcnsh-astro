@@ -1,180 +1,27 @@
 ---
-import { Image } from "astro:assets";
-import { getSteam } from "../server/steam";
+import { steamRecentGamesPromise, steamAllGamesPromise } from "../server/steam";
+import { InfiniteMovingCardsTwoWeeks } from "./InfiniteSteamCardsTwoWeeks";
+import { InfiniteMovingCardsAll } from "./InfiniteSteamCardsAll";
 
-type Game = {
-  appid: number;
-  name: string;
-  game_image_url: string;
-  playtime_2weeks: number;
-  playtime_forever: number;
-  playtime_windows_forever: number;
-  playtime_mac_forever: number;
-  playtime_linux_forever: number;
-  loading: "eager" | "lazy";
-};
-
-type Response = {
-  response: {
-    total_count: number;
-    games: Game[];
-  };
-};
-
-const steamRecentGames = (await getSteam()) as Response;
-
-async function SteamGameRenderCount() {
-  if (steamRecentGames.response.total_count >= 8) {
-    return (
-      await Promise.all(
-        steamRecentGames.response.games.map(async (game, index) => {
-          return {
-            name: game.name,
-            appid: game.appid,
-            playtime_2weeks: game.playtime_2weeks,
-            playtime_forever: game.playtime_forever,
-            game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
-            playtime_windows_forever: game.playtime_windows_forever,
-            playtime_mac_forever: game.playtime_mac_forever,
-            playtime_linux_forever: game.playtime_linux_forever,
-            loading: index < 4 ? "eager" : "lazy",
-          };
-        }),
-      )
-    ).slice(0, 8) as Game[];
-  } else if (steamRecentGames.response.total_count >= 6) {
-    return (
-      await Promise.all(
-        steamRecentGames.response.games.map(async (game, index) => {
-          return {
-            name: game.name,
-            appid: game.appid,
-            playtime_2weeks: game.playtime_2weeks,
-            playtime_forever: game.playtime_forever,
-            game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
-            playtime_windows_forever: game.playtime_windows_forever,
-            playtime_mac_forever: game.playtime_mac_forever,
-            playtime_linux_forever: game.playtime_linux_forever,
-            loading: index < 3 ? "eager" : "lazy",
-          };
-        }),
-      )
-    ).slice(0, 6) as Game[];
-  } else {
-    return (
-      await Promise.all(
-        steamRecentGames.response.games.map(async (game, index) => {
-          return {
-            name: game.name,
-            appid: game.appid,
-            playtime_2weeks: game.playtime_2weeks,
-            playtime_forever: game.playtime_forever,
-            game_image_url: `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
-            playtime_windows_forever: game.playtime_windows_forever,
-            playtime_mac_forever: game.playtime_mac_forever,
-            playtime_linux_forever: game.playtime_linux_forever,
-            loading: index < 2 ? "eager" : "lazy",
-          };
-        }),
-      )
-    ).slice(0, 4) as Game[];
-  }
-}
-
-const Finaldata = await SteamGameRenderCount();
+const steamRecentGames = await steamRecentGamesPromise();
+const steamAllGames = await steamAllGamesPromise();
 ---
 
-<script>
-  if (window.innerWidth <= 640) {
-    const gameImages = document.querySelectorAll(".game-image");
-    gameImages.forEach((image) => {
-      (image as HTMLImageElement).loading = "lazy";
-    });
-  }
-</script>
-<div>
-  {
-    steamRecentGames.response.total_count >= 8 ||
-    steamRecentGames.response.total_count < 6 ? (
-      <div class={"grid grid-cols-2 gap-4 lg:grid-cols-4"}>
-        {Finaldata.map((game) => (
-          <div
-            class={
-              "flex flex-col items-center p-4 rounded-lg shadow-lg bg-[#101010] hover:scale-[1.03] transition-transform duration-300 ease-in-out m-[6px]"
-            }
-          >
-            <a
-              href={`https://store.steampowered.com/app/${game.appid}`}
-              target="_blank"
-              rel="noopener noreferer"
-            >
-              <Image
-                src={game.game_image_url}
-                alt={game.name}
-                class={"w-300 h-450 rounded-lg game-image"}
-                width={300}
-                height={450}
-                loading={game.loading}
-              />
-            </a>
-            <h3 class={"text-white font-bold text-center text-lg py-1"}>
-              {game.name}
-            </h3>
-            <p class={"text-white text-sm py-1 text-center"}>
-              Playtime in last 2 weeks:{" "}
-              {game.playtime_2weeks >= 60
-                ? Math.round(game.playtime_2weeks / 60) + " hours"
-                : game.playtime_2weeks + " minutes"}
-            </p>
-            <p class={"text-white py-1 text-sm text-center"}>
-              Total playtime:{" "}
-              {game.playtime_forever >= 60
-                ? Math.round(game.playtime_forever / 60) + " hours"
-                : game.playtime_forever + " minutes"}
-            </p>
-          </div>
-        ))}
-      </div>
-    ) : (
-      <div class={"grid grid-cols-2 gap-4 lg:grid-cols-3"}>
-        {Finaldata.map((game) => (
-          <div
-            class={
-              "flex flex-col items-center p-4 rounded-lg shadow-lg bg-[#101010] hover:scale-[1.03] transition-transform duration-300 ease-in-out m-[6px]"
-            }
-          >
-            <a
-              href={`https://store.steampowered.com/app/${game.appid}`}
-              target="_blank"
-              rel="noopener noreferer"
-            >
-              <Image
-                src={game.game_image_url}
-                alt={game.name}
-                class={"w-300 h-450 rounded-lg game-image"}
-                width={300}
-                height={450}
-                loading={game.loading}
-              />
-            </a>
-            <h3 class={"text-white font-bold text-center text-lg py-1"}>
-              {game.name}
-            </h3>
-            <p class={"text-white text-sm py-1 text-center"}>
-              Playtime in last 2 weeks:{" "}
-              {game.playtime_2weeks >= 60
-                ? Math.round(game.playtime_2weeks / 60) + " hours"
-                : game.playtime_2weeks + " minutes"}
-            </p>
-            <p class={"text-white py-1 text-sm text-center"}>
-              Total playtime:{" "}
-              {game.playtime_forever >= 60
-                ? Math.round(game.playtime_forever / 60) + " hours"
-                : game.playtime_forever + " minutes"}
-            </p>
-          </div>
-        ))}
-      </div>
-    )
-  }
+<main class="flex flex-col w-fit max-w-[87%]">
+  <div class="mt-auto mb-auto">
+  <section class="flex justify-center flex-col">
+    <h1 class="text-[#cdc8c2] text-5xl justify-center flex font-mono">
+      Recently Played Steam Games
+    </h1>
+    <InfiniteMovingCardsTwoWeeks
+      items={steamRecentGames}
+      speed="normal"
+      client:load
+    />
+  </section>
+  <section class="flex justify-center flex-col">
+    <h1 class="text-[#cdc8c2] text-5xl justify-center flex font-mono">My Steam Games</h1>
+    <InfiniteMovingCardsAll items={steamAllGames} speed="normal" client:load className="w-full"/>
+  </section>
 </div>
+</main>

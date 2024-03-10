@@ -6,10 +6,12 @@ interface Props {
 const { title } = Astro.props;
 
 function removeTrailingSlash(str: string) {
-  return str.replace(/\/+$/, '');
+  return str.replace(/\/+$/, "");
 }
 
-const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site).toString());
+const canonicalUrl = removeTrailingSlash(
+  new URL(Astro.url.pathname, Astro.site).toString(),
+);
 
 import "@fontsource/geist-mono";
 
