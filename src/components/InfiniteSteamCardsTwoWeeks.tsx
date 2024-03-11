@@ -105,9 +105,9 @@ export const InfiniteMovingCardsTwoWeeks = ({
                 height={225}
               />
             </a>
-            <h3 className={"text-white font-bold text-center text-lg py-1"}>
+            <p className={"text-white font-bold text-center text-lg py-1"}>
               {item.name}
-            </h3>
+            </p>
             <p
               className={
                 "text-white text-sm py-1 text-center pointer-events-none"
