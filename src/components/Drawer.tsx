@@ -10,13 +10,13 @@ export default function MobileDrawer() {
     <Drawer.Root shouldScaleBackground>
       <button>
         <Drawer.Trigger>
-          <MenuIcon size={32} color="#c5c0b8" className="block lg:hidden"/>
+          <MenuIcon size={32} color="#c5c0b8" className="block lg:hidden" />
         </Drawer.Trigger>
       </button>
       <Drawer.Portal>
-        <Drawer.Overlay className="fixed inset-0 bg-[#171717]/40" />
+        <Drawer.Overlay className="fixed inset-0 bg-black/40" />
         <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-[80%] flex-col rounded-t-lg bg-gray-[#171717]">
-            <div className="flex-1 overflow-y-auto rounded-t-lg bg-[#171717]">
+          <div className="flex-1 overflow-y-auto rounded-t-lg bg-[#171717]">
             <div className="pointer-events-none sticky inset-x-0 top-0 flex h-10 items-center justify-center overflow-hidden bg-gradient-to-b from-[#305b99] to-[#5b66af]">
               <div className="h-1.5 w-12 shrink-0 rounded-full bg-gray-300" />
             </div>
@@ -129,7 +129,7 @@ export default function MobileDrawer() {
                 </div>
                 <hr className="bg-[#363b3d] border-none h-[2px]" />
                 <div className="flex flex-col gap-2 text-sm flex-1 mt-auto">
-                    <Spotify />
+                  <Spotify />
                 </div>
               </div>
             </div>

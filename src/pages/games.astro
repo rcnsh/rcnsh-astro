@@ -5,6 +5,7 @@ import { InfiniteMovingCardsTwoWeeks } from "@components/InfiniteSteamCardsTwoWe
 import { InfiniteMovingCardsAll } from "@components/InfiniteSteamCardsAll";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
+import MobileDrawer from "@components/Drawer";
 
 const steamRecentGames = await steamRecentGamesPromise();
 const steamAllGames = await steamAllGamesPromise();
@@ -14,6 +15,17 @@ const steamAllGames = await steamAllGamesPromise();
   <main
     class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8 flex flex-col"
   >
+  <header
+      class="sticky inset-x-0 top-0 z-10 mx-auto flex h-12 w-full shrink-0 items-center overflow-hidden text-sm font-medium lg:hidden"
+    >
+      <div class="flex h-full w-full items-center px-3">
+        <div class="flex w-full items-center justify-between gap-2">
+          <div class="flex flex-1 items-center gap-1">
+            <MobileDrawer client:only />
+          </div>
+        </div>
+      </div>
+    </header>
     <svg
       class="w-[40%] md:w-[30%] lg:w-[25%] xl:w-[15%] mx-auto justify-center flex-shrink-0"
       xmlns="http://www.w3.org/2000/svg"
