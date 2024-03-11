@@ -48,25 +48,16 @@ export type Artist = {
       id="Layer_1"
       data-name="Layer 1"
       viewBox="100 350 900 450"
-      ><defs
-        ><style>
-          .cls-1 {
-            fill: #305b99;
-            strokewidth: 0;
-          }
-          .cls-2 {
-            fill: #5b66af;
-          }
-        </style></defs
-      ><g
+      >
+      <g
         ><polygon
           points="947.67 500.78 902.38 579.22 857.08 657.67 766.48 657.67 811.77 579.22 857.07 500.78 766.48 500.78 721.19 579.22 675.88 657.67 585.3 657.67 630.59 579.22 539.99 579.22 585.28 500.78 675.88 500.78 675.88 500.76 721.17 422.31 902.38 422.31 902.38 422.33 947.67 500.78"
-          class="cls-2"></polygon><polygon
+          class="fill-[#5b66af] stroke-0"></polygon><polygon
           points="494.7 500.78 449.41 579.22 494.7 657.67 494.7 657.69 404.1 657.69 404.1 657.67 358.81 579.22 404.1 500.78 313.52 500.78 268.23 579.22 222.92 657.69 132.33 657.69 177.62 579.24 177.64 579.22 222.93 500.78 268.23 422.33 268.23 422.31 539.99 422.31 494.7 500.78"
-          class="cls-1"></polygon></g
+          class="fill-[#305b99]"></polygon></g
       ></svg
     >
-    <section class="flex flex-row mx-2 my-4">
+    <section class="flex flex-col mx-2 my-4">
       <div>
         <h1
           class="text-[#cbc8c2] text-2xl font-semibold my-8 flex justify-center"
@@ -123,7 +114,7 @@ export type Artist = {
         Top Artists
       </h1>
 
-      <div class="flex justify-center py-8">
+      <div class="flex justify-center">
         <div class="grid grid-cols-3 gap-y-4">
           {
             artists.map(({ name, url, image }) => (
