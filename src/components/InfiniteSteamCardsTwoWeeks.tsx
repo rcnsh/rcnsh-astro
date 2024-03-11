@@ -103,7 +103,7 @@ export const InfiniteMovingCardsTwoWeeks = ({
                 className={"w-150 h-225 rounded-lg pointer-events-none"}
                 width={150}
                 height={225}
-                loading={index <= 5 ? "eager" : "lazy"}
+                loading={index <= 5 ? "eager": "lazy"}
               />
             </a>
             <p className={"text-white font-bold text-center text-lg py-1"}>
