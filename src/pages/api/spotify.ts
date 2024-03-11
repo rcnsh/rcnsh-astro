@@ -1,5 +1,5 @@
 // spotify fetching code from nexxel.dev
-import type { APIRoute } from 'astro';
+import type { APIRoute } from "astro";
 
 import { z } from "zod";
 
@@ -131,7 +131,7 @@ async function getTopArtists() {
     })
     .parse(response);
 
-  return items.slice(0, 10).map((item) => ({
+  return items.slice(0, 12).map((item) => ({
     name: item.name,
     url: item.external_urls.spotify,
     image: item.images[0].url,
@@ -144,17 +144,17 @@ async function getTopArtists() {
 }
 
 export const GET: APIRoute = async () => {
-    const tracks = await getTopTracks();
-    const artists = await getTopArtists();
-    return new Response(
-        JSON.stringify({ 
-            tracks: tracks,
-            artists: artists,
-         }),
-        {
-            headers: {
-            "content-type": "application/json",
-            },
-        },
-        );
-    }
+  const tracks = await getTopTracks();
+  const artists = await getTopArtists();
+  return new Response(
+    JSON.stringify({
+      tracks: tracks,
+      artists: artists,
+    }),
+    {
+      headers: {
+        "content-type": "application/json",
+      },
+    },
+  );
+};
