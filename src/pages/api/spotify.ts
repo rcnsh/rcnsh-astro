@@ -3,7 +3,7 @@ import type { APIRoute } from "astro";
 
 import { z } from "zod";
 
-async function getAccessToken(): Promise<{ access_token: string }> {
+export async function getAccessToken(): Promise<{ access_token: string }> {
   const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
   const clientId = import.meta.env.SPOTIFY_CLIENT_ID;
   const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
@@ -31,7 +31,7 @@ async function getAccessToken(): Promise<{ access_token: string }> {
   return { access_token };
 }
 
-async function getTopTracks() {
+export async function getTopTracks() {
   const { access_token } = await getAccessToken();
 
   const response = await fetch(
@@ -78,7 +78,7 @@ async function getTopTracks() {
   }));
 }
 
-async function getFollowersOfArtistFromId(id: string) {
+export async function getFollowersOfArtistFromId(id: string) {
   const { access_token } = await getAccessToken();
 
   const response = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
@@ -98,7 +98,7 @@ async function getFollowersOfArtistFromId(id: string) {
   return followers.total;
 }
 
-async function getTopArtists() {
+export async function getTopArtists() {
   const { access_token } = await getAccessToken();
 
   const response = await fetch(
@@ -135,11 +135,6 @@ async function getTopArtists() {
     name: item.name,
     url: item.external_urls.spotify,
     image: item.images[0].url,
-    followers: getFollowersOfArtistFromId(
-      item.external_urls.spotify.split("/")[
-        item.external_urls.spotify.split("/").length - 1
-      ],
-    ).then((res) => res.toLocaleString()),
   }));
 }
 
