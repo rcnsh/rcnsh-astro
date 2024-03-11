@@ -1,17 +1,12 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { steamRecentGamesPromise, steamAllGamesPromise } from "../server/steam";
-import { InfiniteMovingCardsTwoWeeks } from "@components/InfiniteSteamCardsTwoWeeks";
-import { InfiniteMovingCardsAll } from "@components/InfiniteSteamCardsAll";
+import SpotifyCards from "@components/SpotifyCards";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import MobileDrawer from "@components/Drawer";
-
-const steamRecentGames = await steamRecentGamesPromise();
-const steamAllGames = await steamAllGamesPromise();
 ---
 
-<Layout title="rcn.sh | Steam Games">
+<Layout title="rcn.sh | Music">
   <main
     class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8 flex flex-col" transition:animate="fade"
   >
@@ -51,29 +46,7 @@ const steamAllGames = await steamAllGamesPromise();
       ></svg
     >
     <section class="flex justify-center flex-col mx-2">
-      <h1
-        class="text-[#cdc8c2] text-xl lg:text-3xl md:text-2xl justify-center flex font-mono mx-4"
-      >
-        My Steam Games
-      </h1>
-      <InfiniteMovingCardsAll
-        items={steamAllGames}
-        speed="slow"
-        client:load
-        className="w-full"
-      />
-    </section>
-    <section class="flex justify-center flex-col mx-2">
-      <h1
-        class="text-[#cdc8c2] text-xl lg:text-3xl md:text-2xl justify-center flex font-mono text-center"
-      >
-        Recently Played Steam Games
-      </h1>
-      <InfiniteMovingCardsTwoWeeks
-        items={steamRecentGames}
-        speed="normal"
-        client:load
-      />
+      <SpotifyCards client:load />
     </section>
     <div class="mt-auto">
       <Footer client:only transition:persist>
