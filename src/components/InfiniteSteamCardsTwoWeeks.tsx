@@ -87,7 +87,7 @@ export const InfiniteMovingCardsTwoWeeks = ({
           pauseOnHover && "hover:[animation-play-state:paused]",
         )}
       >
-        {items.map((item) => (
+        {items.map((item, index) => (
           <li
             className="flex flex-col items-center p-4 rounded-lg shadow-lg bg-[#101010] hover:scale-[1.03] transition-transform duration-300 ease-in-out m-[6px]"
             key={item.name}
@@ -103,7 +103,7 @@ export const InfiniteMovingCardsTwoWeeks = ({
                 className={"w-150 h-225 rounded-lg pointer-events-none"}
                 width={150}
                 height={225}
-                loading="lazy"
+                loading={index <= 5 ? "eager": "lazy"}
               />
             </a>
             <p className={"text-white font-bold text-center text-lg py-1"}>
