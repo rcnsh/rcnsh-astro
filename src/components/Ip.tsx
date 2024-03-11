@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Ip() {
-  const [ip, setIp] = useState("192.168.1.1");
+  const [ip, setIp] = useState(".......");
   const [ipStage, setIpStage] = useState(0);
   const ipmusic = new Audio(
     "https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/omxdiolty5wvzq4ocedh",

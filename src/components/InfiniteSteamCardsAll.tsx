@@ -102,7 +102,7 @@ export const InfiniteMovingCardsAll = ({
                 className={"w-150 h-225 rounded-lg pointer-events-none"}
                 width={150}
                 height={225}
-                loading={index <= 7 ? "eager" : "lazy"}
+                loading={index <= 7 ? "eager": "lazy"}
               />
             </a>
             <p
