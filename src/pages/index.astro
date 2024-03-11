@@ -4,6 +4,7 @@ import Github from "@components/Github.astro";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import RCN from "../server/rcn";
+import MobileDrawer from "@components/Drawer";
 
 const random = RCN();
 
@@ -17,7 +18,10 @@ Astro.response.headers.set(
   <main
     class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8 flex flex-col"
     transition:animate="fade"
+    vaul-drawer-wrapper="" 
   >
+  <div class="flex">  <MobileDrawer client:only/>
+  </div>
     <svg
       class="w-[40%] md:w-[30%] lg:w-[25%] xl:w-[15%] mx-auto justify-center flex-shrink-0"
       xmlns="http://www.w3.org/2000/svg"
