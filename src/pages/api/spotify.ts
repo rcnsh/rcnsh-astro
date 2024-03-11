@@ -78,26 +78,6 @@ export async function getTopTracks() {
   }));
 }
 
-export async function getFollowersOfArtistFromId(id: string) {
-  const { access_token } = await getAccessToken();
-
-  const response = await fetch(`https://api.spotify.com/v1/artists/${id}`, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  }).then((res) => res.json());
-
-  const { followers } = z
-    .object({
-      followers: z.object({
-        total: z.number(),
-      }),
-    })
-    .parse(response);
-
-  return followers.total;
-}
-
 export async function getTopArtists() {
   const { access_token } = await getAccessToken();
 
