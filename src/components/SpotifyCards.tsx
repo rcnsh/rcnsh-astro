@@ -33,7 +33,7 @@ export default function SpotifyCards() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="flex flex-row mt-16"
+      className="flex flex-row mt-8"
     >
       <BentoGrid className="max-w-4xl mx-auto">
         {tracks.map((item, i) => (
