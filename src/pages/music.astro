@@ -73,10 +73,10 @@ export type Artist = {
       </div>
       <div class="flex flex-row mt-8">
         <div
-          class="max-w-4xl mx-auto grid auto-rows-[18rem] grid-cols-4 gap-4 mx-auto"
+          class="max-w-4xl grid auto-rows-[18rem] grid-cols-4 gap-4 mx-auto"
         >
           {
-            tracks.map((item, i) => (
+            tracks.map((item) => (
               <a
                 class={
                   "row-span-1 rounded-xl hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4 hover:translate-x-2"
@@ -103,10 +103,10 @@ export type Artist = {
           }
         </div>
         <div
-          class="max-w-4xl mx-auto grid auto-rows-[18rem] grid-cols-4 gap-4 mx-auto"
+          class="max-w-4xl grid auto-rows-[18rem] grid-cols-4 gap-4 mx-auto"
         >
           {
-            artists.map((item, i) => (
+            artists.map((item) => (
               <a
                 class={
                   "row-span-1 rounded-xl hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4 hover:translate-x-2"
