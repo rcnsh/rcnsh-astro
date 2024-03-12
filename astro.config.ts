@@ -12,22 +12,22 @@ export default defineConfig({
   site: "https://rcn.sh",
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: "viewport"
+    defaultStrategy: "viewport",
   },
   experimental: {
-    clientPrerender: true
+    clientPrerender: true,
   },
   integrations: [tailwind(), react(), sitemap(), db()],
   image: {
-    service: squooshImageService()
+    service: squooshImageService(),
   },
   output: "server",
   adapter: vercel({
     isr: {
-      expiration: 60
+      expiration: 60,
     },
     webAnalytics: {
-      enabled: true
-    }
-  })
+      enabled: true,
+    },
+  }),
 });
