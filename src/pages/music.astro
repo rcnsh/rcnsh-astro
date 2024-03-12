@@ -10,7 +10,7 @@ const response = await fetch("https://rcn.sh/api/spotify").then((res) =>
 );
 const artists = response.artists as Artist[];
 const tracksMedium = response.tracksMedium as Track[];
-const tracksShort = response.tracksShort as Track[];
+const recentTracks = response.recentTracks as Track[];
 
 export type Track = {
   artists: { name: string }[];
@@ -62,13 +62,13 @@ export type Artist = {
         <h1
           class="text-[#cbc8c2] text-2xl font-semibold my-8 flex justify-center"
         >
-          Top Tracks (Short Term)
+          Recently Played Tracks
         </h1>
 
         <div class="flex justify-center py-8">
           <div class="grid grid-cols-3 gap-y-4">
             {
-              tracksShort.map(({ artists, album, songUrl, title, image }) => (
+              recentTracks.map(({ artists, album, songUrl, title, image }) => (
                 <div class="flex flex-row items-center space-x-4">
                   <img src={image} alt={title} class="w-16 h-16" />
                   <div class="flex flex-col">

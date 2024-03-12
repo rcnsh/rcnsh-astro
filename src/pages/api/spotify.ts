@@ -78,11 +78,11 @@ export async function getTopTracksMedium() {
   }));
 }
 
-export async function getTopTracksShort() {
+export async function getRecentTracks() {
   const { access_token } = await getAccessToken();
 
   const response = await fetch(
-    "https://api.spotify.com/v1/me/top/tracks?time_range=short_term",
+    "https://api.spotify.com/v1/me/player/recently-played",
     {
       headers: {
         Authorization: `Bearer ${access_token}`,
@@ -167,12 +167,12 @@ export async function getTopArtists() {
 
 export const GET: APIRoute = async () => {
   const tracksMedium = await getTopTracksMedium();
-  const tracksShort = await getTopTracksShort();
+  const recentTracks = await getRecentTracks();
   const artists = await getTopArtists();
   return new Response(
     JSON.stringify({
       tracksMedium: tracksMedium,
-      tracksShort: tracksShort,
+      recentTracks: recentTracks,
       artists: artists,
     }),
     {
