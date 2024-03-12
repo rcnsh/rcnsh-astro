@@ -4,28 +4,30 @@ import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
 
+import db from "@astrojs/db";
+
 // https://astro.build/config
 export default defineConfig({
   trailingSlash: "never",
   site: "https://rcn.sh",
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: "viewport",
+    defaultStrategy: "viewport"
   },
   experimental: {
-    clientPrerender: true,
+    clientPrerender: true
   },
-  integrations: [tailwind(), react(), sitemap()],
+  integrations: [tailwind(), react(), sitemap(), db()],
   image: {
-    service: squooshImageService(),
+    service: squooshImageService()
   },
   output: "server",
   adapter: vercel({
     isr: {
-      expiration: 5,
+      expiration: 5
     },
     webAnalytics: {
-      enabled: true,
-    },
-  }),
+      enabled: true
+    }
+  })
 });
