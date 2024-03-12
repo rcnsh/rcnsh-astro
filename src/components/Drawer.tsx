@@ -1,5 +1,14 @@
 import { Drawer } from "vaul";
-import { MenuIcon, HomeIcon, MusicIcon, MonitorIcon } from "lucide-react";
+import {
+  MenuIcon,
+  HomeIcon,
+  MusicIcon,
+  MonitorIcon,
+  GithubIcon,
+  YoutubeIcon,
+  Linkedin,
+  CpuIcon,
+} from "lucide-react";
 import { cn } from "../lib/utils";
 import Spotify from "./Spotify";
 
@@ -7,7 +16,7 @@ export default function MobileDrawer() {
   const url = window.location.pathname;
 
   return (
-    <Drawer.Root shouldScaleBackground>
+    <Drawer.Root>
       <button>
         <Drawer.Trigger>
           <MenuIcon size={32} color="#c5c0b8" className="block lg:hidden" />
@@ -15,7 +24,7 @@ export default function MobileDrawer() {
       </button>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-        <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-[80%] flex-col rounded-t-lg bg-gray-[#171717]">
+        <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-[80%] flex-col rounded-t-lg bg-gradient-to-br from-[#111111] to-[#303030]">
           <div className="flex-1 overflow-y-auto rounded-t-lg bg-[#171717]">
             <div className="pointer-events-none sticky inset-x-0 top-0 flex h-10 items-center justify-center overflow-hidden bg-gradient-to-b from-[#305b99] to-[#5b66af]">
               <div className="h-1.5 w-12 shrink-0 rounded-full bg-gray-300" />
@@ -128,6 +137,47 @@ export default function MobileDrawer() {
                   </div>
                 </div>
                 <hr className="bg-[#363b3d] border-none h-[2px]" />
+                <div className="flex flex-col gap-2 mt-2">
+                  <a
+                    href="https://go.rcn.sh/github"
+                    className="group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] hover:bg-[#25282a]"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
+                      <span className="flex items-center gap-2">
+                        <GithubIcon />
+                        <span className="font-medium">GitHub</span>
+                      </span>
+                    </span>
+                  </a>
+                  <a
+                    href="https://go.rcn.sh/yt"
+                    className="group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] hover:bg-[#25282a]"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
+                      <span className="flex items-center gap-2">
+                        <YoutubeIcon />
+                        <span className="font-medium">YouTube</span>
+                      </span>
+                    </span>
+                  </a>
+                  <a
+                    href="https://go.rcn.sh/valorant"
+                    className="group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] hover:bg-[#25282a]"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
+                      <span className="flex items-center gap-2">
+                        <CpuIcon />
+                        <span className="font-medium">Valorant Tracker</span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
                 <div className="flex flex-col gap-2 text-sm flex-1 mt-auto">
                   <Spotify />
                 </div>
