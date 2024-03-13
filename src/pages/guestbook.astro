@@ -10,13 +10,14 @@ const session = await getSession(Astro.request);
 
 if (Astro.request.method === "POST") {
   const email = session?.user?.email as string;
+  const name = session?.user?.name as string;
 
   await db.delete(Guests).where(eq(Guests.email, email));
 
   const formData = await Astro.request.formData();
   const message = formData.get("message");
-  if (typeof email === "string" && typeof message === "string") {
-    await db.insert(Guests).values({ email, message, published: new Date() });
+  if (typeof email === "string" && typeof message === "string" && typeof name === "string") {
+    await db.insert(Guests).values({ email, name, message, published: new Date() });
   }
 }
 
