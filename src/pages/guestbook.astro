@@ -49,14 +49,13 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
               </button>
             </form>
             <div class="flex justify-center p-2">
-              <button
+              <SignOut
                 class={
                   "px-2 py-2 bg-[#cdc8c2] text-black rounded-lg w-[20%] flex justify-center"
                 }
-                id="logout"
               >
                 Logout
-              </span>
+              </SignOut>
             </div>
           </>
         ) : (
@@ -66,9 +65,9 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
             }
           >
             <GithubIcon />
-            <button class={"flex justify-center px-4"} id="login">
+            <SignIn provider="github" class={"flex justify-center px-4"}>
               Login
-            </span>
+            </SignIn>
           </div>
         )
       }
@@ -87,14 +86,3 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
     </section>
   </main>
 </Layout>
-<script>
-  const { signIn, signOut } = await import("auth-astro/client")
-  const loginButton = document.getElementById("login");
-  if (loginButton) {
-    loginButton.onclick = () => signIn("github");
-  }
-  const logoutButton = document.getElementById("logout");
-  if (logoutButton) {
-    logoutButton.onclick = () => signOut();
-  }
-</script>
