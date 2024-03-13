@@ -51,15 +51,6 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
                 Sign
               </button>
             </form>
-            <div class="flex justify-center p-2">
-              <SignOut
-                class={
-                  "px-2 py-2 bg-[#cdc8c2] text-black rounded-lg w-[20%] flex justify-center"
-                }
-              >
-                Logout
-              </SignOut>
-            </div>
           </>
         ) : (
           <div
