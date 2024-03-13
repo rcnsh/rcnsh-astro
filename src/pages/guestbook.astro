@@ -8,6 +8,8 @@ import { db, Guests, desc, eq } from "astro:db";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 
+const ip = Astro.clientAddress;
+
 const session = await getSession(Astro.request);
 
 if (Astro.request.method === "POST") {
@@ -33,7 +35,12 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
     transition:animate="fade"
   >
     <Header />
-    <section class="min-w-[60%] flex justify-center mx-auto flex-col my-4">
+    <section class="flex justify-center flex-col mt-8 w-[60%] mx-auto">
+      <h1
+        class="text-[#cdc8c2] text-xl lg:text-3xl md:text-2xl justify-center flex font-mono mx-2 mb-4"
+      >
+        Guestbook
+      </h1>
       {
         session ? (
           <>
