@@ -2,15 +2,14 @@
 import { cn } from "../lib/utils";
 import Spotify from "./Spotify";
 import {
-  Menu,
-  Home,
-  Music,
-  Monitor,
-  Github,
-  Youtube,
-  Notebook,
-  Cpu,
-} from "lucide-astro";
+  HomeIcon,
+  MusicIcon,
+  MonitorIcon,
+  GithubIcon,
+  YoutubeIcon,
+  BookIcon,
+  CpuIcon,
+} from "astro-feather";
 
 const title = Astro.url.pathname;
 const url = Astro.url.toString();
@@ -95,7 +94,7 @@ const getLabelByHref = (title: string) => {
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
             >
               <span class="flex items-center gap-2">
-                <Home />
+                <HomeIcon />
                 <span
                   class={cn(
                     "font-medium",
@@ -120,7 +119,7 @@ const getLabelByHref = (title: string) => {
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
             >
               <span class="flex items-center gap-2">
-                <Monitor />
+                <MonitorIcon />
                 <span
                   class={cn(
                     "font-medium",
@@ -145,7 +144,7 @@ const getLabelByHref = (title: string) => {
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
             >
               <span class="flex items-center gap-2">
-                <Music />
+                <MusicIcon />
                 <span
                   class={cn(
                     "font-medium",
@@ -170,7 +169,7 @@ const getLabelByHref = (title: string) => {
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
             >
               <span class="flex items-center gap-2">
-                <Notebook />
+                <BookIcon />
                 <span
                   class={cn(
                     "font-medium",
@@ -196,7 +195,7 @@ const getLabelByHref = (title: string) => {
             class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
           >
             <span class="flex items-center gap-2">
-              <Github />
+              <GithubIcon />
               <span class="font-medium">GitHub</span>
             </span>
           </span>
@@ -211,7 +210,7 @@ const getLabelByHref = (title: string) => {
             class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
           >
             <span class="flex items-center gap-2">
-              <Youtube />
+              <YoutubeIcon />
               <span class="font-medium">YouTube</span>
             </span>
           </span>
@@ -226,7 +225,7 @@ const getLabelByHref = (title: string) => {
             class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
           >
             <span class="flex items-center gap-2">
-              <Cpu />
+              <CpuIcon />
               <span class="font-medium">Valorant Tracker</span>
             </span>
           </span>

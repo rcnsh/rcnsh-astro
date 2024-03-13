@@ -1,13 +1,13 @@
 import { Drawer } from "vaul";
 import {
-  Menu,
-  Home,
-  Music,
-  Monitor,
-  Github,
-  Youtube,
-  Notebook,
-  Cpu,
+  MenuIcon,
+  HomeIcon,
+  MusicIcon,
+  MonitorIcon,
+  GithubIcon,
+  YoutubeIcon,
+  NotebookIcon,
+  CpuIcon,
 } from "lucide-react";
 import { cn } from "../lib/utils";
 import Spotify from "./Spotify";
@@ -19,7 +19,7 @@ export default function MobileDrawer() {
     <Drawer.Root>
       <button>
         <Drawer.Trigger>
-          <Menu size={32} color="#c5c0b8" className="block lg:hidden" />
+          <MenuIcon size={32} color="#c5c0b8" className="block lg:hidden" />
         </Drawer.Trigger>
       </button>
       <Drawer.Portal>
@@ -76,7 +76,7 @@ export default function MobileDrawer() {
                     >
                       <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
                         <span className="flex items-center gap-2">
-                          <Home />
+                          <HomeIcon />
                           <span
                             className={cn(
                               "font-medium",
@@ -99,7 +99,7 @@ export default function MobileDrawer() {
                     >
                       <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
                         <span className="flex items-center gap-2">
-                          <Monitor />
+                          <MonitorIcon />
                           <span
                             className={cn(
                               "font-medium",
@@ -122,7 +122,7 @@ export default function MobileDrawer() {
                     >
                       <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
                         <span className="flex items-center gap-2">
-                          <Music />
+                          <MusicIcon />
                           <span
                             className={cn(
                               "font-medium",
@@ -145,7 +145,7 @@ export default function MobileDrawer() {
                     >
                       <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
                         <span className="flex items-center gap-2">
-                          <Notebook />
+                          <NotebookIcon />
                           <span
                             className={cn(
                               "font-medium",
@@ -170,7 +170,7 @@ export default function MobileDrawer() {
                   >
                     <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
                       <span className="flex items-center gap-2">
-                        <Github />
+                        <GithubIcon />
                         <span className="font-medium">GitHub</span>
                       </span>
                     </span>
@@ -183,7 +183,7 @@ export default function MobileDrawer() {
                   >
                     <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
                       <span className="flex items-center gap-2">
-                        <Youtube />
+                        <YoutubeIcon />
                         <span className="font-medium">YouTube</span>
                       </span>
                     </span>
@@ -196,7 +196,7 @@ export default function MobileDrawer() {
                   >
                     <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
                       <span className="flex items-center gap-2">
-                        <Cpu />
+                        <CpuIcon />
                         <span className="font-medium">Valorant Tracker</span>
                       </span>
                     </span>
