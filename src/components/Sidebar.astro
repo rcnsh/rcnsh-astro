@@ -39,21 +39,6 @@ const getLabelByHref = (title: string) => {
 };
 ---
 
-<script>
-  document.addEventListener("keydown", (event) => {
-    const { code } = event;
-    const keyCodePathnameMapping: { [key: string]: string } = {
-      Digit1: "/",
-      Digit2: "/games",
-      Digit3: "/music",
-      Digit4: "/guestbook",
-    };
-    const pathname = keyCodePathnameMapping[code];
-    if (pathname && pathname !== window.location.pathname) {
-      window.location.href = pathname;
-    }
-  });
-</script>
 <main
   class={"hidden bg-gradient-to-br from-[#111111] to-[#303030] lg:flex lg:flex-col lg:border-r lg:w-96 h-screen lg:border-[#cdc8c2]"}
 >
@@ -119,22 +104,6 @@ const getLabelByHref = (title: string) => {
                   Home
                 </span>
               </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
-                ></path>
-                <path d="M10 10l2 -2v8"></path>
-              </svg>
             </span>
           </a>
           <a
@@ -160,24 +129,6 @@ const getLabelByHref = (title: string) => {
                   Games
                 </span>
               </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
-                ></path>
-                <path
-                  d="M10 8h3a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3"
-                ></path>
-              </svg>
             </span>
           </a>
           <a
@@ -203,24 +154,6 @@ const getLabelByHref = (title: string) => {
                   Music
                 </span>
               </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
-                ></path>
-                <path
-                  d="M10 9a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1"
-                ></path>
-              </svg>
             </span>
           </a>
           <a
@@ -246,23 +179,6 @@ const getLabelByHref = (title: string) => {
                   Guestbook
                 </span>
               </span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
-                ></path>
-                <path d="M10 8v3a1 1 0 0 0 1 1h3"></path>
-                <path d="M14 8v8"></path>
-              </svg>
             </span>
           </a>
         </div>
