@@ -60,7 +60,7 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
                 minlength="1"
               />
               <button
-                class="px-2 py-1 bg-[#cdc8c2] text-black rounded-lg w-[20%]"
+                class="px-2 py-1 bg-[#cdc8c2] text-black rounded-lg lg:w-[20%] w-[40%]"
                 type="submit"
               >
                 Sign
@@ -71,7 +71,7 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
           <SignIn
             provider="github"
             class={
-              "px-2 py-2 bg-[#cdc8c2] text-black rounded-lg w-[40%] flex justify-center mx-auto lg:w-[20%]"
+              "px-2 py-2 bg-[#cdc8c2] text-black rounded-lg w-[50%] flex justify-center mx-auto lg:w-[20%]"
             }
           >
             <GithubIcon />
