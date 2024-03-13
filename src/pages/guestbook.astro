@@ -86,7 +86,7 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
           comments.map((comment) => (
             <li class="flex flex-col justify-center items-center my-4">
               <p class="text-center">{comment.message}</p>
-              <p class="text-center text-[#c5c0b8] text-xs">{comment.name}</p>
+              <p class="text-center text-[#c5c0b8] text-xs">{comment.name} - {comment.published.toISOString()}</p>
             </li>
           ))
         }
