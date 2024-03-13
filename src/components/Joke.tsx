@@ -33,7 +33,7 @@ export default function Joke() {
   );
   useKonami(
     () => {
-      setCurrentJoke("coldrain");
+      setCurrentJoke("nier");
     },
     { code: ["n", "i", "e", "r"] },
   );
@@ -114,7 +114,7 @@ export default function Joke() {
             <b>Why?</b>
           </motion.span>
         )}
-        {currentJoke === "coldrain" && (
+        {currentJoke === "nier" && (
           <motion.span
             className="w-[40%]"
             exit={{ opacity: 0 }}
