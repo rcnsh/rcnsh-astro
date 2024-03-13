@@ -16,7 +16,8 @@ if (Astro.request.method === "POST") {
 
   const formData = await Astro.request.formData();
   const message = formData.get("message");
-  if (typeof email === "string" && typeof message === "string" && typeof name === "string") {
+  
+  if (typeof email === "string" && typeof message === "string" && typeof name === "string" && message.length > 0 && message.length < 100) {
     await db.insert(Guests).values({ email, name, message, published: new Date() });
   }
 }
@@ -40,6 +41,8 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
                 class="w-[80%] p-2 rounded-lg bg-[#2e2e2e] mx-2"
                 placeholder="Leave a message"
                 name="message"
+                maxlength="100"
+                minlength="1"
               />
               <button
                 class="px-2 py-1 bg-[#cdc8c2] text-black rounded-lg w-[20%]"
