@@ -1,14 +1,12 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { SignIn, SignOut } from "auth-astro/components";
+import { SignIn } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
 import { GithubIcon } from "astro-feather";
 import Header from "@components/Header.astro";
 import { db, Guests, desc, eq } from "astro:db";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
-
-const ip = Astro.clientAddress;
 
 const session = await getSession(Astro.request);
 
@@ -20,9 +18,17 @@ if (Astro.request.method === "POST") {
 
   const formData = await Astro.request.formData();
   const message = formData.get("message");
-  
-  if (typeof email === "string" && typeof message === "string" && typeof name === "string" && message.length > 0 && message.length <= 100) {
-    await db.insert(Guests).values({ email, name, message, published: new Date() });
+
+  if (
+    typeof email === "string" &&
+    typeof message === "string" &&
+    typeof name === "string" &&
+    message.length > 0 &&
+    message.length <= 100
+  ) {
+    await db
+      .insert(Guests)
+      .values({ email, name, message, published: new Date() });
   }
 }
 
@@ -62,16 +68,15 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
             </form>
           </>
         ) : (
-          <div
+          <SignIn
+            provider="github"
             class={
               "px-2 py-2 bg-[#cdc8c2] text-black rounded-lg w-[20%] flex justify-center mx-auto"
             }
           >
             <GithubIcon />
-            <SignIn provider="github" class={"flex justify-center px-4"}>
-              Login
-            </SignIn>
-          </div>
+            Login
+          </SignIn>
         )
       }
     </section>
