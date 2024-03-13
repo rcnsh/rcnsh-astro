@@ -1,0 +1,87 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { SignIn, SignOut } from "auth-astro/components";
+import { getSession } from "auth-astro/server";
+import { GithubIcon } from "astro-feather";
+import Header from "@components/Header.astro";
+import { db, Guests, desc, eq } from "astro:db";
+
+const session = await getSession(Astro.request);
+
+if (Astro.request.method === "POST") {
+  const email = session?.user?.email as string;
+
+  await db.delete(Guests).where(eq(Guests.email, email));
+
+  const formData = await Astro.request.formData();
+  const message = formData.get("message");
+  if (typeof email === "string" && typeof message === "string") {
+    await db.insert(Guests).values({ email, message, published: new Date() });
+  }
+}
+
+const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
+---
+
+<Layout title="rcn.sh | Guestbook">
+  <main
+    class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8 flex flex-col"
+    transition:animate="fade"
+  >
+    <Header />
+    <section class="min-w-[60%] flex justify-center mx-auto flex-col my-4">
+      {
+        session ? (
+          <>
+            <form method="POST" class="flex justify-center my-4 p-4 flex-row">
+              <input
+                type="text"
+                class="w-[80%] p-2 rounded-lg bg-[#2e2e2e] mx-2"
+                placeholder="Leave a message"
+                name="message"
+              />
+              <button
+                class="px-2 py-1 bg-[#cdc8c2] text-black rounded-lg w-[20%]"
+                type="submit"
+              >
+                Sign
+              </button>
+            </form>
+            <div class="flex justify-center p-2">
+              <SignOut
+                class={
+                  "px-2 py-2 bg-[#cdc8c2] text-black rounded-lg w-[20%] flex justify-center"
+                }
+              >
+                Logout
+              </SignOut>
+            </div>
+          </>
+        ) : (
+          <div
+            class={
+              "px-2 py-2 bg-[#cdc8c2] text-black rounded-lg w-[20%] flex justify-center mx-auto"
+            }
+          >
+            <GithubIcon />
+            <SignIn provider="github" class={"flex justify-center px-4"}>
+              Login
+            </SignIn>
+          </div>
+        )
+      }
+    </section>
+    <section>
+      <ul class="flex flex-col justify-center items-center">
+        {
+          comments.map((comment) => (
+            <li class="flex flex-col justify-center items-center my-4">
+              <p class="text-center">{comment.message}</p>
+              <p class="text-center text-[#c5c0b8] text-xs">{comment.email}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>

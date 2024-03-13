@@ -3,8 +3,9 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
-
 import db from "@astrojs/db";
+
+import auth from "auth-astro";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +18,7 @@ export default defineConfig({
   experimental: {
     clientPrerender: true,
   },
-  integrations: [tailwind(), react(), sitemap(), db()],
+  integrations: [tailwind(), react(), sitemap(), db(), auth()],
   image: {
     service: squooshImageService(),
   },
