@@ -5,6 +5,8 @@ import { getSession } from "auth-astro/server";
 import { GithubIcon } from "astro-feather";
 import Header from "@components/Header.astro";
 import { db, Guests, desc, eq } from "astro:db";
+import Footer from "@components/Footer";
+import Credits from "@components/Credits.astro";
 
 const session = await getSession(Astro.request);
 
@@ -78,5 +80,10 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
         }
       </ul>
     </section>
+    <div class="mt-auto">
+      <Footer client:only transition:persist>
+        <Credits />
+      </Footer>
+    </div>
   </main>
 </Layout>
