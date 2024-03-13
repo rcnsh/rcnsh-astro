@@ -6,8 +6,9 @@ import {
   MonitorIcon,
   GithubIcon,
   YoutubeIcon,
-  Linkedin,
+  NotebookIcon,
   CpuIcon,
+
 } from "lucide-react";
 import { cn } from "../lib/utils";
 import Spotify from "./Spotify";
@@ -134,6 +135,49 @@ export default function MobileDrawer() {
                         </span>
                       </span>
                     </a>
+                    <a
+            href={"/guestbook"}
+            className={cn(
+              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
+              url.split("/")[3] === "guestbook"
+                ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
+                : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
+            )}
+          >
+            <span
+              className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
+            >
+              <span className="flex items-center gap-2">
+                <NotebookIcon />
+                <span
+                  className={cn(
+                    "font-medium",
+                    url.split("/")[3] === "guestbook" && "text-[#cdc8c2]",
+                  )}
+                >
+                  Guestbook
+                </span>
+              </span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"
+                ></path>
+                <path
+                  d="M10 8h3a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3"
+                ></path>
+              </svg>
+            </span>
+          </a>
                   </div>
                 </div>
                 <hr className="bg-[#363b3d] border-none h-[2px]" />
