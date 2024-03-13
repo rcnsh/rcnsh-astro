@@ -71,7 +71,7 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
           <SignIn
             provider="github"
             class={
-              "px-2 py-2 bg-[#cdc8c2] text-black rounded-lg w-[20%] flex justify-center mx-auto"
+              "px-2 py-2 bg-[#cdc8c2] text-black rounded-lg w-[40%] flex justify-center mx-auto lg:w-[20%]"
             }
           >
             <GithubIcon />
