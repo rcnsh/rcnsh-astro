@@ -3,11 +3,10 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "npx astro dev",
-    "bundev": "bunx --bun astro dev",
+    "dev": "astro dev",
     "start": "astro dev",
-    "build": "bunx --bun astro check && bunx --bun astro build",
-    "preview": "bunx --bun astro preview",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {

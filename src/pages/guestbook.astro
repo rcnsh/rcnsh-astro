@@ -2,7 +2,7 @@
 import Layout from "@layouts/Layout.astro";
 import { SignIn } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
-import { GithubIcon } from "astro-feather";
+import { Github } from "lucide-astro";
 import Header from "@components/Header.astro";
 import { db, Guests, desc, eq } from "astro:db";
 import Footer from "@components/Footer";
@@ -74,7 +74,7 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
               "px-2 py-2 bg-[#cdc8c2] text-black rounded-lg w-[50%] flex justify-center mx-auto lg:w-[20%]"
             }
           >
-            <GithubIcon />
+            <Github />
             Login
           </SignIn>
         )
