@@ -3,13 +3,11 @@ import Layout from "@layouts/Layout.astro";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import MobileDrawer from "@components/Drawer";
-import { MusicIcon } from "astro-feather";
 
 const response = await fetch("https://rcn.sh/api/spotify").then((res) =>
   res.json(),
 );
 const artists = response.artists as Artist[];
-const tracksMedium = response.tracksMedium as Track[];
 const recentTracks = response.recentTracks as Track[];
 
 export type Track = {
@@ -66,33 +64,9 @@ export type Artist = {
         </h1>
 
         <div class="flex justify-center py-8">
-          <div class="grid grid-cols-3 gap-y-4">
+          <div class="grid lg:grid-cols-3 gap-y-4 gap-x-4 grid-cols-1">
             {
               recentTracks.map(({ artists, album, songUrl, title, image }) => (
-                <div class="flex flex-row items-center space-x-4">
-                  <img src={image} alt={title} class="w-16 h-16" />
-                  <div class="flex flex-col">
-                    <a href={songUrl}>
-                      <h3 class="font-semibold text-neutral-100">{title}</h3>
-                    </a>
-                    <p>{artists.map(({ name }) => name).join(", ")}</p>
-                    <p>{album}</p>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-        <h1
-          class="text-[#cbc8c2] text-2xl font-semibold my-8 flex justify-center"
-        >
-          Top Tracks (Medium Term)
-        </h1>
-
-        <div class="flex justify-center py-8">
-          <div class="grid grid-cols-3 gap-y-4">
-            {
-              tracksMedium.map(({ artists, album, songUrl, title, image }) => (
                 <div class="flex flex-row items-center space-x-4">
                   <img src={image} alt={title} class="w-16 h-16" />
                   <div class="flex flex-col">
@@ -114,8 +88,8 @@ export type Artist = {
         Top Artists
       </h1>
 
-      <div class="flex justify-center">
-        <div class="grid grid-cols-3 gap-y-4">
+      <div class="flex justify-center ">
+        <div class="grid lg:grid-cols-3 gap-y-4 gap-x-4 grid-cols-1">
           {
             artists.map(({ name, url, image }) => (
               <div class="flex flex-row items-center space-x-4 px-2">
