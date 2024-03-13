@@ -63,12 +63,6 @@ export default function Joke() {
           <button
             onClick={() => {
               setCurrentJoke("ip");
-              const music = new Audio(
-                "https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/llfgyzbqkcckn4ur5wrv",
-              );
-              music.volume = 0.1;
-              music.loop = true;
-              music.play();
             }}
           >
             Press me :)
