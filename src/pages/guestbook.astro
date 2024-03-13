@@ -17,7 +17,7 @@ if (Astro.request.method === "POST") {
   const formData = await Astro.request.formData();
   const message = formData.get("message");
   
-  if (typeof email === "string" && typeof message === "string" && typeof name === "string" && message.length > 0 && message.length < 100) {
+  if (typeof email === "string" && typeof message === "string" && typeof name === "string" && message.length > 0 && message.length <= 100) {
     await db.insert(Guests).values({ email, name, message, published: new Date() });
   }
 }
