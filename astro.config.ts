@@ -23,10 +23,6 @@ export default defineConfig({
   },
   output: "server",
   adapter: vercel({
-    isr: {
-      expiration: 60,
-      exclude: ["/api/*"], 
-    },
     webAnalytics: {
       enabled: true,
     },
