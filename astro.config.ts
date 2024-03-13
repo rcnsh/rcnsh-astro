@@ -4,7 +4,6 @@ import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
 import db from "@astrojs/db";
-
 import auth from "auth-astro";
 
 // https://astro.build/config
@@ -24,9 +23,6 @@ export default defineConfig({
   },
   output: "server",
   adapter: vercel({
-    isr: {
-      expiration: 60,
-    },
     webAnalytics: {
       enabled: true,
     },
