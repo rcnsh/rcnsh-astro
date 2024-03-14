@@ -69,8 +69,8 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
             </form>
             <span class="text-center text-[#c5c0b8] text-xs mx-auto">
               {session.user?.name} - {session.user?.email} |{" "}
-              <SignOut class="m-2">
-                <LogOut width={16} height={16} />
+              <SignOut class="my-2">
+                <LogOut width={12} height={12} />
               </SignOut>
             </span>
           </>
