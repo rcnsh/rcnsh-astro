@@ -11,8 +11,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.8",
-    "@astrojs/db": "^0.8.1",
+    "@astrojs/check": "^0.5.9",
+    "@astrojs/db": "^0.8.2",
     "@astrojs/react": "^3.1.0",
     "@astrojs/sitemap": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
@@ -25,7 +25,7 @@
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.21",
     "@vercel/analytics": "^1.2.2",
-    "astro": "^4.5.2",
+    "astro": "^4.5.3",
     "astro-feather": "^1.0.0",
     "astro-page-insight": "^0.4.0",
     "auth-astro": "^4.1.1",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@types/bun": "^1.0.8",
-    "cypress": "^13.6.6",
+    "cypress": "^13.7.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "typescript": "^5.4.2"
