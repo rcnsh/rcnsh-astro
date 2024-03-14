@@ -19,13 +19,13 @@ dependencies:
     version: 3.1.1
   '@astrojs/tailwind':
     specifier: ^5.1.0
-    version: 5.1.0(astro@4.5.2)(tailwindcss@3.4.1)
+    version: 5.1.0(astro@4.5.3)(tailwindcss@3.4.1)
   '@astrojs/ts-plugin':
     specifier: ^1.6.0
     version: 1.6.0
   '@astrojs/vercel':
     specifier: ^7.3.6
-    version: 7.3.6(astro@4.5.2)(next@14.1.3)(react@18.2.0)
+    version: 7.3.6(astro@4.5.3)(next@14.1.3)(react@18.2.0)
   '@auth/core':
     specifier: ^0.18.6
     version: 0.18.6
@@ -48,17 +48,17 @@ dependencies:
     specifier: ^1.2.2
     version: 1.2.2(next@14.1.3)(react@18.2.0)
   astro:
-    specifier: ^4.5.2
-    version: 4.5.2(@types/node@20.11.26)(typescript@5.4.2)
+    specifier: ^4.5.3
+    version: 4.5.3(@types/node@20.11.26)(typescript@5.4.2)
   astro-feather:
     specifier: ^1.0.0
     version: 1.0.0
   astro-page-insight:
-    specifier: ^0.4.0
-    version: 0.4.0(astro@4.5.2)(preact@10.19.6)(react@18.2.0)
+    specifier: ^0.4.1
+    version: 0.4.1(astro@4.5.3)(preact@10.19.6)(react@18.2.0)
   auth-astro:
     specifier: ^4.1.1
-    version: 4.1.1(@auth/core@0.18.6)(astro@4.5.2)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0)
+    version: 4.1.1(@auth/core@0.18.6)(astro@4.5.3)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0)
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
@@ -300,13 +300,13 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@astrojs/tailwind@5.1.0(astro@4.5.2)(tailwindcss@3.4.1):
+  /@astrojs/tailwind@5.1.0(astro@4.5.3)(tailwindcss@3.4.1):
     resolution: {integrity: sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 4.5.2(@types/node@20.11.26)(typescript@5.4.2)
+      astro: 4.5.3(@types/node@20.11.26)(typescript@5.4.2)
       autoprefixer: 10.4.18(postcss@8.4.35)
       postcss: 8.4.35
       postcss-load-config: 4.0.2(postcss@8.4.35)
@@ -341,7 +341,7 @@ packages:
       vscode-languageserver-textdocument: 1.0.11
     dev: false
 
-  /@astrojs/vercel@7.3.6(astro@4.5.2)(next@14.1.3)(react@18.2.0):
+  /@astrojs/vercel@7.3.6(astro@4.5.3)(next@14.1.3)(react@18.2.0):
     resolution: {integrity: sha512-dQj3cvTOsgOj/V8EVya16X1L3PCJ9aw0rWCggsFcERI72qEDXctd7l+K/iZC1dOvsM3k6VhwiacwsETowsctAA==}
     peerDependencies:
       astro: ^4.2.0
@@ -349,7 +349,7 @@ packages:
       '@astrojs/internal-helpers': 0.3.0
       '@vercel/analytics': 1.2.2(next@14.1.3)(react@18.2.0)
       '@vercel/nft': 0.26.4
-      astro: 4.5.2(@types/node@20.11.26)(typescript@5.4.2)
+      astro: 4.5.3(@types/node@20.11.26)(typescript@5.4.2)
       esbuild: 0.19.12
       fast-glob: 3.3.2
       set-cookie-parser: 2.6.0
@@ -2430,7 +2430,7 @@ packages:
     resolution: {integrity: sha512-PVIDwuKOv+sw/pqYysOVY4m77fUOYEKBn8R4l280muXXUuYZUoPRFYx8WoAigI+Yp3cKFY5pJecmtyT4RCnblA==}
     dev: false
 
-  /astro-integration-kit@0.5.1(astro@4.5.2)(preact@10.19.6)(react@18.2.0):
+  /astro-integration-kit@0.5.1(astro@4.5.3)(preact@10.19.6)(react@18.2.0):
     resolution: {integrity: sha512-ef309UUNOjxUe0jjsDP5O3p+jkt53HAcrKOsWJ2NIgdUTOp5P/YKnAjbatfyu3bAuLFDfj5xhXm/rrwSe9d/hw==}
     peerDependencies:
       '@vitejs/plugin-react': ^4.2.1
@@ -2454,20 +2454,20 @@ packages:
       vue:
         optional: true
     dependencies:
-      astro: 4.5.2(@types/node@20.11.26)(typescript@5.4.2)
+      astro: 4.5.3(@types/node@20.11.26)(typescript@5.4.2)
       pathe: 1.1.2
       preact: 10.19.6
       react: 18.2.0
       recast: 0.23.5
     dev: false
 
-  /astro-page-insight@0.4.0(astro@4.5.2)(preact@10.19.6)(react@18.2.0):
-    resolution: {integrity: sha512-E/IyDeUuKfXQpp+alordTAxenHJbNVSZV+csxY8yflEhLVA4zsbD4oTX6++YV9h9zKFbUAR6vxzmY7+8/frNyw==}
+  /astro-page-insight@0.4.1(astro@4.5.3)(preact@10.19.6)(react@18.2.0):
+    resolution: {integrity: sha512-5mxwIVY5ig4bU4CQdbGOYq8CwcoqSJzQBNzDeuigEhdclJOCo8uZOMd+yUAe8rUVN8aKkbDiSXzYK6ColJ46PA==}
     peerDependencies:
       astro: ^4.0.0
     dependencies:
-      astro: 4.5.2(@types/node@20.11.26)(typescript@5.4.2)
-      astro-integration-kit: 0.5.1(astro@4.5.2)(preact@10.19.6)(react@18.2.0)
+      astro: 4.5.3(@types/node@20.11.26)(typescript@5.4.2)
+      astro-integration-kit: 0.5.1(astro@4.5.3)(preact@10.19.6)(react@18.2.0)
       chrome-launcher: 1.1.0
       lighthouse: 11.6.0
     transitivePeerDependencies:
@@ -2483,8 +2483,8 @@ packages:
       - vue
     dev: false
 
-  /astro@4.5.2(@types/node@20.11.26)(typescript@5.4.2):
-    resolution: {integrity: sha512-Nq3GojlwXJ3XD047khraCWu/6aqGFfcyq7Q0blpTBSZnCz2s4Zri04PHvUkbKF7TK2UljkFuTXKP0CE4ZuJi9Q==}
+  /astro@4.5.3(@types/node@20.11.26)(typescript@5.4.2):
+    resolution: {integrity: sha512-MEiLeAr3+THeadTZCQ4U+DI9VTTUZdYrPEPedSKmQwqnkiPkLjpLgx4yOcyH7Yp4t57+SWiC6W0rt7lPGM36Fg==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
@@ -2498,7 +2498,6 @@ packages:
       '@babel/plugin-transform-react-jsx': 7.23.4(@babel/core@7.24.0)
       '@babel/traverse': 7.24.0
       '@babel/types': 7.24.0
-      '@shikijs/core': 1.1.7
       '@types/babel__core': 7.20.5
       acorn: 8.11.3
       aria-query: 5.3.0
@@ -2529,7 +2528,6 @@ packages:
       js-yaml: 4.1.0
       kleur: 4.1.5
       magic-string: 0.30.7
-      mdast-util-to-hast: 13.0.2
       mime: 3.0.0
       ora: 7.0.1
       p-limit: 5.0.0
@@ -2587,7 +2585,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /auth-astro@4.1.1(@auth/core@0.18.6)(astro@4.5.2)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0):
+  /auth-astro@4.1.1(@auth/core@0.18.6)(astro@4.5.3)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-7dTs8OcSYIYEmmlVw/HJ2k3otwDrD2fG2NTrKaij/VH8TfQ9EhS4VGgoQw1yArQoV0v6kvqOD4lFHFehQzKKqA==}
     engines: {node: '>=17.4'}
     peerDependencies:
@@ -2595,7 +2593,7 @@ packages:
       astro: ^4.0.0
     dependencies:
       '@auth/core': 0.18.6
-      astro: 4.5.2(@types/node@20.11.26)(typescript@5.4.2)
+      astro: 4.5.3(@types/node@20.11.26)(typescript@5.4.2)
       next-auth: 4.24.7(next@14.1.3)(react-dom@18.2.0)(react@18.2.0)
       set-cookie-parser: 2.6.0
     transitivePeerDependencies:
