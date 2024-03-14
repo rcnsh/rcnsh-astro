@@ -70,7 +70,7 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
             <span class="text-center text-[#c5c0b8] text-xs mx-auto">
               {session.user?.name} - {session.user?.email} |{" "}
               <SignOut>
-                <LogOut />
+                <LogOut width={8} height={6} />
               </SignOut>
             </span>
           </>
