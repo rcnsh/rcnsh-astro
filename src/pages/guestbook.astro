@@ -51,7 +51,7 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
       {
         session ? (
           <>
-            <form method="POST" class="flex justify-center my-4 p-4 flex-row">
+            <form method="POST" class="flex justify-center my-1 pt-4 flex-row">
               <input
                 type="text"
                 class="w-[80%] p-2 rounded-lg bg-[#2e2e2e] mx-2"
@@ -67,7 +67,7 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
                 Sign
               </button>
             </form>
-            <span class="text-center text-[#c5c0b8] text-xs mx-auto mt-2">
+            <span class="text-center text-[#c5c0b8] text-xs mx-auto">
               {session.user?.name} - {session.user?.email} |{" "}
               <SignOut>
                 <LogOut width={16} height={16} />
