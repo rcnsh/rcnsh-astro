@@ -1,12 +1,13 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { SignIn } from "auth-astro/components";
+import { SignIn, SignOut } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
 import { GithubIcon } from "astro-feather";
 import Header from "@components/Header.astro";
 import { db, Guests, desc, eq } from "astro:db";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
+import { LogOut } from "lucide-react";
 
 const session = await getSession(Astro.request);
 
@@ -66,6 +67,12 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
                 Sign
               </button>
             </form>
+            <span class="text-center text-[#c5c0b8] text-xs mx-auto">
+              {session.user?.name} - {session.user?.email} |{" "}
+              <SignOut>
+                <LogOut />
+              </SignOut>
+            </span>
           </>
         ) : (
           <SignIn
