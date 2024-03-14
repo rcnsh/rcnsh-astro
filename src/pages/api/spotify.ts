@@ -179,7 +179,7 @@ export async function getRecentTracks() {
     artists: item.track.artists,
     songUrl: item.track.external_urls.spotify,
     title: item.track.name,
-    album: item.track.album.name,
+    album: item.track.album,
     image: item.track.album.images[0].url,
   }));
 }

@@ -19,7 +19,12 @@ export type Track = {
   }[];
   songUrl: string;
   title: string;
-  album: string;
+  album: {
+    name: string;
+    external_urls: {
+      spotify: string;
+    };
+  };
   image: string;
 };
 export type Artist = {
@@ -59,7 +64,7 @@ export type Artist = {
                         </span>
                       ))}
                     </p>
-                    <p>{album}</p>
+                    <a href={album.external_urls.spotify}>{album.name}</p>
                   </div>
                 </div>
               ))
