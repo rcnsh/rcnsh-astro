@@ -24,7 +24,7 @@ export default defineConfig({
   output: "server",
   adapter: vercel({
     isr: {
-      exclude: [ "/api/**", "/api/auth/callback/github" ]
+      exclude: [ "/api/auth/callback/github", "/api/auth/signout"]
     },
     webAnalytics: {
       enabled: true,
