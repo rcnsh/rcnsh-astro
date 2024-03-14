@@ -11,7 +11,12 @@ const artists = response.artists as Artist[];
 const recentTracks = response.recentTracks as Track[];
 
 export type Track = {
-  artists: { name: string }[];
+  artists: {
+    name: string;
+    external_urls: {
+      spotify: string;
+    };
+  }[];
   songUrl: string;
   title: string;
   album: string;
@@ -32,9 +37,7 @@ export type Artist = {
     <Header />
     <section class="flex flex-col mx-2 my-4">
       <div>
-        <h1
-          class="text-[#cbc8c2] text-2xl font-mono my-8 flex justify-center"
-        >
+        <h1 class="text-[#cbc8c2] text-2xl font-mono my-8 flex justify-center">
           Recently Played Tracks
         </h1>
 
@@ -48,7 +51,13 @@ export type Artist = {
                     <a href={songUrl}>
                       <h3 class="font-semibold text-neutral-100">{title}</h3>
                     </a>
-                    <p>{artists.map(({ name }) => name).join(", ")}</p>
+                    <p>
+                      {artists
+                        .map(({ name, external_urls }) => (
+                          <a href={external_urls.spotify}>{name}</a>
+                        ))
+                        .join(", ")}
+                    </p>
                     <p>{album}</p>
                   </div>
                 </div>
