@@ -52,11 +52,12 @@ export type Artist = {
                       <h3 class="font-semibold text-neutral-100">{title}</h3>
                     </a>
                     <p>
-                      {artists
-                        .map(({ name, external_urls }) => (
+                      {artists.map(({ name, external_urls }, index) => (
+                        <span>
                           <a href={external_urls.spotify}>{name}</a>
-                        ))
-                        .join(", ")}
+                          {index < artists.length - 1 ? ", " : ""}
+                        </span>
+                      ))}
                     </p>
                     <p>{album}</p>
                   </div>
