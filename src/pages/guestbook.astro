@@ -87,8 +87,9 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
         )
       }
     </section>
+    <hr class="bg-[#363b3d] border-none h-[2px] mt-2 w-[60%] mx-auto my-4" />
     <section>
-      <ul class="flex flex-col justify-center items-center">
+      <ul class="flex flex-col justify-center items-center mt-4">
         {
           comments.map((comment) => (
             <li class="flex flex-col justify-center items-center my-4">
