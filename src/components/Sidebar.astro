@@ -1,6 +1,7 @@
 ---
 import { cn } from "../lib/utils";
-import Spotify from "./Spotify";
+import { GET } from "../pages/api/nowPlaying";
+import { Spotify } from "./Spotify";
 import {
   HomeIcon,
   MusicIcon,
@@ -10,6 +11,9 @@ import {
   BookIcon,
   CpuIcon,
 } from "astro-feather";
+
+const reponse = await GET(Astro);
+const data = await reponse.json();
 
 const title = Astro.url.pathname;
 const url = Astro.url.toString();
@@ -37,6 +41,7 @@ const getLabelByHref = (title: string) => {
   const link = LINKS.find((link) => link.href === title);
   return link ? link.label : null;
 };
+
 ---
 
 <main
@@ -233,7 +238,7 @@ const getLabelByHref = (title: string) => {
       </div>
       <div class="flex flex-col gap-2 text-sm flex-1">
         <div class="absolute bottom-0 left-0">
-          <Spotify client:load transition:persist/>
+          <Spotify client:load transition:persist song={data} />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo } from "react";
 import { PauseIcon, PlayIcon } from "lucide-react";
 
 interface songData {
@@ -10,38 +10,7 @@ interface songData {
   songUrl: string;
 }
 
-export default function Spotify() {
-  const [song, setSong] = useState<songData>({
-    isPlaying: false,
-    title: "",
-    artist: "",
-    album: "",
-    albumImageUrl: "",
-    songUrl: "",
-  });
-
-  useEffect(() => {
-    async function getSpotify() {
-      try {
-        const response = await fetch("https://api.rcn.sh/api/spotify");
-        const songPromise = await response.json();
-
-        const newSongData: songData = {
-          isPlaying: songPromise.isPlaying,
-          title: songPromise.title,
-          artist: songPromise.artist,
-          album: songPromise.album,
-          albumImageUrl: songPromise.albumImageUrl,
-          songUrl: songPromise.songUrl,
-        };
-        setSong((prevSong) => ({ ...prevSong, ...newSongData }));
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
-    getSpotify();
-  }, []);
-
+export const Spotify = memo(({ song }: { song: songData }) => {
   return (
     <section className={"py-5 text-[#cdc8c2]"}>
       <a
@@ -109,4 +78,4 @@ export default function Spotify() {
       </a>
     </section>
   );
-}
+});
