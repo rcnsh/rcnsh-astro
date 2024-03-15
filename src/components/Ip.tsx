@@ -3,13 +3,26 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Ip() {
+  const [ip, setIp] = useState("192.168.1.1");
   const [ipStage, setIpStage] = useState(0);
   const ipmusic = new Audio(
     "https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/omxdiolty5wvzq4ocedh",
   );
   ipmusic.volume = 0.1;
   ipmusic.loop = true;
-  ipmusic.play();
+  useEffect(() => {
+    async function fetchIp() {
+      setIp(
+        await fetch("/ip.json")
+          .then((res) => res.json())
+          .then((data) => data.clientAddress),
+      );
+    }
+
+    ipmusic.play();
+
+    fetchIp();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,7 +50,7 @@ export default function Ip() {
         </motion.span>
       )}
       <br />
-      {ipStage === 1 && <FadeIn>IP: 192.168.1.1</FadeIn>}
+      {ipStage === 1 && <FadeIn>IP: {ip}</FadeIn>}
       {ipStage === 2 && <FadeIn>N: 51.797151</FadeIn>}
       {ipStage === 3 && <FadeIn>W: -0.0806808</FadeIn>}
       {ipStage === 4 && (
