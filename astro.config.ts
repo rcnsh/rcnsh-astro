@@ -19,22 +19,6 @@ export default defineConfig({
   },
   output: "server",
   adapter: vercel({
-    isr: {
-      exclude: [
-        "/api/nowPlaying",
-        "/api/auth/callback/github",
-        "/api/auth/signout",
-        "/api/auth/csrf",
-        "/guestbook",
-        "/api/**",
-        "/api/auth/**",
-        "/api/*",
-        "/api/auth/*",
-        "/api/auth/callback/*",
-        "/api/auth/callback/**",
-      ],
-      expiration: 10,
-    },
     webAnalytics: {
       enabled: true,
     },
