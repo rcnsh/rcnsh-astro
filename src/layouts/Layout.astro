@@ -17,7 +17,7 @@ import "@fontsource/geist-mono";
 
 import { ViewTransitions } from "astro:transitions";
 import Sidebar from "../components/Sidebar.astro";
-import  SpeedInsights  from "@vercel/speed-insights/astro"
+import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
@@ -78,6 +78,6 @@ import  SpeedInsights  from "@vercel/speed-insights/astro"
     <Sidebar transition:persist />
     <slot />
     {/* @ts-expect-error typescript doesnt like astro page speed insights*/}
-    <SpeedInsights/>
+    <SpeedInsights />
   </body>
 </html>
