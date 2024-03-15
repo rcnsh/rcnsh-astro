@@ -19,16 +19,16 @@ if (Astro.request.method === "POST") {
   await db.delete(Guests).where(eq(Guests.email, email));
 
   const formData = await Astro.request.formData();
-  const message = formData.get("message");
+  const uncleanmessage = formData.get("message");
 
   if (
     typeof email === "string" &&
-    typeof message === "string" &&
+    typeof uncleanmessage === "string" &&
     typeof name === "string" &&
-    message.length > 0 &&
-    message.length <= 100
+    uncleanmessage.length > 0 &&
+    uncleanmessage.length <= 100
   ) {
-    filter.clean(message);
+    const message = filter.clean(uncleanmessage);
     await db
       .insert(Guests)
       .values({ email, name, message, published: new Date() });
