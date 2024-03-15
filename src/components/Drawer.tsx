@@ -17,7 +17,7 @@ export default function MobileDrawer() {
 
   return (
     <Drawer.Root>
-      <button>
+      <button title="Open Drawer">
         <Drawer.Trigger>
           <MenuIcon size={32} color="#c5c0b8" className="block lg:hidden" />
         </Drawer.Trigger>
