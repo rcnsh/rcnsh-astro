@@ -1,7 +1,6 @@
 ---
 import { cn } from "../lib/utils";
-import { GET } from "../pages/api/nowPlaying";
-import { Spotify } from "./Spotify";
+import Spotify from "./Spotify.astro";
 import {
   HomeIcon,
   MusicIcon,
@@ -11,13 +10,6 @@ import {
   BookIcon,
   CpuIcon,
 } from "astro-feather";
-
-Astro.response.headers.set(
-  "Cache-Control",
-  "public, max-age=0, s-maxage=0",
-);
-const reponse = await GET(Astro);
-const data = await reponse.json();
 
 const title = Astro.url.pathname;
 const url = Astro.url.toString();
@@ -47,9 +39,8 @@ const getLabelByHref = (title: string) => {
 };
 
 ---
-
 <main
-  class={"hidden bg-gradient-to-br from-[#111111] to-[#303030] lg:flex lg:flex-col lg:border-r lg:w-96 h-screen lg:border-[#cdc8c2]"}
+  class={"hidden bg-gradient-to-br from-[#111111] to-[#303030] lg:flex lg:flex-col lg:border-r lg:w-96 h-screen lg:border-[#cdc8c2] max-w-96"}
 >
   <div class="sticky top-0 z-10 border-b px-5 py-3 border-[#cdc8c2]">
     <div class="flex items-center justify-between">
@@ -242,7 +233,7 @@ const getLabelByHref = (title: string) => {
       </div>
       <div class="flex flex-col gap-2 text-sm flex-1">
         <div class="absolute bottom-0 left-0">
-          <Spotify client:load transition:persist song={data} />
+          <Spotify transition:persist />
         </div>
       </div>
     </div>

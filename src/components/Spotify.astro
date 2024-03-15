@@ -1,5 +1,8 @@
-import { memo } from "react";
-import { PauseIcon, PlayIcon } from "lucide-react";
+---
+import { PauseIcon, PlayIcon } from "astro-feather";
+import { GET } from "../pages/api/nowPlaying";
+import Image from "astro/components/Image.astro";
+
 
 interface songData {
   isPlaying: boolean;
@@ -10,9 +13,10 @@ interface songData {
   songUrl: string;
 }
 
-export const Spotify = memo(({ song }: { song: songData }) => {
-  return (
-    <section className={"py-5 text-[#cdc8c2]"}>
+const reponse = await GET(Astro);
+const song = await reponse.json() as songData;
+---
+    <section class={"py-5 text-[#cdc8c2]"}>
       <a
         target="_blank"
         rel="noopener noreferer"
@@ -21,12 +25,12 @@ export const Spotify = memo(({ song }: { song: songData }) => {
             ? song.songUrl
             : "https://open.spotify.com/user/nz3i2a30ep85rv5ymcpglhndj"
         }
-        className="relative m-auto flex w-72 items-center space-x-4 rounded-md p-5 transition-shadow hover:shadow-md"
+        class="relative m-auto flex w-72 items-center space-x-4 rounded-md p-5 transition-shadow hover:shadow-md"
       >
-        <div className="w-16">
+        <div class="w-16">
           {song.album ? (
-            <img
-              className="w-16 shadow-sm"
+            <Image
+              class="w-16 shadow-sm"
               src={song.albumImageUrl}
               alt={song.album}
               width={64}
@@ -37,7 +41,7 @@ export const Spotify = memo(({ song }: { song: songData }) => {
             <svg
               stroke="currentColor"
               fill="currentColor"
-              strokeWidth="0"
+              stroke-width="0"
               role="img"
               viewBox="0 0 24 24"
               color="#1ED760"
@@ -49,22 +53,22 @@ export const Spotify = memo(({ song }: { song: songData }) => {
             </svg>
           )}
         </div>
-        <div className="flex-1">
-          <p className="component font-bold">
+        <div class="flex-1">
+          <p class="component font-bold">
             {song.title ? song.title : "Not Listening"}
           </p>
-          <p className="font-dark text-xs">
+          <p class="font-dark text-xs">
             {song.artist ? song.artist : "Spotify"}
           </p>
         </div>
-        <div className="flex float-end">
+        <div class="flex float-end">
           {song.isPlaying ? <PauseIcon size={24} /> : <PlayIcon size={24} />}
         </div>
-        <div className="absolute bottom-1.5 right-1.5">
+        <div class="absolute bottom-1.5 right-1.5">
           <svg
             stroke="currentColor"
             fill="currentColor"
-            strokeWidth="0"
+            stroke-width="0"
             role="img"
             viewBox="0 0 24 24"
             color="#1ED760"
@@ -77,5 +81,3 @@ export const Spotify = memo(({ song }: { song: songData }) => {
         </div>
       </a>
     </section>
-  );
-});

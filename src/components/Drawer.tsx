@@ -10,18 +10,12 @@ import {
   CpuIcon,
 } from "lucide-react";
 import { cn } from "../lib/utils";
-import { Spotify } from "./Spotify";
 
-interface songData {
-  isPlaying: boolean;
-  title: string;
-  artist: string;
-  album: string;
-  albumImageUrl: string;
-  songUrl: string;
-}
-
-export default function MobileDrawer({ song }: { song: songData }) {
+export default function MobileDrawer({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const url = window.location.pathname;
 
   return (
@@ -217,7 +211,7 @@ export default function MobileDrawer({ song }: { song: songData }) {
                   </a>
                 </div>
                 <div className="flex flex-col gap-2 text-sm flex-1 mt-auto">
-                  <Spotify song={song} />
+                  {children}
                 </div>
               </div>
             </div>
