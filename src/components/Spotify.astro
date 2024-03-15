@@ -56,15 +56,15 @@ const song = (await reponse.json()) as songData;
       }
     </div>
     <div class="flex-1">
-      <p class="component font-bold">
+      <p class="component font-bold text-[#cdc8c2]">
         {song.title ? song.title : "Not Listening"}
       </p>
-      <p class="font-dark text-xs">
+      <p class="font-dark text-xs text-[#cdc8c2]">
         {song.artist ? song.artist : "Spotify"}
       </p>
     </div>
     <div class="flex float-end">
-      {song.isPlaying ? <PauseIcon size={24} /> : <PlayIcon size={24} />}
+      {song.isPlaying ? <PauseIcon size={24} stroke="#cdc8c2"/> : <PlayIcon size={24} stroke="#cdc8c2"/>}
     </div>
     <div class="absolute bottom-1.5 right-1.5">
       <svg
