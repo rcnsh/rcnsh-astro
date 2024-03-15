@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 
-export const GET: APIRoute = async () => {
+export default function genRCN() {
   const chance = Math.random();
   if (chance < 0.99) {
     const rWords =
@@ -21,27 +21,23 @@ export const GET: APIRoute = async () => {
     const randomNWord = nWords[Math.floor(Math.random() * nWords.length)];
 
     const rcn = randomRWord + " " + randomCWord + " " + randomNWord;
-
-    return new Response(
-      JSON.stringify({
-        rcn: rcn,
-      }),
-      {
-        headers: {
-          "content-type": "application/json",
-        },
-      },
-    );
+    return rcn;
   } else {
-    return new Response(
-      JSON.stringify({
-        rcn: "recon",
-      }),
-      {
-        headers: {
-          "content-type": "application/json",
-        },
-      },
-    );
+    return "recon";
   }
+}
+
+export const GET: APIRoute = async () => {
+  const rcn = genRCN();
+
+  return new Response(
+    JSON.stringify({
+      rcn: rcn,
+    }),
+    {
+      headers: {
+        "content-type": "application/json",
+      },
+    },
+  );
 };
