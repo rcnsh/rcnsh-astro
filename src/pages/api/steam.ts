@@ -1,5 +1,7 @@
 import type { APIRoute } from "astro";
 
+export const prerender = true;
+
 export const GET: APIRoute = async () => {
   const steam_data_recent = await fetch(
     `https://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=${
