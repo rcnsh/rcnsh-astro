@@ -4,7 +4,7 @@ import type { APIRoute } from "astro";
 
 import { z } from "zod";
 
-export async function getAccessToken(): Promise<{ access_token: string }> {
+async function getAccessToken(): Promise<{ access_token: string }> {
   const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
   const clientId = import.meta.env.SPOTIFY_CLIENT_ID;
   const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
@@ -32,7 +32,7 @@ export async function getAccessToken(): Promise<{ access_token: string }> {
   return { access_token };
 }
 
-export async function getTopTracksMedium() {
+async function getTopTracksMedium() {
   const { access_token } = await getAccessToken();
 
   const response = await fetch(

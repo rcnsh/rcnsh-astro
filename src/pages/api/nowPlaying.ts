@@ -78,7 +78,7 @@ interface SpotifyData {
   is_playing: boolean;
 }
 
-export async function getAccessToken(): Promise<{ access_token: string }> {
+async function getAccessToken(): Promise<{ access_token: string }> {
   const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
   const clientId = import.meta.env.SPOTIFY_CLIENT_ID;
   const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
