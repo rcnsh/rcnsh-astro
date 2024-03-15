@@ -25,6 +25,7 @@ export default defineConfig({
   adapter: vercel({
     isr: {
       exclude: [
+        "/api/nowPlaying",
         "/api/auth/callback/github",
         "/api/auth/signout",
         "/api/auth/csrf",
