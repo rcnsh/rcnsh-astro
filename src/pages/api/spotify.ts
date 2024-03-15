@@ -1,6 +1,6 @@
 // spotify fetching code from nexxel.dev
 
-export const prerender = true;
+export const prefetch = true;
 
 import type { APIRoute } from "astro";
 
