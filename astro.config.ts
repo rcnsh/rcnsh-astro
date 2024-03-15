@@ -11,11 +11,7 @@ export default defineConfig({
   trailingSlash: "never",
   site: "https://rcn.sh",
   prefetch: {
-    prefetchAll: true,
-    defaultStrategy: "load",
-  },
-  experimental: {
-    clientPrerender: true,
+    defaultStrategy: "hover",
   },
   integrations: [tailwind(), react(), sitemap(), db(), auth()],
   image: {
@@ -37,6 +33,7 @@ export default defineConfig({
         "/api/auth/callback/*",
         "/api/auth/callback/**",
       ],
+      expiration: 10,
     },
     webAnalytics: {
       enabled: true,
