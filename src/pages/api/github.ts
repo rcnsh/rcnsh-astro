@@ -41,7 +41,7 @@ export const GET: APIRoute = async () => {
     "rcn-api",
   ];
 
-  const reposFilter = githubData
+  const reposFiltered = githubData
     .map((repo) => ({
       name: repo.name,
       description: repo.description,
@@ -50,12 +50,15 @@ export const GET: APIRoute = async () => {
     }))
     .filter((repo: Repo) => repoNamesToInclude.includes(repo.name));
 
-  reposFilter.push(await getSpecificRepo("virtue-gymnastics-website"));
-  reposFilter.push(await getSpecificRepo("notes"));
+  reposFiltered.push(await getSpecificRepo("virtue-gymnastics-website"));
+  reposFiltered.push(await getSpecificRepo("notes"));
 
-  return new Response(JSON.stringify(reposFilter), {
-    headers: {
-      "content-type": "application/json",
+  return new Response(
+    JSON.stringify({ websiteRepos: reposFiltered, allRepos: githubData }),
+    {
+      headers: {
+        "content-type": "application/json",
+      },
     },
-  });
+  );
 };

@@ -1,6 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import {GET} from "./api/steam"
+import { GET } from "./api/steam";
 import { InfiniteMovingCardsTwoWeeks } from "@components/InfiniteSteamCardsTwoWeeks";
 import { InfiniteMovingCardsAll } from "@components/InfiniteSteamCardsAll";
 import Footer from "@components/Footer";
@@ -31,7 +31,7 @@ interface SteamGames {
 }
 
 const response = await GET(Astro);
-const steamGames = await response.json() as SteamGames;
+const steamGames = (await response.json()) as SteamGames;
 ---
 
 <Layout title="rcn.sh • Steam">
@@ -47,7 +47,8 @@ const steamGames = await response.json() as SteamGames;
         My Steam Games
       </h1>
       <InfiniteMovingCardsAll
-        items={steamGames.all.response.games.filter((game) => game.appid !== 400040 && game.appid !== 431960)
+        items={steamGames.all.response.games
+          .filter((game) => game.appid !== 400040 && game.appid !== 431960)
           .filter((game) => game.playtime_forever > 0)
           .sort((a, b) => b.playtime_forever - a.playtime_forever)
           .slice(0, 20)}
@@ -63,7 +64,9 @@ const steamGames = await response.json() as SteamGames;
         Recently Played Steam Games
       </h1>
       <InfiniteMovingCardsTwoWeeks
-        items={steamGames.recent.response.games.filter((game) => game.appid !== 400040 && game.appid !== 431960)}
+        items={steamGames.recent.response.games.filter(
+          (game) => game.appid !== 400040 && game.appid !== 431960,
+        )}
         speed="normal"
         client:load
       />

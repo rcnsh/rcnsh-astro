@@ -1,34 +1,35 @@
 ---
-import { GET } from '../pages/api/github.ts'
+import { GET } from "../pages/api/github.ts";
 
 interface Repo {
-  name: string;
-  description: string;
-  html_url: string;
-  stargazers_count: number;
+  websiteRepos: {
+    name: string;
+    description: string;
+    html_url: string;
+    stargazers_count: number;
+  }[];
 }
 
 const response = await GET(Astro);
-const data = await response.json() as Repo[];
-
+const data = (await response.json()) as Repo;
 ---
 
 <div class="grid grid-cols-2 gap-4 xl:grid-cols-3">
   {
-    data.map((repo) => (
+    data.websiteRepos.map((repo) => (
       <>
-      <div class="flex-col rounded-xl p-4 shadow-md text-center bg-black/5">
-        <a
-          class={"text-[#737dbb] underline hover:text-[#cdc8c2]"}
-          href={repo.html_url}
-          target="_blank"
-          rel="noopener noreferer"
-        >
-          {repo.name}
-        </a>
-        <br />
-        <span class={"text-[#cdc8c2]"}>{repo.description}</span>
-      </div>
+        <div class="flex-col rounded-xl p-4 shadow-md text-center bg-black/5">
+          <a
+            class={"text-[#737dbb] underline hover:text-[#cdc8c2]"}
+            href={repo.html_url}
+            target="_blank"
+            rel="noopener noreferer"
+          >
+            {repo.name}
+          </a>
+          <br />
+          <span class={"text-[#cdc8c2]"}>{repo.description}</span>
+        </div>
       </>
     ))
   }
