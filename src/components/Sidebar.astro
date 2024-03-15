@@ -41,7 +41,7 @@ const getLabelByHref = (title: string) => {
 ---
 
 <main
-  class={"hidden bg-gradient-to-br from-[#111111] to-[#303030] lg:flex lg:flex-col lg:border-r lg:w-96 h-screen lg:border-[#cdc8c2] max-w-96"}
+  class={"hidden bg-gradient-to-br from-[#111111] to-[#303030] lg:flex lg:flex-col lg:border-r lg:min-w-[21rem] h-screen lg:border-[#cdc8c2] max-w-[21rem]"}
 >
   <div class="sticky top-0 z-10 border-b px-5 py-3 border-[#cdc8c2]">
     <div class="flex items-center justify-between">
@@ -51,7 +51,7 @@ const getLabelByHref = (title: string) => {
     </div>
   </div>
   <div class="p-3">
-    <div class="flex flex-col text-sm">
+    <div class="text-sm">
       <div class="gap-4">
         <div class="link-card inline-flex items-center gap-2 p-2">
           <svg
@@ -185,7 +185,7 @@ const getLabelByHref = (title: string) => {
         </div>
       </div>
       <hr class="bg-[#363b3d] border-none h-[2px] mt-2" />
-      <div class="flex flex-col gap-2 mt-2">
+      <div class="gap-2 mt-2">
         <a
           href="https://go.rcn.sh/github"
           class="group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] hover:bg-gradient-to-br from-[#303030] to-[#111111]"
@@ -232,10 +232,8 @@ const getLabelByHref = (title: string) => {
           </span>
         </a>
       </div>
-      <div class="flex flex-col gap-2 text-sm flex-1">
-        <div class="absolute bottom-0 left-0">
-          <Spotify />
-        </div>
+      <div class="mx-auto absolute bottom-0">
+        <Spotify />
       </div>
     </div>
   </div>
