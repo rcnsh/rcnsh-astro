@@ -29,6 +29,12 @@ export default defineConfig({
         "/api/auth/signout",
         "/api/auth/csrf",
         "/guestbook",
+        "/api/**",
+        "/api/auth/**",
+        "/api/*",
+        "/api/auth/*",
+        "/api/auth/callback/*",
+        "/api/auth/callback/**",
       ],
     },
     webAnalytics: {
