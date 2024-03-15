@@ -17,7 +17,7 @@ export default defineConfig({
   image: {
     service: squooshImageService(),
   },
-  output: "server",
+  output: "hybrid",
   adapter: vercel({
     isr: {
       exclude: [
