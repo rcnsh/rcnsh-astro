@@ -3,10 +3,11 @@ import Layout from "@layouts/Layout.astro";
 import Github from "@components/Github.astro";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
-import RCN from "../server/rcn";
+import { GET as rcnGET } from './api/rcn.ts'
 import Header from "@components/Header.astro";
 
-const random = RCN();
+const rcnResponse = await rcnGET(Astro);
+const rcn = await rcnResponse.json();
 
 Astro.response.headers.set(
   "Cache-Control",
@@ -21,7 +22,7 @@ Astro.response.headers.set(
   >
     <Header />
     <h1 class="text-center font-mono text-xl lg:text-3xl md:text-2xl">
-      {random}
+      {rcn.rcn}
     </h1>
     <section class="mx-auto w-[100%] text-[#cdc8c2] md:w-[50%] md:text-left">
       <br />

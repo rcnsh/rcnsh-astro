@@ -1,14 +1,37 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { steamRecentGamesPromise, steamAllGamesPromise } from "../server/steam";
+import {GET} from "./api/steam"
 import { InfiniteMovingCardsTwoWeeks } from "@components/InfiniteSteamCardsTwoWeeks";
 import { InfiniteMovingCardsAll } from "@components/InfiniteSteamCardsAll";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import Header from "@components/Header.astro";
 
-const steamRecentGames = await steamRecentGamesPromise();
-const steamAllGames = await steamAllGamesPromise();
+type Game = {
+  appid: number;
+  name: string;
+  game_image_url: string;
+  playtime_2weeks: number;
+  playtime_forever: number;
+};
+
+interface SteamGames {
+  all: {
+    response: {
+      game_count: number;
+      games: Array<Game>;
+    };
+  };
+  recent: {
+    response: {
+      game_count: number;
+      games: Array<Game>;
+    };
+  };
+}
+
+const response = await GET(Astro);
+const steamGames = await response.json() as SteamGames;
 ---
 
 <Layout title="rcn.sh • Steam">
@@ -24,7 +47,10 @@ const steamAllGames = await steamAllGamesPromise();
         My Steam Games
       </h1>
       <InfiniteMovingCardsAll
-        items={steamAllGames}
+        items={steamGames.all.response.games.filter((game) => game.appid !== 400040 && game.appid !== 431960)
+          .filter((game) => game.playtime_forever > 0)
+          .sort((a, b) => b.playtime_forever - a.playtime_forever)
+          .slice(0, 20)}
         speed="slow"
         client:load
         className="w-full"
@@ -37,7 +63,7 @@ const steamAllGames = await steamAllGamesPromise();
         Recently Played Steam Games
       </h1>
       <InfiniteMovingCardsTwoWeeks
-        items={steamRecentGames}
+        items={steamGames.recent.response.games.filter((game) => game.appid !== 400040 && game.appid !== 431960)}
         speed="normal"
         client:load
       />

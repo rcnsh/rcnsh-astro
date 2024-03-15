@@ -44,7 +44,9 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
     transition:animate="fade"
   >
     <Header />
-    <section class="flex justify-center flex-col mt-8 w-[80%] lg:w-[60%] mx-auto">
+    <section
+      class="flex justify-center flex-col mt-8 w-[80%] lg:w-[60%] mx-auto"
+    >
       <h1
         class="text-[#cdc8c2] text-xl lg:text-3xl md:text-2xl justify-center flex font-mono mx-2 mb-4"
       >

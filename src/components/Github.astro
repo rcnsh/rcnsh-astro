@@ -1,13 +1,23 @@
 ---
-import { githubRepos } from "../server/github";
+import { GET } from '../pages/api/github.ts'
 
-const data = await githubRepos();
+interface Repo {
+  name: string;
+  description: string;
+  html_url: string;
+  stargazers_count: number;
+}
+
+const response = await GET(Astro);
+const data = await response.json() as Repo[];
+
 ---
 
 <div class="grid grid-cols-2 gap-4 xl:grid-cols-3">
   {
     data.map((repo) => (
-      <div class="flex-col rounded-xl p-4 shadow-md text-center">
+      <>
+      <div class="flex-col rounded-xl p-4 shadow-md text-center bg-black/5">
         <a
           class={"text-[#737dbb] underline hover:text-[#cdc8c2]"}
           href={repo.html_url}
@@ -19,6 +29,7 @@ const data = await githubRepos();
         <br />
         <span class={"text-[#cdc8c2]"}>{repo.description}</span>
       </div>
+      </>
     ))
   }
 </div>

@@ -13,9 +13,12 @@ export const GET: APIRoute = async () => {
     }&steamid=${import.meta.env.STEAM_USER_ID}&format=json`,
   ).then((response) => response.json());
 
-  return new Response(JSON.stringify({ steam_data_recent, steam_data_all }), {
-    headers: {
-      "content-type": "application/json",
+  return new Response(
+    JSON.stringify({ recent: steam_data_recent, all: steam_data_all }),
+    {
+      headers: {
+        "content-type": "application/json",
+      },
     },
-  });
+  );
 };
