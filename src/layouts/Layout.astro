@@ -17,6 +17,7 @@ import "@fontsource/geist-mono";
 
 import { ViewTransitions } from "astro:transitions";
 import Sidebar from "../components/Sidebar.astro";
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 ---
 
 <!doctype html>
@@ -76,5 +77,6 @@ import Sidebar from "../components/Sidebar.astro";
   <body class="bg-[#202020] flex">
     <Sidebar transition:persist />
     <slot />
+    <SpeedInsights/>
   </body>
 </html>
