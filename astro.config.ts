@@ -12,7 +12,7 @@ export default defineConfig({
   site: "https://rcn.sh",
   prefetch: {
     prefetchAll: true,
-    defaultStrategy: "viewport",
+    defaultStrategy: "hover",
   },
   experimental: {
     clientPrerender: true,
