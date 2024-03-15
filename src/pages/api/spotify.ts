@@ -1,7 +1,5 @@
 // spotify fetching code from nexxel.dev
 
-export const prefetch = true;
-
 import type { APIRoute } from "astro";
 
 import { z } from "zod";
