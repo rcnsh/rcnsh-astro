@@ -19,7 +19,9 @@ interface songData {
 const reponse = await GET(Astro);
 const song = (await reponse.json()) as songData;
 ---
-<a
+
+<section>
+  <a
     target="_blank"
     rel="noopener noreferer"
     href={song.isPlaying
@@ -64,7 +66,13 @@ const song = (await reponse.json()) as songData;
       </p>
     </div>
     <div class="flex float-end">
-      {song.isPlaying ? <PauseIcon size={24} stroke="#cdc8c2"/> : <PlayIcon size={24} stroke="#cdc8c2"/>}
+      {
+        song.isPlaying ? (
+          <PauseIcon size={24} stroke="#cdc8c2" />
+        ) : (
+          <PlayIcon size={24} stroke="#cdc8c2" />
+        )
+      }
     </div>
     <div class="absolute bottom-1.5 right-1.5">
       <svg
