@@ -12,6 +12,10 @@ import {
   CpuIcon,
 } from "astro-feather";
 
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, max-age=10, s-maxage=10, stale-while-revalidate=10, stale-if-error=3600",
+);
 const reponse = await GET(Astro);
 const data = await reponse.json();
 

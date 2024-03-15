@@ -1,4 +1,8 @@
 ---
+Astro.response.headers.set(
+  "Cache-Control",
+  "public, max-age=10, s-maxage=10, stale-while-revalidate=10, stale-if-error=3600",
+);
 import MobileDrawer from "./Drawer";
 import { GET } from "../pages/api/nowPlaying";
 const reponse = await GET(Astro);
