@@ -47,7 +47,7 @@ const getLabelByHref = (title: string) => {
   <div class="sticky top-0 z-10 border-b px-5 py-3 border-[#cdc8c2]">
     <div class="flex items-center justify-between">
       <div class="text-sm font-semibold tracking-tight text-[#cdc8c2]">
-        <span>{getLabelByHref(title)}</span>
+        <span transition:animate="fade">{getLabelByHref(title)}</span>
       </div>
     </div>
   </div>
