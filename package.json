@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.9",
-    "@astrojs/db": "^0.8.5",
+    "@astrojs/db": "^0.8.6",
     "@astrojs/react": "^3.1.0",
     "@astrojs/sitemap": "^3.1.1",
     "@astrojs/tailwind": "^5.1.0",
@@ -29,7 +29,7 @@
     "@vercel/node": "^3.0.24",
     "@vercel/og": "^0.6.2",
     "@vercel/speed-insights": "^1.0.10",
-    "astro": "^4.5.4",
+    "astro": "^4.5.5",
     "astro-feather": "^1.0.0",
     "astro-page-insight": "^0.4.1",
     "auth-astro": "^4.1.1",
