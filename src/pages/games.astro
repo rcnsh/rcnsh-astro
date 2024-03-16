@@ -8,6 +8,7 @@ import { InfiniteMovingCardsAll } from "@components/InfiniteSteamCardsAll";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import Header from "@components/Header.astro";
+import { slide } from "astro:transitions";
 
 type Game = {
   appid: number;
@@ -57,26 +58,31 @@ const steamGames = (await response.json()) as SteamGames;
         speed="slow"
         client:load
         className="w-full"
-      />
-    </section>
-    <section class="flex justify-center flex-col mx-2 mt-8">
-      <h1
-        class="text-[#cdc8c2] text-xl lg:text-3xl md:text-2xl justify-center flex font-mono text-center"
+        transition:animate={slide({ duration: "0.4s" })}
       >
-        Recently Played Steam Games
-      </h1>
-      <InfiniteMovingCardsTwoWeeks
-        items={steamGames.recent.response.games.filter(
-          (game) => game.appid !== 400040 && game.appid !== 431960,
-        )}
-        speed="normal"
-        client:load
-      />
+        />
+      </InfiniteMovingCardsAll>
+      <section class="flex justify-center flex-col mx-2 mt-8">
+        <h1
+          class="text-[#cdc8c2] text-xl lg:text-3xl md:text-2xl justify-center flex font-mono text-center"
+        >
+          Recently Played Steam Games
+        </h1>
+        <InfiniteMovingCardsTwoWeeks
+          items={steamGames.recent.response.games.filter(
+            (game) => game.appid !== 400040 && game.appid !== 431960,
+          )}
+          speed="normal"
+          className="w-full"
+          client:load
+          transition:animate={slide({ duration: "0.4s" })}
+        />
+      </section>
+      <div class="mt-auto">
+        <Footer client:only transition:persist>
+          <Credits />
+        </Footer>
+      </div>
     </section>
-    <div class="mt-auto">
-      <Footer client:only transition:persist>
-        <Credits />
-      </Footer>
-    </div>
   </main>
 </Layout>
