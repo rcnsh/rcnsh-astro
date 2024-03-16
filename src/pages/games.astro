@@ -43,7 +43,10 @@ const steamGames = (await response.json()) as SteamGames;
     transition:animate="fade"
   >
     <Header />
-    <section class="flex justify-center flex-col mx-2 mt-8">
+    <section
+      class="flex justify-center flex-col mx-2 mt-8"
+      transition:animate={slide({ duration: "0.4s" })}
+    >
       <h1
         class="text-[#cdc8c2] text-xl lg:text-3xl md:text-2xl justify-center flex font-mono mx-4"
       >
@@ -58,11 +61,13 @@ const steamGames = (await response.json()) as SteamGames;
         speed="slow"
         client:load
         className="w-full"
-        transition:animate={slide({ duration: "0.4s" })}
       >
         />
       </InfiniteMovingCardsAll>
-      <section class="flex justify-center flex-col mx-2 mt-8">
+      <section
+        class="flex justify-center flex-col mx-2 mt-8"
+        transition:animate={slide({ duration: "0.4s" })}
+      >
         <h1
           class="text-[#cdc8c2] text-xl lg:text-3xl md:text-2xl justify-center flex font-mono text-center"
         >
@@ -75,7 +80,6 @@ const steamGames = (await response.json()) as SteamGames;
           speed="normal"
           className="w-full"
           client:load
-          transition:animate={slide({ duration: "0.4s" })}
         />
       </section>
       <div class="mt-auto">
