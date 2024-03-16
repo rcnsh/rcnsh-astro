@@ -40,7 +40,29 @@ const getLabelByHref = (title: string) => {
   return link ? link.label : null;
 };
 ---
+<script is:inline>
+  function linkProcessing() {
+    const links = document.querySelectorAll('a');
 
+    links.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        links.forEach((otherLink) => {
+          if (otherLink !== event.currentTarget) {
+            otherLink.classList.add('pointer-events-none');
+          } else {
+            const loadingSpinner = otherLink.querySelector('section');
+            if (loadingSpinner) {
+              loadingSpinner.classList.remove('hidden');
+            }
+          }
+        });
+      });
+    });
+  }
+  document.addEventListener("astro:after-swap", linkProcessing);
+
+  document.addEventListener("DOMContentLoaded", linkProcessing)
+</script>
 <main
   class={"hidden bg-gradient-to-br from-[#111111] to-[#303030] lg:flex lg:flex-col lg:border-r lg:min-w-[21rem] h-screen lg:border-[#cdc8c2] max-w-[21rem]"}
 >
@@ -91,7 +113,6 @@ const getLabelByHref = (title: string) => {
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#181818] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
             )}
-            onclick="document.getElementById('spinnerHome').classList.remove('hidden');"
           >
             <span
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
@@ -108,9 +129,9 @@ const getLabelByHref = (title: string) => {
                 </span>
               </span>
             </span>
-            <div class="hidden" id="spinnerHome">
+            <section class="hidden">
               <Spinner />
-            </div>
+            </section>
           </a>
           <a
             href={"/games"}
@@ -120,7 +141,6 @@ const getLabelByHref = (title: string) => {
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
             )}
-            onclick="document.getElementById('spinnerGames').classList.remove('hidden');"
           >
             <span
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
@@ -137,9 +157,9 @@ const getLabelByHref = (title: string) => {
                 </span>
               </span>
             </span>
-            <div class="hidden" id="spinnerGames">
+            <section class="hidden">
               <Spinner />
-            </div>
+            </section>
           </a>
           <a
             href={"/music"}
@@ -149,7 +169,6 @@ const getLabelByHref = (title: string) => {
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#181818] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
             )}
-            onclick="document.getElementById('spinnerMusic').classList.remove('hidden');"
           >
             <span
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
@@ -166,9 +185,9 @@ const getLabelByHref = (title: string) => {
                 </span>
               </span>
             </span>
-            <div class="hidden" id="spinnerMusic">
+            <section class="hidden">
               <Spinner />
-            </div>
+            </section>
           </a>
           <a
             href={"/guestbook"}
@@ -178,7 +197,6 @@ const getLabelByHref = (title: string) => {
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
             )}
-            onclick="document.getElementById('spinnerGuestbook').classList.remove('hidden');"
           >
             <span
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
@@ -195,9 +213,9 @@ const getLabelByHref = (title: string) => {
                 </span>
               </span>
             </span>
-            <div class="hidden" id="spinnerGuestbook">
+            <section class="hidden">
               <Spinner />
-            </div>
+            </section>
           </a>
         </div>
       </div>
