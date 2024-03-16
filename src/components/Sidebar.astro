@@ -2,6 +2,7 @@
 export const prerender = false;
 import { cn } from "../lib/utils";
 import Spotify from "./Spotify.astro";
+import Spinner from "./Spinner.astro";
 import {
   HomeIcon,
   MusicIcon,
@@ -90,6 +91,7 @@ const getLabelByHref = (title: string) => {
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#181818] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
             )}
+            onclick="document.getElementById('spinnerHome').classList.remove('hidden');"
           >
             <span
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
@@ -106,6 +108,9 @@ const getLabelByHref = (title: string) => {
                 </span>
               </span>
             </span>
+            <div class="hidden" id="spinnerHome">
+              <Spinner />
+            </div>
           </a>
           <a
             href={"/games"}
@@ -115,6 +120,7 @@ const getLabelByHref = (title: string) => {
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
             )}
+            onclick="document.getElementById('spinnerGames').classList.remove('hidden');"
           >
             <span
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
@@ -131,6 +137,9 @@ const getLabelByHref = (title: string) => {
                 </span>
               </span>
             </span>
+            <div class="hidden" id="spinnerGames">
+              <Spinner />
+            </div>
           </a>
           <a
             href={"/music"}
@@ -140,6 +149,7 @@ const getLabelByHref = (title: string) => {
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#181818] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
             )}
+            onclick="document.getElementById('spinnerMusic').classList.remove('hidden');"
           >
             <span
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
@@ -156,6 +166,9 @@ const getLabelByHref = (title: string) => {
                 </span>
               </span>
             </span>
+            <div class="hidden" id="spinnerMusic">
+              <Spinner />
+            </div>
           </a>
           <a
             href={"/guestbook"}
@@ -165,6 +178,7 @@ const getLabelByHref = (title: string) => {
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
             )}
+            onclick="document.getElementById('spinnerGuestbook').classList.remove('hidden');"
           >
             <span
               class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
@@ -181,6 +195,9 @@ const getLabelByHref = (title: string) => {
                 </span>
               </span>
             </span>
+            <div class="hidden" id="spinnerGuestbook">
+              <Spinner />
+            </div>
           </a>
         </div>
       </div>

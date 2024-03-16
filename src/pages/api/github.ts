@@ -35,7 +35,6 @@ export const GET: APIRoute = async () => {
   const githubData = repoCall.data as Repo[];
 
   const repoNamesToInclude = [
-    "rcnsh-astro",
     "RaspberryPyGame",
     "Edexcel-Large-Data-Set-Analysis",
     "rcn-api",
@@ -52,6 +51,7 @@ export const GET: APIRoute = async () => {
 
   reposFiltered.push(await getSpecificRepo("virtue-gymnastics-website"));
   reposFiltered.push(await getSpecificRepo("notes"));
+  reposFiltered.push(await getSpecificRepo("rcnsh-astro"));
 
   return new Response(
     JSON.stringify({ websiteRepos: reposFiltered, allRepos: githubData }),

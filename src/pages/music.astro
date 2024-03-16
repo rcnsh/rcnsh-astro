@@ -5,6 +5,7 @@ import Layout from "@layouts/Layout.astro";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import Header from "@components/Header.astro";
+import { slide } from "astro:transitions";
 
 const response = await fetch("https://rcn.sh/api/spotify").then((res) =>
   res.json(),
@@ -34,6 +35,7 @@ export type Artist = {
   url: string;
   image: string;
 };
+
 ---
 
 <Layout title="rcn.sh • Music" image="https://rcn.sh/api/og.png?title=Music">
@@ -42,7 +44,7 @@ export type Artist = {
     transition:animate="fade"
   >
     <Header />
-    <section class="flex flex-col mx-2 my-4">
+    <section class="flex flex-col mx-2 my-4" transition:animate={slide({ duration: "0.4s" })}>
       <div>
         <h1 class="text-[#cbc8c2] text-2xl font-mono my-8 flex justify-center">
           Recently Played Tracks
