@@ -42,7 +42,7 @@ const getLabelByHref = (title: string) => {
 ---
 <script is:inline>
   function linkProcessing() {
-    const links = document.querySelectorAll('a');
+    const links = document.querySelectorAll('a.process');
 
     links.forEach((link) => {
       link.addEventListener('click', (event) => {
@@ -108,7 +108,7 @@ const getLabelByHref = (title: string) => {
           <a
             href={"/"}
             class={cn(
-              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
+              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
               url.split("/")[3] === ""
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#181818] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
@@ -136,7 +136,7 @@ const getLabelByHref = (title: string) => {
           <a
             href={"/games"}
             class={cn(
-              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
+              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
               url.split("/")[3] === "games"
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
@@ -164,7 +164,7 @@ const getLabelByHref = (title: string) => {
           <a
             href={"/music"}
             class={cn(
-              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
+              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
               url.split("/")[3] === "music"
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#181818] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
@@ -192,7 +192,7 @@ const getLabelByHref = (title: string) => {
           <a
             href={"/guestbook"}
             class={cn(
-              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
+              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
               url.split("/")[3] === "guestbook"
                 ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
                 : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
