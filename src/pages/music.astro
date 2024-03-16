@@ -35,7 +35,6 @@ export type Artist = {
   url: string;
   image: string;
 };
-
 ---
 
 <Layout title="rcn.sh • Music" image="https://rcn.sh/api/og.png?title=Music">
@@ -44,7 +43,10 @@ export type Artist = {
     transition:animate="fade"
   >
     <Header />
-    <section class="flex flex-col mx-2 my-4" transition:animate={slide({ duration: "0.4s" })}>
+    <section
+      class="flex flex-col mx-2 my-4"
+      transition:animate={slide({ duration: "0.4s" })}
+    >
       <div>
         <h1 class="text-[#cbc8c2] text-2xl font-mono my-8 flex justify-center">
           Recently Played Tracks
