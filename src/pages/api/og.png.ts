@@ -7,7 +7,7 @@ export const GET: APIRoute = async ({ url }) => {
   try {
     const { searchParams } = url;
     const GeistMono = fs.readFileSync(
-      path.resolve("./public/fonts/GeistMono-Regular.otf"),
+      path.resolve("/public/fonts/GeistMono-Regular.otf"),
     );
 
     // ?title=<title>
