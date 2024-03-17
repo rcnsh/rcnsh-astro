@@ -1,20 +1,15 @@
 import { ImageResponse } from "@vercel/og";
 import type { APIRoute } from "astro";
-import fs from "fs";
-import path from "path";
 
 export const GET: APIRoute = async ({ url }) => {
   try {
     const { searchParams } = url;
-    const GeistMono = fs.readFileSync(
-      path.resolve("/public/fonts/GeistMono-Regular.otf"),
-    );
+    const response = await fetch("http://rcn.sh/fonts/GeistMono-Regular.otf");
+    const GeistMono = await response.arrayBuffer();
 
     // ?title=<title>
     const hasTitle = searchParams.has("title");
-    const title = hasTitle
-      ? searchParams.get("title")?.slice(0, 100)
-      : "No title provided.";
+    const title = hasTitle ? searchParams.get("title")?.slice(0, 100) : "";
 
     const html = {
       type: "div",
@@ -86,7 +81,7 @@ export const GET: APIRoute = async ({ url }) => {
         fonts: [
           {
             name: "Geist Mono",
-            data: Buffer.from(GeistMono.buffer),
+            data: Buffer.from(GeistMono),
           },
         ],
       },

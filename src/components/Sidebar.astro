@@ -40,19 +40,20 @@ const getLabelByHref = (title: string) => {
   return link ? link.label : null;
 };
 ---
+
 <script is:inline>
   function linkProcessing() {
-    const links = document.querySelectorAll('a.process');
+    const links = document.querySelectorAll("a.process");
 
     links.forEach((link) => {
-      link.addEventListener('click', (event) => {
+      link.addEventListener("click", (event) => {
         links.forEach((otherLink) => {
           if (otherLink !== event.currentTarget) {
-            otherLink.classList.add('pointer-events-none');
+            otherLink.classList.add("pointer-events-none");
           } else {
-            const loadingSpinner = otherLink.querySelector('section');
+            const loadingSpinner = otherLink.querySelector("section");
             if (loadingSpinner) {
-              loadingSpinner.classList.remove('hidden');
+              loadingSpinner.classList.remove("hidden");
             }
           }
         });
@@ -61,7 +62,7 @@ const getLabelByHref = (title: string) => {
   }
   document.addEventListener("astro:after-swap", linkProcessing);
 
-  document.addEventListener("DOMContentLoaded", linkProcessing)
+  document.addEventListener("DOMContentLoaded", linkProcessing);
 </script>
 <main
   class={"hidden bg-gradient-to-br from-[#111111] to-[#303030] lg:flex lg:flex-col lg:border-r lg:min-w-[21rem] h-screen lg:border-[#cdc8c2] max-w-[21rem]"}
