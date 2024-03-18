@@ -1,11 +1,16 @@
 ---
-export const prerender = false;
-
+import { Cloudinary } from "@cloudinary/url-gen";
 import Layout from "@layouts/Layout.astro";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import Header from "@components/Header.astro";
 import { slide } from "astro:transitions";
+
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: "dtqhs8nvm",
+  },
+});
 
 const response = await fetch("https://rcn.sh/api/spotify").then((res) =>
   res.json(),
@@ -35,6 +40,28 @@ export type Artist = {
   url: string;
   image: string;
 };
+
+recentTracks.forEach((track) => {
+  const albumImageUrl = track.image;
+
+  const cldSrc = cld
+    .image(albumImageUrl)
+    .setDeliveryType("fetch")
+    .format("webp");
+
+  track.image = cldSrc.toURL();
+});
+
+artists.forEach((artist) => {
+  const artistImageUrl = artist.image;
+
+  const cldSrc = cld
+    .image(artistImageUrl)
+    .setDeliveryType("fetch")
+    .format("webp");
+
+  artist.image = cldSrc.toURL();
+});
 ---
 
 <Layout title="rcn.sh • Music" image="https://rcn.sh/api/og.png?title=Music">

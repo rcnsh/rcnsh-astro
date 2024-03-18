@@ -1,6 +1,5 @@
 ---
-export const prerender = false;
-
+import { Cloudinary } from "@cloudinary/url-gen";
 import Layout from "@layouts/Layout.astro";
 import { GET } from "./api/steam";
 import { InfiniteMovingCardsTwoWeeks } from "@components/InfiniteSteamCardsTwoWeeks";
@@ -8,7 +7,12 @@ import { InfiniteMovingCardsAll } from "@components/InfiniteSteamCardsAll";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import Header from "@components/Header.astro";
-import { slide } from "astro:transitions";
+
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: "dtqhs8nvm",
+  },
+});
 
 function shuffle(array: Array<any>) {
   let currentIndex = array.length,
@@ -50,6 +54,24 @@ interface SteamGames {
 
 const response = await GET(Astro);
 const steamGames = (await response.json()) as SteamGames;
+
+steamGames.all.response.games.forEach((game) => {
+  const cldSrc = cld
+    .image(game.game_image_url)
+    .setDeliveryType("fetch")
+    .format("webp");
+
+  game.game_image_url = cldSrc.toURL();
+});
+
+steamGames.recent.response.games.forEach((game) => {
+  const cldSrc = cld
+    .image(game.game_image_url)
+    .setDeliveryType("fetch")
+    .format("webp");
+
+  game.game_image_url = cldSrc.toURL();
+});
 ---
 
 <Layout title="rcn.sh • Games" image="https://rcn.sh/api/og.png?title=Games">

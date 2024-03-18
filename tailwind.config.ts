@@ -13,9 +13,16 @@ export default {
         mono: ["Geist Mono", ...defaultTheme.fontFamily.mono],
       },
       animation: {
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
         "gradient-x": "gradient-x 10s ease infinite",
       },
       keyframes: {
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
         "gradient-x": {
           "0%, 100%": {
             "background-size": "200% 200%",
