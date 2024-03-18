@@ -10,6 +10,21 @@ import Credits from "@components/Credits.astro";
 import Header from "@components/Header.astro";
 import { slide } from "astro:transitions";
 
+function shuffle(array: Array<any>) {
+  let currentIndex = array.length,
+    randomIndex;
+  while (currentIndex > 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+
 type Game = {
   appid: number;
   name: string;
@@ -50,11 +65,13 @@ const steamGames = (await response.json()) as SteamGames;
         My Steam Games
       </h1>
       <InfiniteMovingCardsAll
-        items={steamGames.all.response.games
-          .filter((game) => game.appid !== 400040 && game.appid !== 431960)
-          .filter((game) => game.playtime_forever > 0)
-          .sort((a, b) => b.playtime_forever - a.playtime_forever)
-          .slice(0, 20)}
+        items={shuffle(
+          steamGames.all.response.games
+            .filter((game) => game.appid !== 400040 && game.appid !== 431960)
+            .filter((game) => game.playtime_forever > 0)
+            .sort((a, b) => b.playtime_forever - a.playtime_forever)
+            .slice(0, 20),
+        )}
         speed="slow"
         client:load
         className="w-full"
@@ -68,8 +85,10 @@ const steamGames = (await response.json()) as SteamGames;
           Recently Played Steam Games
         </h1>
         <InfiniteMovingCardsTwoWeeks
-          items={steamGames.recent.response.games.filter(
-            (game) => game.appid !== 400040 && game.appid !== 431960,
+          items={shuffle(
+            steamGames.recent.response.games.filter(
+              (game) => game.appid !== 400040 && game.appid !== 431960,
+            ),
           )}
           speed="normal"
           className="w-full"
