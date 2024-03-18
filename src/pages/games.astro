@@ -57,7 +57,9 @@ const steamGames = (await response.json()) as SteamGames;
 
 steamGames.all.response.games.forEach((game) => {
   const cldSrc = cld
-    .image(game.game_image_url)
+    .image(
+      `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
+    )
     .setDeliveryType("fetch")
     .format("webp");
 
@@ -66,12 +68,16 @@ steamGames.all.response.games.forEach((game) => {
 
 steamGames.recent.response.games.forEach((game) => {
   const cldSrc = cld
-    .image(game.game_image_url)
+    .image(
+      `https://steamcdn-a.akamaihd.net/steam/apps/${game.appid}/library_600x900_2x.jpg`,
+    )
     .setDeliveryType("fetch")
     .format("webp");
 
   game.game_image_url = cldSrc.toURL();
 });
+
+console.log(steamGames.all.response.games.slice(0, 1));
 ---
 
 <Layout title="rcn.sh • Games" image="https://rcn.sh/api/og.png?title=Games">

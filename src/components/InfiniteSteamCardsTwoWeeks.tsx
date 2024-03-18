@@ -98,7 +98,7 @@ export const InfiniteMovingCardsTwoWeeks = ({
               rel="noopener noreferer"
             >
               <img
-                src={`https://steamcdn-a.akamaihd.net/steam/apps/${item.appid}/library_600x900_2x.jpg`}
+                src={item.game_image_url}
                 alt={item.name}
                 className={"w-150 h-225 rounded-lg pointer-events-none"}
                 width={150}

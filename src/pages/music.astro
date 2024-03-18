@@ -84,7 +84,13 @@ artists.forEach((artist) => {
             {
               recentTracks.map(({ artists, album, songUrl, title, image }) => (
                 <div class="flex flex-row items-center space-x-4">
-                  <img src={image} alt={title} class="w-16 h-16" />
+                  <img
+                    src={image}
+                    alt={title}
+                    class="w-16 h-16"
+                    height="64"
+                    width="64"
+                  />
                   <div class="flex flex-col">
                     <a href={songUrl}>
                       <h3 class="font-semibold text-neutral-100">{title}</h3>
@@ -116,7 +122,13 @@ artists.forEach((artist) => {
           {
             artists.map(({ name, url, image }) => (
               <div class="flex flex-row items-center space-x-4 px-2">
-                <img src={image} alt={name} class="w-16 h-16" />
+                <img
+                  src={image}
+                  alt={name}
+                  class="w-16 h-16"
+                  width="64"
+                  height="64"
+                />
                 <div class="flex flex-col">
                   <a href={url}>
                     <h3 class="font-semibold text-neutral-100">{name}</h3>

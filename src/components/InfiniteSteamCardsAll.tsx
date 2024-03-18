@@ -97,7 +97,7 @@ export const InfiniteMovingCardsAll = ({
               rel="noopener noreferer"
             >
               <img
-                src={`https://steamcdn-a.akamaihd.net/steam/apps/${item.appid}/library_600x900_2x.jpg`}
+                src={item.game_image_url}
                 alt={"Steam: " + item.appid.toString()}
                 className={"w-150 h-225 rounded-lg pointer-events-none"}
                 width={150}
