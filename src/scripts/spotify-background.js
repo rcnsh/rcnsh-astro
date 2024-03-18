@@ -6,12 +6,13 @@ function backgroundColour() {
     Vibrant.from(image.src)
       .getPalette()
       .then((palette) => {
-        const vibrantColor = palette.Vibrant.hex;
-        const mutedColor = palette.Muted.hex;
-        const darkMutedColor = palette.DarkMuted.hex;
+        const vibrantColour = palette.Vibrant.hex;
+        const mutedColour = palette.Muted.hex;
+        const darkMutedColour = palette.DarkMuted.hex;
 
         const element = document.getElementById("spotify-background");
-        element.style.background = `linear-gradient(to bottom right, ${vibrantColor}, ${mutedColor}, ${darkMutedColor})`;
+        element.style.background = `linear-gradient(-45deg, ${vibrantColour}, ${mutedColour}, ${darkMutedColour}`;
+        element.style.backgroundSize = "400% 400%";
       });
   }
 }
