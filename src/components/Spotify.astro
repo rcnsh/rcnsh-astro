@@ -20,7 +20,7 @@ const reponse = await GET(Astro);
 const song = (await reponse.json()) as songData;
 ---
 
-<section class="bg-black/20 rounded-lg">
+<section class="bg-black/20 rounded-lg animate-gradient-x" id="spotify-background">
   <a
     target="_blank"
     rel="noopener noreferer"
@@ -39,7 +39,7 @@ const song = (await reponse.json()) as songData;
             width={64}
             height={64}
             loading={"eager"}
-          />
+            id={"spotify-image"}          />
         ) : (
           <svg
             stroke="currentColor"
@@ -94,3 +94,4 @@ const song = (await reponse.json()) as songData;
     </div>
   </a>
 </section>
+<script src="../scripts/spotify-background.js"></script>
