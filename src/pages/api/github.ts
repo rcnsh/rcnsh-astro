@@ -37,7 +37,7 @@ export const GET: APIRoute = async () => {
   const repoNamesToInclude = [
     "RaspberryPyGame",
     "Edexcel-Large-Data-Set-Analysis",
-    "rcn-api",
+    "pmt_bypass",
   ];
 
   const reposFiltered = githubData
