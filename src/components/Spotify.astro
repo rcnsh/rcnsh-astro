@@ -2,6 +2,7 @@
 import { Cloudinary } from "@cloudinary/url-gen";
 import { PauseIcon, PlayIcon } from "astro-feather";
 import { GET } from "../pages/api/nowPlaying";
+import { Image } from 'astro:assets';
 Astro.response.headers.set(
   "Cache-Control",
   "s-maxage=1, stale-while-revalidate",
@@ -47,7 +48,7 @@ const cldSrc = cld
     <div class="w-16">
       {
         song.album ? (
-          <img
+          <Image
             class="w-16 shadow-sm"
             src={cldSrc.toURL()}
             alt={song.album}
