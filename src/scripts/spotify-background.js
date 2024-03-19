@@ -12,7 +12,7 @@ function backgroundColour() {
 
         const element = document.getElementById("spotify-background");
         element.style.background = `linear-gradient(-45deg, ${vibrantColour}, ${mutedColour}, ${darkMutedColour}`;
-        element.style.backgroundSize = "400% 400%";
+        element.style.boxShadow = `0 0 15px 10px ${darkMutedColour}`;
       });
   }
 }
