@@ -11,6 +11,7 @@ import {
   YoutubeIcon,
   BookIcon,
   CpuIcon,
+  ShieldIcon,
 } from "astro-feather";
 
 const title = Astro.url.pathname;
@@ -264,6 +265,21 @@ const getLabelByHref = (title: string) => {
             <span class="flex items-center gap-2">
               <CpuIcon />
               <span class="font-medium">Valorant Tracker</span>
+            </span>
+          </span>
+        </a>
+        <a
+          href="https://go.rcn.sh/overwatch"
+          class="group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] hover:bg-gradient-to-br from-[#303030] to-[#111111]"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <span
+            class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
+          >
+            <span class="flex items-center gap-2">
+              <ShieldIcon />
+              <span class="font-medium">Overwatch Tracker</span>
             </span>
           </span>
         </a>

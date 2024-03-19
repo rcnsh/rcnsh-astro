@@ -8,6 +8,7 @@ import {
   YoutubeIcon,
   NotebookIcon,
   CpuIcon,
+  ShieldIcon,
 } from "lucide-react";
 import { cn } from "../lib/utils";
 
@@ -206,6 +207,19 @@ export default function MobileDrawer({
                       <span className="flex items-center gap-2">
                         <CpuIcon />
                         <span className="font-medium">Valorant Tracker</span>
+                      </span>
+                    </span>
+                  </a>
+                  <a
+                    href="https://go.rcn.sh/overwatch"
+                    className="group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] hover:bg-gradient-to-br from-[#303030] to-[#111111]"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
+                      <span className="flex items-center gap-2">
+                        <ShieldIcon />
+                        <span className="font-medium">Overwatch Tracker</span>
                       </span>
                     </span>
                   </a>
