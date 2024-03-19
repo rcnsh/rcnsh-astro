@@ -2,7 +2,6 @@
 import { Cloudinary } from "@cloudinary/url-gen";
 import { PauseIcon, PlayIcon } from "astro-feather";
 import { GET } from "../pages/api/nowPlaying";
-import Image from "astro/components/Image.astro";
 Astro.response.headers.set(
   "Cache-Control",
   "s-maxage=1, stale-while-revalidate",
