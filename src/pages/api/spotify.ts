@@ -2,7 +2,7 @@
 
 import type { APIRoute } from "astro";
 
-import { z } from "zod";
+import { nullable, z } from "zod";
 
 async function getAccessToken(): Promise<{ access_token: string }> {
   const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
@@ -163,14 +163,6 @@ export async function getRecentTracks() {
             uri: z.string(),
           }),
           played_at: z.string(),
-          context: z.object({
-            type: z.string(),
-            external_urls: z.object({
-              spotify: z.string(),
-            }),
-            href: z.string(),
-            uri: z.string(),
-          }),
         }),
       ),
     })
@@ -209,9 +201,6 @@ export async function getTopArtists() {
           ),
           external_urls: z.object({
             spotify: z.string(),
-          }),
-          followers: z.object({
-            total: z.number(),
           }),
         }),
       ),
