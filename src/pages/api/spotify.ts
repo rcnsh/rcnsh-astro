@@ -2,7 +2,7 @@
 
 import type { APIRoute } from "astro";
 
-import { nullable, z } from "zod";
+import { z } from "zod";
 
 async function getAccessToken(): Promise<{ access_token: string }> {
   const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
