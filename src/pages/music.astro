@@ -14,7 +14,7 @@ const cld = new Cloudinary({
 });
 
 const response = await GET(Astro);
-const music = (await response.json())
+const music = await response.json();
 const artists = music.artists as Artist[];
 const recentTracks = music.recentTracks as Track[];
 
