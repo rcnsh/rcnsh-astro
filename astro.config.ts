@@ -6,21 +6,23 @@ import sitemap from "@astrojs/sitemap";
 import db from "@astrojs/db";
 import auth from "auth-astro";
 
+import partytown from "@astrojs/partytown";
+
 // https://astro.build/config
 export default defineConfig({
   trailingSlash: "never",
   site: "https://rcn.sh",
   prefetch: {
-    defaultStrategy: "load",
+    defaultStrategy: "load"
   },
-  integrations: [tailwind(), react(), sitemap(), db(), auth()],
+  integrations: [tailwind(), react(), sitemap(), db(), auth(), partytown()],
   image: {
-    service: squooshImageService(),
+    service: squooshImageService()
   },
   output: "server",
   adapter: vercel({
     webAnalytics: {
-      enabled: true,
-    },
-  }),
+      enabled: true
+    }
+  })
 });
