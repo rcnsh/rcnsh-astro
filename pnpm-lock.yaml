@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.5.9
     version: 0.5.9(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.3)
   '@astrojs/db':
-    specifier: ^0.8.8
-    version: 0.8.8(@types/react@18.2.67)(react@18.2.0)
+    specifier: ^0.9.3
+    version: 0.9.3(@types/react@18.2.67)(react@18.2.0)
   '@astrojs/partytown':
     specifier: ^2.0.4
     version: 2.0.4
@@ -72,8 +72,8 @@ dependencies:
     specifier: ^1.0.0
     version: 1.0.0
   astro-page-insight:
-    specifier: ^0.5.0
-    version: 0.5.0(astro@4.5.8)(preact@10.19.6)(react@18.2.0)
+    specifier: ^0.5.2
+    version: 0.5.2(@astrojs/db@0.9.3)(astro@4.5.8)(preact@10.19.6)(react-dom@18.2.0)(react@18.2.0)
   auth-astro:
     specifier: ^4.1.1
     version: 4.1.1(@auth/core@0.18.6)(astro@4.5.8)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0)
@@ -90,11 +90,11 @@ dependencies:
     specifier: ^16.4.5
     version: 16.4.5
   framer-motion:
-    specifier: ^11.0.18
-    version: 11.0.18(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^11.0.20
+    version: 11.0.20(react-dom@18.2.0)(react@18.2.0)
   lucide-react:
-    specifier: ^0.359.0
-    version: 0.359.0(react@18.2.0)
+    specifier: ^0.362.0
+    version: 0.362.0(react@18.2.0)
   node-vibrant:
     specifier: 3.1.6
     version: 3.1.6
@@ -137,8 +137,8 @@ devDependencies:
     specifier: ^1.0.10
     version: 1.0.10
   cypress:
-    specifier: ^13.7.0
-    version: 13.7.0
+    specifier: ^13.7.1
+    version: 13.7.1
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -188,13 +188,14 @@ packages:
     resolution: {integrity: sha512-XpC8MAaWjD1ff6/IfkRq/5k1EFj6zhCNqXRd5J43SVJEBj/Bsmizkm8N0xOYscGcDFQkRgEw6/eKnI5x/1l6aA==}
     dev: false
 
-  /@astrojs/db@0.8.8(@types/react@18.2.67)(react@18.2.0):
-    resolution: {integrity: sha512-tTIXt0oSSgcT33UARUkWBAnP1I0ihrp0cI7qvaIDM9yCSlg849HH5hCTVwOOIV4uDDwmYRhdfclvFnL8oma7gw==}
+  /@astrojs/db@0.9.3(@types/react@18.2.67)(react@18.2.0):
+    resolution: {integrity: sha512-9cMfggdDr0U+sGGH0y6qppvw+sOx2JrJT+EVSRo784o7W/zxSJVeoZ+U46nsFN8l3BgRReUgUd4CRPObl15fKw==}
     dependencies:
       '@libsql/client': 0.5.5
       async-listen: 3.0.1
       deep-diff: 1.0.2
-      drizzle-orm: 0.29.5(@libsql/client@0.5.5)(@types/react@18.2.67)(react@18.2.0)
+      drizzle-orm: 0.30.4(@libsql/client@0.5.5)(@types/react@18.2.67)(react@18.2.0)
+      github-slugger: 2.0.0
       kleur: 4.1.5
       nanoid: 5.0.6
       open: 10.1.0
@@ -207,6 +208,7 @@ packages:
       - '@aws-sdk/client-rds-data'
       - '@cloudflare/workers-types'
       - '@neondatabase/serverless'
+      - '@op-engineering/op-sqlite'
       - '@opentelemetry/api'
       - '@planetscale/database'
       - '@types/better-sqlite3'
@@ -214,6 +216,7 @@ packages:
       - '@types/react'
       - '@types/sql.js'
       - '@vercel/postgres'
+      - '@xata.io/client'
       - better-sqlite3
       - bufferutil
       - bun-types
@@ -2100,8 +2103,8 @@ packages:
       config-chain: 1.1.13
     dev: false
 
-  /@puppeteer/browsers@2.1.0:
-    resolution: {integrity: sha512-xloWvocjvryHdUjDam/ZuGMh7zn4Sn3ZAaV4Ah2e2EwEt90N3XphZlSsU3n0VDc1F7kggCjMuH0UuxfPQ5mD9w==}
+  /@puppeteer/browsers@2.2.0:
+    resolution: {integrity: sha512-MC7LxpcBtdfTbzwARXIkqGZ1Osn3nnZJlm+i0+VqHl72t//Xwl9wICrXT8BwtgC6s1xJNHsxOpvzISUqe92+sw==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
@@ -3309,22 +3312,28 @@ packages:
     resolution: {integrity: sha512-PVIDwuKOv+sw/pqYysOVY4m77fUOYEKBn8R4l280muXXUuYZUoPRFYx8WoAigI+Yp3cKFY5pJecmtyT4RCnblA==}
     dev: false
 
-  /astro-integration-kit@0.5.1(astro@4.5.8)(preact@10.19.6)(react@18.2.0):
-    resolution: {integrity: sha512-ef309UUNOjxUe0jjsDP5O3p+jkt53HAcrKOsWJ2NIgdUTOp5P/YKnAjbatfyu3bAuLFDfj5xhXm/rrwSe9d/hw==}
+  /astro-integration-kit@0.7.1(@astrojs/db@0.9.3)(astro@4.5.8)(preact@10.19.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-QiIRvNdESlm7bziuEkWXUJI6uWdQgmeUEOLXkbpuMZrZK8c7DytbGSs3SStpT0b5ITQ1XcDV9r9DAixyW0F2Dg==}
     peerDependencies:
+      '@astrojs/db': ^0.9.0
       '@vitejs/plugin-react': ^4.2.1
       astro: ^4.4.1
       preact: ^10.19.4
       react: ^18.2.0
+      react-dom: ^18.2.0
       solid-js: ^1.8.15
       svelte: ^4.2.11
       vue: ^3.4.19
     peerDependenciesMeta:
+      '@astrojs/db':
+        optional: true
       '@vitejs/plugin-react':
         optional: true
       preact:
         optional: true
       react:
+        optional: true
+      react-dom:
         optional: true
       solid-js:
         optional: true
@@ -3333,28 +3342,31 @@ packages:
       vue:
         optional: true
     dependencies:
+      '@astrojs/db': 0.9.3(@types/react@18.2.67)(react@18.2.0)
       astro: 4.5.8(@types/node@20.11.30)(typescript@5.4.3)
       pathe: 1.1.2
       preact: 10.19.6
       react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
       recast: 0.23.5
     dev: false
 
-  /astro-page-insight@0.5.0(astro@4.5.8)(preact@10.19.6)(react@18.2.0):
-    resolution: {integrity: sha512-sfCcWE34u9WQiNuLKOzTQS9TtyC4IpcsJ7CSYHWURAO9D8Il8VQu1T57jzzq3w8bYyOn5Eqt3p/4l8+DgxBp6g==}
+  /astro-page-insight@0.5.2(@astrojs/db@0.9.3)(astro@4.5.8)(preact@10.19.6)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-M6suGeELLq6EnhnlwZTi90heeNDYT5JbmPQujOF8Ukx89mdoCI/LYW6wvcZGteIH4FgLGlNlhaVSjE/jihFf8A==}
     peerDependencies:
       astro: ^4.0.0
     dependencies:
       astro: 4.5.8(@types/node@20.11.30)(typescript@5.4.3)
-      astro-integration-kit: 0.5.1(astro@4.5.8)(preact@10.19.6)(react@18.2.0)
-      chrome-launcher: 1.1.0
-      lighthouse: 11.6.0
+      astro-integration-kit: 0.7.1(@astrojs/db@0.9.3)(astro@4.5.8)(preact@10.19.6)(react-dom@18.2.0)(react@18.2.0)
+      chrome-launcher: 1.1.1
+      lighthouse: 11.7.0
     transitivePeerDependencies:
+      - '@astrojs/db'
       - '@vitejs/plugin-react'
       - bufferutil
-      - encoding
       - preact
       - react
+      - react-dom
       - solid-js
       - supports-color
       - svelte
@@ -3910,8 +3922,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /chrome-launcher@1.1.0:
-    resolution: {integrity: sha512-rJYWeEAERwWIr3c3mEVXwNiODPEdMRlRxHc47B1qHPOolHZnkj7rMv1QSUfPoG6MgatWj5AxSpnKKR4QEwEQIQ==}
+  /chrome-launcher@1.1.1:
+    resolution: {integrity: sha512-OAQgBmpUzrIuShApIwOpjt7WFripGKcDMW/qeYU+kcl6jBPg87mRG+N2C3Vu+VeCVPqZ/ds3GfI2TK7tpz3Yyw==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     dependencies:
@@ -3923,14 +3935,15 @@ packages:
       - supports-color
     dev: false
 
-  /chromium-bidi@0.5.12(devtools-protocol@0.0.1249869):
-    resolution: {integrity: sha512-sZMgEBWKbupD0Q7lyFu8AWkrE+rs5ycE12jFkGwIgD/VS8lDPtelPlXM7LYaq4zrkZ/O2L3f4afHUHL0ICdKog==}
+  /chromium-bidi@0.5.13(devtools-protocol@0.0.1262051):
+    resolution: {integrity: sha512-OHbYCetDxdW/xmlrafgOiLsIrw4Sp1BEeolbZ1UGJO5v/nekQOJBj/Kzyw6sqKcAVabUTo0GS3cTYgr6zIf00g==}
     peerDependencies:
       devtools-protocol: '*'
     dependencies:
-      devtools-protocol: 0.0.1249869
+      devtools-protocol: 0.0.1262051
       mitt: 3.0.1
       urlpattern-polyfill: 10.0.0
+      zod: 3.22.4
     dev: false
 
   /ci-info@3.9.0:
@@ -4161,14 +4174,6 @@ packages:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
     dev: false
 
-  /cross-fetch@4.0.0:
-    resolution: {integrity: sha512-e4a5N8lVvuLgAWgnCrLr2PP0YyDOTHa9H/Rj54dirp61qXnNq46m82bRhNqIA5VccJtWBvPTFRV3TtvHUKPB1g==}
-    dependencies:
-      node-fetch: 2.7.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -4224,8 +4229,8 @@ packages:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
     dev: false
 
-  /cypress@13.7.0:
-    resolution: {integrity: sha512-UimjRSJJYdTlvkChcdcfywKJ6tUYuwYuk/n1uMMglrvi+ZthNhoRYcxnWgTqUtkl17fXrPAsD5XT2rcQYN1xKA==}
+  /cypress@13.7.1:
+    resolution: {integrity: sha512-4u/rpFNxOFCoFX/Z5h+uwlkBO4mWzAjveURi3vqdSu56HPvVdyGTxGw4XKGWt399Y1JwIn9E1L9uMXQpc0o55w==}
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     requiresBuild: true
@@ -4442,8 +4447,8 @@ packages:
     resolution: {integrity: sha512-pM27vqEfxSxRkTMnF+XCmxSEb6duO5R+t8A9DEEJgy4Wz2RVanje2mmj99B6A3zv2r/qGfYlOvYznUhuokizmg==}
     dev: false
 
-  /devtools-protocol@0.0.1249869:
-    resolution: {integrity: sha512-Ctp4hInA0BEavlUoRy9mhGq0i+JSo/AwVyX2EFgZmV1kYB+Zq+EMBAn52QWu6FbRr10hRb6pBl420upbp4++vg==}
+  /devtools-protocol@0.0.1262051:
+    resolution: {integrity: sha512-YJe4CT5SA8on3Spa+UDtNhEqtuV6Epwz3OZ4HQVLhlRccpZ9/PAYk0/cy/oKxFKRrZPBUPyxympQci4yWNWZ9g==}
     dev: false
 
   /didyoumean@1.2.2:
@@ -4494,13 +4499,14 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /drizzle-orm@0.29.5(@libsql/client@0.5.5)(@types/react@18.2.67)(react@18.2.0):
-    resolution: {integrity: sha512-jS3+uyzTz4P0Y2CICx8FmRQ1eplURPaIMWDn/yq6k4ShRFj9V7vlJk67lSf2kyYPzQ60GkkNGXcJcwrxZ6QCRw==}
+  /drizzle-orm@0.30.4(@libsql/client@0.5.5)(@types/react@18.2.67)(react@18.2.0):
+    resolution: {integrity: sha512-kWoSMGbrOFkmkAweLTFtHJMpN+nwhx89q0mLELqT2aEU+1szNV8jrnBmJwZ0WGNp7J7yQn/ezEtxBI/qzTSElQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
       '@libsql/client': '*'
       '@neondatabase/serverless': '>=0.1'
+      '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
       '@types/better-sqlite3': '*'
@@ -4508,6 +4514,7 @@ packages:
       '@types/react': '>=18'
       '@types/sql.js': '*'
       '@vercel/postgres': '*'
+      '@xata.io/client': '*'
       better-sqlite3: '>=7'
       bun-types: '*'
       expo-sqlite: '>=13.2.0'
@@ -4528,6 +4535,8 @@ packages:
         optional: true
       '@neondatabase/serverless':
         optional: true
+      '@op-engineering/op-sqlite':
+        optional: true
       '@opentelemetry/api':
         optional: true
       '@planetscale/database':
@@ -4541,6 +4550,8 @@ packages:
       '@types/sql.js':
         optional: true
       '@vercel/postgres':
+        optional: true
+      '@xata.io/client':
         optional: true
       better-sqlite3:
         optional: true
@@ -5255,8 +5266,8 @@ packages:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
     dev: false
 
-  /framer-motion@11.0.18(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-TPKJ1KqQzTQ//cGFAb/jrpbbNY8UVh2q69vAcVRA8AxsKYkl5nrW1nsmrHRc5dLsRdwlXSV1kuo1Khylhph7kw==}
+  /framer-motion@11.0.20(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-YSDmWznt3hpdERosbE0UAPYWoYhTnmQ0J1qWPsgpCia9NgY8Xsz5IpOiUEGGj/nzCAW29fSrWugeLRkdp5de7g==}
     peerDependencies:
       '@emotion/is-prop-valid': '*'
       react: ^18.0.0
@@ -6293,15 +6304,15 @@ packages:
     resolution: {integrity: sha512-i4jTmg7tvZQFwNFiwB+nCK6a7ICR68Xcwo+VIVd6Spi71vBNFUlds5HiDrSbClZdkQDON2Bhqv+KKJIo5zkPeA==}
     dev: false
 
-  /lighthouse@11.6.0:
-    resolution: {integrity: sha512-ZM0B8W4TZW5pzpnkgHrfmuQuzWUUB9XsS9tuVcCrezVDeSYPwomihnikJFX9KqvGhqIa23BXKfIhiwzaF6Ls/g==}
+  /lighthouse@11.7.0:
+    resolution: {integrity: sha512-oQ9fJyNGibt00Q+046ROZXNcMUwFSEcgsJljww3xLtMkWpq5dnmw7zw39CJFGhXcpAA8D6ayiFuWo7uDXjld/g==}
     engines: {node: '>=18.16'}
     hasBin: true
     dependencies:
       '@paulirish/trace_engine': 0.0.12
       '@sentry/node': 6.19.7
       axe-core: 4.8.4
-      chrome-launcher: 1.1.0
+      chrome-launcher: 1.1.1
       configstore: 5.0.1
       csp_evaluator: 1.1.1
       devtools-protocol: 0.0.1232444
@@ -6318,7 +6329,7 @@ packages:
       open: 8.4.2
       parse-cache-control: 1.0.1
       ps-list: 8.1.1
-      puppeteer-core: 22.4.0
+      puppeteer-core: 22.6.0
       robots-parser: 3.0.1
       semver: 5.7.2
       speedline-core: 1.4.3
@@ -6329,7 +6340,6 @@ packages:
       yargs-parser: 21.1.1
     transitivePeerDependencies:
       - bufferutil
-      - encoding
       - supports-color
       - utf-8-validate
     dev: false
@@ -6491,8 +6501,8 @@ packages:
     resolution: {integrity: sha512-Pn9cox5CsMYngeDbmChANltQl+5pi6XmTrraMSzhPmMBbmgcxmqWry0U3PGapCU1yB4/LqCcom7qhHZiF/jGfQ==}
     dev: false
 
-  /lucide-react@0.359.0(react@18.2.0):
-    resolution: {integrity: sha512-bxVL+rM/wacjpT0BKShA6r5IIKb6LCRg+ltFG9pnnIwaRX8kK3hq8v5JwMpT7RC6XeqB5cSaaV6GapPWWmtliw==}
+  /lucide-react@0.362.0(react@18.2.0):
+    resolution: {integrity: sha512-0S+JudK0AD9vyB0zbu1K0aQsy8k9Wq2l03bio6wxqF2FhK2TSp/y+22HfMyv40EURifgxoSwdU8eIcOv0a8gBA==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -8246,19 +8256,17 @@ packages:
       escape-goat: 4.0.0
     dev: false
 
-  /puppeteer-core@22.4.0:
-    resolution: {integrity: sha512-MZttAbttrxi6O/B//rY6zQihjFe/vXeCLb5YvKH2xG6yrcVESo0Hc5/Cv49omwZyZzAJ1BK8BnDeatDsj+3hMw==}
+  /puppeteer-core@22.6.0:
+    resolution: {integrity: sha512-xclyGFhxHfZ9l62uXFm+JpgtJHLIZ1qHc7iR4eaIqBNKA5Dg2sDr8yvylfCx5bMN89QWIaxpV6IHsy0qUynK/g==}
     engines: {node: '>=18'}
     dependencies:
-      '@puppeteer/browsers': 2.1.0
-      chromium-bidi: 0.5.12(devtools-protocol@0.0.1249869)
-      cross-fetch: 4.0.0
+      '@puppeteer/browsers': 2.2.0
+      chromium-bidi: 0.5.13(devtools-protocol@0.0.1262051)
       debug: 4.3.4(supports-color@8.1.1)
-      devtools-protocol: 0.0.1249869
+      devtools-protocol: 0.0.1262051
       ws: 8.16.0
     transitivePeerDependencies:
       - bufferutil
-      - encoding
       - supports-color
       - utf-8-validate
     dev: false
