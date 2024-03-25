@@ -168,7 +168,7 @@ export async function getRecentTracks() {
     })
     .parse(response);
 
-  return items.slice(0, 12).map((item) => ({
+  return items.map((item) => ({
     artists: item.track.artists,
     songUrl: item.track.external_urls.spotify,
     title: item.track.name,

@@ -15,8 +15,11 @@ const cld = new Cloudinary({
 
 const response = await GET(Astro);
 const music = await response.json();
-const artists = music.artists as Artist[];
-const recentTracks = music.recentTracks as Track[];
+const artists = music.artists as Artist;
+const recentTracks = music.recentTracks as Track;
+const uniqueRecentTracks = recentTracks.filter((track, index, self) =>
+  index === self.findIndex((t) => t.title === track.title)
+).slice(0, 12);
 
 export type Track = {
   artists: {
@@ -34,14 +37,14 @@ export type Track = {
     };
   };
   image: string;
-};
+}[];
 export type Artist = {
   name: string;
   url: string;
   image: string;
-};
+}[];
 
-recentTracks.forEach((track) => {
+uniqueRecentTracks.forEach((track) => {
   const albumImageUrl = track.image;
 
   const cldSrc = cld
@@ -82,7 +85,7 @@ artists.forEach((artist) => {
         <div class="flex justify-center py-8">
           <div class="grid lg:grid-cols-3 gap-y-4 gap-x-4 grid-cols-1">
             {
-              recentTracks.map(({ artists, album, songUrl, title, image }) => (
+              uniqueRecentTracks.map(({ artists, album, songUrl, title, image }) => (
                 <div class="flex flex-row items-center space-x-4">
                   <img
                     src={image}
