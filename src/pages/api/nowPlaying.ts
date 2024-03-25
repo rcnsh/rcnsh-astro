@@ -121,18 +121,23 @@ export const GET: APIRoute = async () => {
   const responseBody = await response.text();
 
   if (!responseBody.trim()) {
-    return new Response(JSON.stringify({
-      isPlaying: false,
-      title: "Not Listening",
-      artist: "Spotify",
-      album: "",
-      albumImageUrl: "https://spotify.com",
-      songUrl: "https://open.spotify.com/user/nz3i2a30ep85rv5ymcpglhndj",
-    }), {
-      headers: {
-        "content-type": "application/json",
+    return new Response(
+      JSON.stringify({
+        isPlaying: false,
+        title: "Not Listening",
+        artist: "Spotify",
+        album: "",
+        albumImageUrl: "https://spotify.com",
+        songUrl: "https://open.spotify.com/user/nz3i2a30ep85rv5ymcpglhndj",
+        songLength: 0,
+        songProgress: 0,
+      }),
+      {
+        headers: {
+          "content-type": "application/json",
+        },
       },
-    });
+    );
   } else {
     const song = JSON.parse(responseBody) as SpotifyData;
 
@@ -145,19 +150,26 @@ export const GET: APIRoute = async () => {
     const albumImageUrl =
       song.item.album.images[0]?.url ?? "https://spotify.com";
     const songUrl = song.item.external_urls.spotify;
+    const songLength = song.item.duration_ms;
+    const songProgress = song.progress_ms;
 
-    return new Response(JSON.stringify({
-      album,
-      albumImageUrl,
-      artist,
-      isPlaying,
-      songUrl,
-      title,
-      song,
-    }), {
-      headers: {
-        "content-type": "application/json",
+    return new Response(
+      JSON.stringify({
+        album,
+        albumImageUrl,
+        artist,
+        isPlaying,
+        songUrl,
+        title,
+        songLength,
+        songProgress,
+        song,
+      }),
+      {
+        headers: {
+          "content-type": "application/json",
+        },
       },
-    });
+    );
   }
 };
