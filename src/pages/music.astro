@@ -17,9 +17,12 @@ const response = await GET(Astro);
 const music = await response.json();
 const artists = music.artists as Artist;
 const recentTracks = music.recentTracks as Track;
-const uniqueRecentTracks = recentTracks.filter((track, index, self) =>
-  index === self.findIndex((t) => t.title === track.title)
-).slice(0, 12);
+const uniqueRecentTracks = recentTracks
+  .filter(
+    (track, index, self) =>
+      index === self.findIndex((t) => t.title === track.title),
+  )
+  .slice(0, 12);
 
 export type Track = {
   artists: {
@@ -85,31 +88,33 @@ artists.forEach((artist) => {
         <div class="flex justify-center py-8">
           <div class="grid lg:grid-cols-3 gap-y-4 gap-x-4 grid-cols-1">
             {
-              uniqueRecentTracks.map(({ artists, album, songUrl, title, image }) => (
-                <div class="flex flex-row items-center space-x-4">
-                  <img
-                    src={image}
-                    alt={title}
-                    class="w-16 h-16"
-                    height="64"
-                    width="64"
-                  />
-                  <div class="flex flex-col">
-                    <a href={songUrl}>
-                      <h3 class="font-semibold text-neutral-100">{title}</h3>
-                    </a>
-                    <p>
-                      {artists.map(({ name, external_urls }, index) => (
-                        <span>
-                          <a href={external_urls.spotify}>{name}</a>
-                          {index < artists.length - 1 ? ", " : ""}
-                        </span>
-                      ))}
-                    </p>
-                    <a href={album.external_urls.spotify}>{album.name}</a>
+              uniqueRecentTracks.map(
+                ({ artists, album, songUrl, title, image }) => (
+                  <div class="flex flex-row items-center space-x-4">
+                    <img
+                      src={image}
+                      alt={title}
+                      class="w-16 h-16"
+                      height="64"
+                      width="64"
+                    />
+                    <div class="flex flex-col">
+                      <a href={songUrl}>
+                        <h3 class="font-semibold text-neutral-100">{title}</h3>
+                      </a>
+                      <p>
+                        {artists.map(({ name, external_urls }, index) => (
+                          <span>
+                            <a href={external_urls.spotify}>{name}</a>
+                            {index < artists.length - 1 ? ", " : ""}
+                          </span>
+                        ))}
+                      </p>
+                      <a href={album.external_urls.spotify}>{album.name}</a>
+                    </div>
                   </div>
-                </div>
-              ))
+                ),
+              )
             }
           </div>
         </div>

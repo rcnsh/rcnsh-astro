@@ -13,16 +13,16 @@ export default defineConfig({
   trailingSlash: "never",
   site: "https://rcn.sh",
   prefetch: {
-    defaultStrategy: "hover"
+    defaultStrategy: "hover",
   },
   integrations: [tailwind(), react(), sitemap(), db(), auth(), partytown()],
   image: {
-    service: squooshImageService()
+    service: squooshImageService(),
   },
   output: "server",
   adapter: vercel({
     webAnalytics: {
-      enabled: true
-    }
-  })
+      enabled: true,
+    },
+  }),
 });

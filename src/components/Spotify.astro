@@ -15,6 +15,8 @@ interface songData {
   album: string;
   albumImageUrl: string;
   songUrl: string;
+  songLength: number;
+  songProgress: number;
 }
 
 const reponse = await GET(Astro);
@@ -31,7 +33,8 @@ const cldSrc = cld
   .setDeliveryType("fetch")
   .format("webp");
 ---
-<script src="../scripts/spotify-background.js"/>
+
+<script src="../scripts/spotify-background.js"></script>
 <section
   class="bg-black/20 rounded-lg animate-gradient-x bg-gradient-to-br from-slate-700 to-black"
   id="spotify-background"
@@ -73,22 +76,32 @@ const cldSrc = cld
         )
       }
     </div>
-    <div class="flex-1">
+    <div class="flex-1 m-4">
       <p class="component font-bold text-[#cdc8c2]">
         {song.title ? song.title : "Not Listening"}
       </p>
       <p class="font-dark text-xs text-[#cdc8c2]">
-        {song.artist ? song.artist : "Spotify"}
+        {song.artist && song.artist}
       </p>
-    </div>
-    <div class="flex float-end">
-      {
-        song.isPlaying ? (
-          <PauseIcon size={24} stroke="#cdc8c2" />
-        ) : (
-          <PlayIcon size={24} stroke="#cdc8c2" />
-        )
-      }
+      <p class="font-dark text-xs text-[#cdc8c2]">
+        {song.album && song.album}
+      </p>
+      <p
+        class="font-dark text-xs text-[#cdc8c2] flex justify-between border-b-2 border-[#cdc8c2] pb-1"
+      >
+        <span>
+          {
+            song.isPlaying &&
+              new Date(song.songProgress).toISOString().slice(14, 19)
+          }
+        </span>
+        <span
+          >{
+            song.isPlaying &&
+              new Date(song.songLength).toISOString().slice(14, 19)
+          }</span
+        >
+      </p>
     </div>
     <div class="absolute bottom-1.5 right-1.5">
       <svg
