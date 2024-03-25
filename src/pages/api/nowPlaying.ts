@@ -120,42 +120,44 @@ export const GET: APIRoute = async () => {
 
   const responseBody = await response.text();
 
-  let songData;
-
   if (!responseBody.trim()) {
-    songData = {
+    return new Response(JSON.stringify({
       isPlaying: false,
       title: "Not Listening",
       artist: "Spotify",
       album: "",
       albumImageUrl: "https://spotify.com",
       songUrl: "https://open.spotify.com/user/nz3i2a30ep85rv5ymcpglhndj",
-    };
+    }), {
+      headers: {
+        "content-type": "application/json",
+      },
+    });
   } else {
     const song = JSON.parse(responseBody) as SpotifyData;
 
     const isPlaying = song.is_playing;
     const title = song.item.name;
     const artist = song.item.artists
-      .map((_artist: { name: any }) => _artist.name)
+      .map((_artist: { name: string }) => _artist.name)
       .join(", ");
     const album = song.item.album.name;
     const albumImageUrl =
       song.item.album.images[0]?.url ?? "https://spotify.com";
     const songUrl = song.item.external_urls.spotify;
 
-    songData = {
+    return new Response(JSON.stringify({
       album,
       albumImageUrl,
       artist,
       isPlaying,
       songUrl,
       title,
-    };
+      song,
+    }), {
+      headers: {
+        "content-type": "application/json",
+      },
+    });
   }
-  return new Response(JSON.stringify(songData), {
-    headers: {
-      "content-type": "application/json",
-    },
-  });
 };
