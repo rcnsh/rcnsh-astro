@@ -27,7 +27,6 @@ export default function MusicBar({
         setDuration(data.songLength);
         setProgress(data.songProgress);
         setIsSongPlaying(data.isPlaying);
-        console.log(data.isPlaying);
         if (image) {
           Vibrant.from(image.src)
             .getPalette()
@@ -48,8 +47,9 @@ export default function MusicBar({
   const [currentSongDuration, setDuration] = useState(duration);
   const progressPercent = (currentProgress / currentSongDuration) * 100;
 
+  let interval: ReturnType<typeof setInterval>;
+
   useEffect(() => {
-    let interval: ReturnType<typeof setInterval>;
     if (isSongPlaying) {
       interval = setInterval(() => {
         setProgress((currentProgress) => {
@@ -62,15 +62,13 @@ export default function MusicBar({
         });
       }, 1000);
     }
-    const updateUIInterval = setInterval(updateUI, 5000);
 
     return () => {
       if (interval) {
         clearInterval(interval);
       }
-      clearInterval(updateUIInterval);
     };
-  }, [isPlaying, currentSongDuration]);
+  }, [isSongPlaying, currentSongDuration]);
 
   return (
     <>
