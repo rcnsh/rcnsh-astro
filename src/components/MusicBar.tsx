@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type {songData} from "types";
+import type { songData } from "types";
 
 export default function MusicBar({
   duration,
@@ -23,19 +23,23 @@ export default function MusicBar({
             return currentProgress + 1000;
           } else {
             clearInterval(interval);
-            fetch('https://rcn.sh/api/nowPlaying')
-              .then(response => response.json() as Promise<songData>)
-              .then(data => {
-                document.getElementById('nowPlayingTitle')!.innerText = data.title;
-                document.getElementById('nowPlayingArtist')!.innerText = data.artist;
-                document.getElementById('nowPlayingAlbum')!.innerText = data.album;
-                (document.getElementById('spotify-image') as HTMLImageElement).src = data.albumImageUrl;
+            fetch("https://rcn.sh/api/nowPlaying")
+              .then((response) => response.json() as Promise<songData>)
+              .then((data) => {
+                document.getElementById("nowPlayingTitle")!.innerText =
+                  data.title;
+                document.getElementById("nowPlayingArtist")!.innerText =
+                  data.artist;
+                document.getElementById("nowPlayingAlbum")!.innerText =
+                  data.album;
+                (
+                  document.getElementById("spotify-image") as HTMLImageElement
+                ).src = data.albumImageUrl;
                 setDuration(data.songLength);
                 setProgress(data.songProgress);
-                
               })
-              .catch(error => {
-                console.error('Error:', error);
+              .catch((error) => {
+                console.error("Error:", error);
               });
             return currentProgress;
           }
@@ -56,7 +60,8 @@ export default function MusicBar({
           {isPlaying && new Date(currentProgress).toISOString().slice(14, 19)}
         </span>
         <span>
-          {isPlaying && new Date(currentSongDuration).toISOString().slice(14, 19)}
+          {isPlaying &&
+            new Date(currentSongDuration).toISOString().slice(14, 19)}
         </span>
       </p>
       <div
