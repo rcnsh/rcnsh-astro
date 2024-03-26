@@ -21,9 +21,6 @@ export default function MusicBar({
       interval = setInterval(() => {
         setProgress((currentProgress) => {
           if (currentProgress < currentSongDuration) {
-            return currentProgress + 1000;
-          } else {
-            clearInterval(interval);
             fetch("https://rcn.sh/api/nowPlaying")
               .then((response) => response.json() as Promise<songData>)
               .then((data) => {
@@ -59,6 +56,9 @@ export default function MusicBar({
               .catch((error) => {
                 console.error("Error:", error);
               });
+            return currentProgress + 1000;
+          } else {
+            clearInterval(interval);
             return currentProgress;
           }
         });
