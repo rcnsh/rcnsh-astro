@@ -47,9 +47,10 @@ export default function MusicBar({
   const [currentSongDuration, setDuration] = useState(duration);
   const progressPercent = (currentProgress / currentSongDuration) * 100;
 
-  let interval: ReturnType<typeof setInterval>;
+  
 
   useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
     if (isSongPlaying) {
       interval = setInterval(() => {
         setProgress((currentProgress) => {
@@ -69,6 +70,18 @@ export default function MusicBar({
       };
     }
   }, [isSongPlaying, currentSongDuration]);
+
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    interval = setInterval(() => {
+      updateUI();
+    }, 5000);
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [updateUI]);
 
   return (
     <>
