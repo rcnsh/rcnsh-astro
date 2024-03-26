@@ -13,11 +13,12 @@ export default function MusicBar({
 }) {
   const [currentProgress, setProgress] = useState(progress);
   const [currentSongDuration, setDuration] = useState(duration);
+  const [currentIsPlaying, setIsPlaying] = useState(isPlaying);
   const progressPercent = (currentProgress / currentSongDuration) * 100;
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
-    if (isPlaying) {
+    if (currentIsPlaying) {
       interval = setInterval(() => {
         setProgress((currentProgress) => {
           if (currentProgress < currentSongDuration) {
@@ -38,6 +39,7 @@ export default function MusicBar({
 
                 setDuration(data.songLength);
                 setProgress(data.songProgress);
+                setIsPlaying(data.isPlaying);
                 if (image) {
                   Vibrant.from(image.src)
                     .getPalette()
