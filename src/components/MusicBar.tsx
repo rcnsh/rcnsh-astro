@@ -81,7 +81,7 @@ export default function MusicBar({
         clearInterval(interval);
       }
     };
-  }, [updateUI]);
+  }, [updateUI, currentSongDuration]);
 
   return (
     <>
