@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { songData } from "types";
+import Vibrant from "node-vibrant";
 
 export default function MusicBar({
   duration,
@@ -26,17 +27,34 @@ export default function MusicBar({
             fetch("https://rcn.sh/api/nowPlaying")
               .then((response) => response.json() as Promise<songData>)
               .then((data) => {
+                const image = document.getElementById(
+                  "spotify-image",
+                ) as HTMLImageElement;
+
+                image.src = data.albumImageUrl;
                 document.getElementById("nowPlayingTitle")!.innerText =
                   data.title;
                 document.getElementById("nowPlayingArtist")!.innerText =
                   data.artist;
                 document.getElementById("nowPlayingAlbum")!.innerText =
                   data.album;
-                (
-                  document.getElementById("spotify-image") as HTMLImageElement
-                ).src = data.albumImageUrl;
+
                 setDuration(data.songLength);
                 setProgress(data.songProgress);
+                if (image) {
+                  Vibrant.from(image.src)
+                    .getPalette()
+                    .then((palette) => {
+                      const vibrantColour = palette.Vibrant!.hex;
+                      const mutedColour = palette.Muted!.hex;
+                      const darkMutedColour = palette.DarkMuted!.hex;
+
+                      const element =
+                        document.getElementById("spotify-background");
+                      element!.style.background = `linear-gradient(-45deg, ${vibrantColour}, ${mutedColour}, ${darkMutedColour}`;
+                      element!.style.boxShadow = `0 0 15px 10px ${darkMutedColour}`;
+                    });
+                }
               })
               .catch((error) => {
                 console.error("Error:", error);
