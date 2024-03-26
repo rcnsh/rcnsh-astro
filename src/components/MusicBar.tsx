@@ -21,6 +21,14 @@ export default function MusicBar({
             return currentProgress + 1000;
           } else {
             clearInterval(interval);
+            fetch('https://rcn.sh/api/nowPlaying')
+              .then(response => response.json())
+              .then(data => {
+                console.log(data);
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
             return currentProgress;
           }
         });
