@@ -27,6 +27,7 @@ export default function MusicBar({
         setDuration(data.songLength);
         setProgress(data.songProgress);
         setIsSongPlaying(data.isPlaying);
+        console.log(data.isPlaying);
         if (image) {
           Vibrant.from(image.src)
             .getPalette()
