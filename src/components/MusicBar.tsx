@@ -61,13 +61,13 @@ export default function MusicBar({
           }
         });
       }, 1000);
-    }
 
-    return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    };
+      return () => {
+        if (interval) {
+          clearInterval(interval);
+        }
+      };
+    }
   }, [isSongPlaying, currentSongDuration]);
 
   return (
