@@ -73,3 +73,14 @@ export interface SpotifyData {
   actions: Actions;
   is_playing: boolean;
 }
+
+export interface songData {
+  isPlaying: boolean;
+  title: string;
+  artist: string;
+  album: string;
+  albumImageUrl: string;
+  songUrl: string;
+  songLength: number;
+  songProgress: number;
+}

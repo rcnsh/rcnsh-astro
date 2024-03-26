@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type {songData} from "types";
 
 export default function MusicBar({
   duration,
@@ -10,21 +11,28 @@ export default function MusicBar({
   isPlaying: boolean;
 }) {
   const [currentProgress, setProgress] = useState(progress);
-  const progressPercent = (currentProgress / duration) * 100;
+  const [currentSongDuration, setDuration] = useState(duration);
+  const progressPercent = (currentProgress / currentSongDuration) * 100;
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
     if (isPlaying) {
       interval = setInterval(() => {
         setProgress((currentProgress) => {
-          if (currentProgress < duration) {
+          if (currentProgress < currentSongDuration) {
             return currentProgress + 1000;
           } else {
             clearInterval(interval);
             fetch('https://rcn.sh/api/nowPlaying')
-              .then(response => response.json())
+              .then(response => response.json() as Promise<songData>)
               .then(data => {
-                console.log(data);
+                document.getElementById('nowPlayingTitle')!.innerText = data.title;
+                document.getElementById('nowPlayingArtist')!.innerText = data.artist;
+                document.getElementById('nowPlayingAlbum')!.innerText = data.album;
+                (document.getElementById('spotify-image') as HTMLImageElement).src = data.albumImageUrl;
+                setDuration(data.songLength);
+                setProgress(data.songProgress);
+                
               })
               .catch(error => {
                 console.error('Error:', error);
@@ -48,7 +56,7 @@ export default function MusicBar({
           {isPlaying && new Date(currentProgress).toISOString().slice(14, 19)}
         </span>
         <span>
-          {isPlaying && new Date(duration).toISOString().slice(14, 19)}
+          {isPlaying && new Date(currentSongDuration).toISOString().slice(14, 19)}
         </span>
       </p>
       <div
