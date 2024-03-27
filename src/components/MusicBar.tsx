@@ -73,7 +73,9 @@ export default function MusicBar({
 
   return (
     <>
-      <p className="font-dark text-xs text-[#cdc8c2] flex justify-between border-b-2 border-[#cdc8c2] pb-1">
+      <p
+        className={`font-dark text-xs text-[#cdc8c2] flex justify-between border-b-2 border-[#cdc8c2] pb-1 ${isPlaying ? "block" : "hidden"}`}
+      >
         <span>
           {isPlaying && new Date(currentProgress).toISOString().slice(14, 19)}
         </span>
@@ -83,7 +85,7 @@ export default function MusicBar({
         </span>
       </p>
       <div
-        className={`h-1 bg-[#cdc8c2] transition-all duration-1000 ease-in-out ${isPlaying ? "block" : "hidden"}`}
+        className={`h-1 bg-[#cdc8c2] transition-all duration-1000 ease-in-out`}
         style={{ width: `${progressPercent}%` }}
       ></div>
     </>
