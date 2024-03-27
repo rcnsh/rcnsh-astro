@@ -83,7 +83,7 @@ export default function MusicBar({
         </span>
       </p>
       <div
-        className="h-1 bg-[#cdc8c2] transition-all duration-1000 ease-in-out"
+        className={`h-1 bg-[#cdc8c2] transition-all duration-1000 ease-in-out ${isPlaying ? "block" : "hidden"}`}
         style={{ width: `${progressPercent}%` }}
       ></div>
     </>
