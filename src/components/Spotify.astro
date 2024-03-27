@@ -21,7 +21,15 @@ const cldSrc = cld
   .format("webp");
 ---
 
-<script src="../scripts/spotify-background.js"></script>
+<script>
+  import { backgroundColour } from "@lib/utils";
+
+  
+document.addEventListener("astro:after-swap", backgroundColour);
+
+document.addEventListener("DOMContentLoaded", backgroundColour);
+
+</script>
 <section
   class="bg-black/20 rounded-lg animate-gradient-x bg-gradient-to-br from-slate-700 to-black"
   id="spotify-background"
