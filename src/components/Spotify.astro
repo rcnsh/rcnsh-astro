@@ -5,10 +5,6 @@ import { cn } from "@lib/utils";
 import MusicBar from "./MusicBar";
 import { GET } from "../pages/api/nowPlaying";
 import { Image } from "astro:assets";
-Astro.response.headers.set(
-  "Cache-Control",
-  "s-maxage=1, stale-while-revalidate",
-);
 
 const reponse = await GET(Astro);
 const song = (await reponse.json()) as songData;
