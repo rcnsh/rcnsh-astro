@@ -1,6 +1,7 @@
 ---
 import { Cloudinary } from "@cloudinary/url-gen";
 import type { songData } from "types";
+import { cn } from "@lib/utils";
 import MusicBar from "./MusicBar";
 import { GET } from "../pages/api/nowPlaying";
 import { Image } from "astro:assets";
@@ -76,12 +77,21 @@ const cldSrc = cld
       <p class="font-dark text-xs text-[#cdc8c2]" id="nowPlayingAlbum">
         {song.album && song.album}
       </p>
-      <MusicBar
-        progress={song.songProgress}
-        duration={song.songLength}
-        isPlaying={song.isPlaying}
-        client:load
-      />
+      <div class={cn({ hidden: !song.isPlaying })}>
+        <MusicBar
+          progress={song.songProgress}
+          duration={song.songLength}
+          isPlaying={song.isPlaying}
+          client:load
+        />
+      </div>
+      <p
+        class={cn("font-dark text-xs text-[#cdc8c2] float-end", {
+          hidden: song.isPlaying,
+        })}
+      >
+        Paused
+      </p>
     </div>
   </a>
 </section>

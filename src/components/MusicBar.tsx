@@ -74,9 +74,9 @@ export default function MusicBar({
   return (
     <>
       <p
-        className={`font-dark text-xs text-[#cdc8c2] flex justify-between  pb-1 ${
-          isPlaying ? "block border-b-2 border-[#cdc8c2]" : "hidden"
-        }`}
+        className={
+          "font-dark text-xs text-[#cdc8c2] flex justify-between border-b-2 border-[#cdc8c2] pb-1"
+        }
       >
         <span>
           {isPlaying && new Date(currentProgress).toISOString().slice(14, 19)}
