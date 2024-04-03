@@ -25,10 +25,7 @@ if (Astro.request.method === "POST") {
     session?.user?.email as string,
   );
   if (!success) {
-    document.getElementById("error")!.innerText =
-      `You are doing that too much. Please wait ${new Date(0, 0, 0, 0, 0, 0, reset).toLocaleTimeString("en-GB")} seconds.`;
-  } else {
-    document.getElementById("error")!.innerText = "";
+    return new Response(`Rate limit exceeded, wait ${new Date(0,0,0,0,0,0, reset).toLocaleTimeString("en-GB")} seconds`, { status: 429 });
   }
   const filter = new Filter();
 
