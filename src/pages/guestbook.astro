@@ -21,9 +21,14 @@ const ratelimit = new Ratelimit({
 });
 
 if (Astro.request.method === "POST") {
-  const { success, remaining } = await ratelimit.limit(session?.user?.email as string);
+  const { success, reset } = await ratelimit.limit(
+    session?.user?.email as string,
+  );
   if (!success) {
-    return new Response("Rate limit exceeded", { status: 429 });
+    document.getElementById("error")!.innerText =
+      `You are doing that too much. Please wait ${new Date(0, 0, 0, 0, 0, 0, reset).toLocaleTimeString("en-GB")} seconds.`;
+  } else {
+    document.getElementById("error")!.innerText = "";
   }
   const filter = new Filter();
 
@@ -105,9 +110,7 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
         )
       }
     </section>
-    <span class="text-center text-[#c5c0b8] text-xs mx-auto">
-      {comments.length} comments
-    </span>
+    <span class="text-center text-[#c5c0b8] text-xs mx-auto" id="error"> </span>
     <hr class="bg-[#363b3d] border-none h-[2px] mt-2 w-[60%] mx-auto my-8" />
     <section>
       <ul class="flex flex-col justify-center items-center">
