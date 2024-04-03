@@ -8,10 +8,23 @@ import { db, Guests, desc, eq } from "astro:db";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import Filter from "bad-words";
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 
 const session = await getSession(Astro.request);
 
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(1, "60 s"),
+  analytics: true,
+  prefix: "@upstash/ratelimit",
+});
+
 if (Astro.request.method === "POST") {
+  const { success, remaining } = await ratelimit.limit(session?.user?.email as string);
+  if (!success) {
+    return new Response("Rate limit exceeded", { status: 429 });
+  }
   const filter = new Filter();
 
   const email = session?.user?.email as string;
@@ -92,6 +105,9 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
         )
       }
     </section>
+    <span class="text-center text-[#c5c0b8] text-xs mx-auto">
+      {comments.length} comments
+    </span>
     <hr class="bg-[#363b3d] border-none h-[2px] mt-2 w-[60%] mx-auto my-8" />
     <section>
       <ul class="flex flex-col justify-center items-center">
