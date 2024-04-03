@@ -11,9 +11,9 @@ import Filter from "bad-words";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 
-const session = await getSession(Astro.request);
+let status = "";
 
-const status = (Astro.cookies.get("status") || {})?.value;
+const session = await getSession(Astro.request);
 
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
@@ -27,16 +27,19 @@ if (Astro.request.method === "POST") {
     session?.user?.email as string,
   );
   if (!success) {
-    Astro.cookies.set("status", {
-      value: `Ratelimited for ${new Date(0, 0, 0, 0, 0, 0, reset).toLocaleTimeString("en-GB")}`,
-    });
+    status = `You are posting too fast. Please wait ${new Date(
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      reset,
+    ).toLocaleTimeString("en-GB")}.`;
     return;
   } else {
-    Astro.cookies.set("status", {
-      value: "",
-    });
+    status = "";
   }
-  
 
   const email = session?.user?.email as string;
   const name = session?.user?.name as string;
