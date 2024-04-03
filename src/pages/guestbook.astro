@@ -27,7 +27,6 @@ if (Astro.request.method === "POST") {
   if (!success) {
     return new Response(`Rate limit exceeded, wait ${new Date(0,0,0,0,0,0, reset).toLocaleTimeString("en-GB")} seconds`, { status: 429 });
   }
-  const filter = new Filter();
 
   const email = session?.user?.email as string;
   const name = session?.user?.name as string;
@@ -43,7 +42,7 @@ if (Astro.request.method === "POST") {
     uncleanmessage.length > 0 &&
     uncleanmessage.length <= 100
   ) {
-    const message = filter.clean(uncleanmessage);
+    const message = new Filter().clean(uncleanmessage);
     await db
       .insert(Guests)
       .values({ email, name, message, published: new Date() });
