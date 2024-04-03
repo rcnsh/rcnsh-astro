@@ -55,6 +55,12 @@ export default function Joke() {
     },
     { code: ["r", "o", "n", "n", "i", "e"] },
   );
+  useKonami(
+    () => {
+      new Error("test error");
+    },
+    { code: ["e", "r", "r", "o", "r"] },
+  );
 
   return (
     <div>
