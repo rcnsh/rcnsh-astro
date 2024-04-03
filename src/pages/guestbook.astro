@@ -137,7 +137,7 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
       </ul>
     </section>
     <div class="mt-auto">
-      <Footer client:only transition:persist>
+      <Footer client:only="react" transition:persist>
         <Credits />
       </Footer>
     </div>
