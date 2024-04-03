@@ -57,7 +57,7 @@ export default function Joke() {
   );
   useKonami(
     () => {
-      new Error("test error");
+      throw new Error("Sentry Error Test");
     },
     { code: ["e", "r", "r", "o", "r"] },
   );
