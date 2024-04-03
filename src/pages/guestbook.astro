@@ -27,10 +27,16 @@ if (Astro.request.method === "POST") {
     session?.user?.email as string,
   );
   if (!success) {
-    Astro.cookies.set("status", { value: `Ratelimited for ${new Date(0,0,0,0,0,0,reset).toLocaleTimeString("en-GB")}`});
+    Astro.cookies.set("status", {
+      value: `Ratelimited for ${new Date(0, 0, 0, 0, 0, 0, reset).toLocaleTimeString("en-GB")}`,
+    });
     return;
+  } else {
+    Astro.cookies.set("status", {
+      value: "",
+    });
   }
-  Astro.cookies.set("status", { value: "" });
+  
 
   const email = session?.user?.email as string;
   const name = session?.user?.name as string;
