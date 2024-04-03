@@ -2,7 +2,8 @@ import { defineDb, defineTable, column } from "astro:db";
 
 const Guests = defineTable({
   columns: {
-    email: column.text({ primaryKey: true }),
+    id: column.number({ primaryKey: true }),
+    email: column.text(),
     name: column.text(),
     message: column.text(),
     published: column.date({ default: new Date() }),

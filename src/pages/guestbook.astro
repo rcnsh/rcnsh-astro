@@ -49,7 +49,7 @@ if (Astro.request.method === "POST") {
   }
 }
 
-const comments = await db.select().from(Guests).orderBy(asc(Guests.published));
+const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
 ---
 
 <Layout
