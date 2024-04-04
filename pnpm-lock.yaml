@@ -30,8 +30,8 @@ dependencies:
     specifier: ^7.5.2
     version: 7.5.2(astro@4.5.15)(next@14.1.3)(react@18.2.0)
   '@auth/core':
-    specifier: ^0.28.2
-    version: 0.28.2
+    specifier: ^0.18.6
+    version: 0.18.6
   '@cloudinary/url-gen':
     specifier: ^1.19.0
     version: 1.19.0
@@ -91,7 +91,7 @@ dependencies:
     version: 0.5.4(@astrojs/db@0.10.0)(astro@4.5.15)(preact@10.19.6)(react-dom@18.2.0)(react@18.2.0)
   auth-astro:
     specifier: ^4.1.1
-    version: 4.1.1(@auth/core@0.28.2)(astro@4.5.15)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0)
+    version: 4.1.1(@auth/core@0.18.6)(astro@4.5.15)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0)
   bad-words:
     specifier: ^3.0.4
     version: 3.0.4
@@ -415,17 +415,11 @@ packages:
       - supports-color
     dev: false
 
-  /@auth/core@0.28.2:
-    resolution: {integrity: sha512-Rlvu6yKa4bKbhQESMaEm6jHOY5ncIrsrQkC8tcwVQmf+cBLk7ReI9DIJS2O/WkIDoOwvM9PHiXTi5b+b/eyXxw==}
+  /@auth/core@0.18.6:
+    resolution: {integrity: sha512-AI7tnyNOg5zVS2elA44O03MWS6jyp69S8habJts63IyiCIoSkhqcZX4EcEJ0287m0hxzOltPCV9Zq2aqXbrNSA==}
     peerDependencies:
-      '@simplewebauthn/browser': ^9.0.1
-      '@simplewebauthn/server': ^9.0.2
       nodemailer: ^6.8.0
     peerDependenciesMeta:
-      '@simplewebauthn/browser':
-        optional: true
-      '@simplewebauthn/server':
-        optional: true
       nodemailer:
         optional: true
     dependencies:
@@ -3465,14 +3459,14 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /auth-astro@4.1.1(@auth/core@0.28.2)(astro@4.5.15)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0):
+  /auth-astro@4.1.1(@auth/core@0.18.6)(astro@4.5.15)(next@14.1.3)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-7dTs8OcSYIYEmmlVw/HJ2k3otwDrD2fG2NTrKaij/VH8TfQ9EhS4VGgoQw1yArQoV0v6kvqOD4lFHFehQzKKqA==}
     engines: {node: '>=17.4'}
     peerDependencies:
       '@auth/core': ^0.18.6
       astro: ^4.0.0
     dependencies:
-      '@auth/core': 0.28.2
+      '@auth/core': 0.18.6
       astro: 4.5.15(@types/node@20.12.4)(typescript@5.4.3)
       next-auth: 4.24.7(next@14.1.3)(react-dom@18.2.0)(react@18.2.0)
       set-cookie-parser: 2.6.0
