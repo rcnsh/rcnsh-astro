@@ -55,13 +55,6 @@ export default function Joke() {
     },
     { code: ["r", "o", "n", "n", "i", "e"] },
   );
-  useKonami(
-    () => {
-      throw new Error("Sentry Error Test");
-    },
-    { code: ["e", "r", "r", "o", "r"] },
-  );
-
   return (
     <div>
       <AnimatePresence>
