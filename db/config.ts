@@ -1,4 +1,4 @@
-import { defineDb, defineTable, column } from "astro:db";
+import { defineDb, defineTable, column, NOW } from "astro:db";
 
 const Guests = defineTable({
   columns: {
@@ -6,7 +6,7 @@ const Guests = defineTable({
     email: column.text(),
     name: column.text(),
     message: column.text(),
-    published: column.date({ default: new Date() }),
+    published: column.date({ default: NOW }),
   },
 });
 
