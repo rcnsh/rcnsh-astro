@@ -45,7 +45,7 @@ export default function MusicBar({
         });
       }, 1000);
     }
-    const updateUIInterval = setInterval(updateUI, 5000);
+    const updateUIInterval = setInterval(updateUI, 60000);
 
     return () => {
       if (interval) {
