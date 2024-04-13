@@ -5,6 +5,7 @@ import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
 import db from "@astrojs/db";
 import auth from "auth-astro";
+
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
@@ -14,14 +15,7 @@ export default defineConfig({
   prefetch: {
     defaultStrategy: "hover",
   },
-  integrations: [
-    tailwind(),
-    react(),
-    sitemap(),
-    db(),
-    auth(),
-    partytown(),
-  ],
+  integrations: [tailwind(), react(), sitemap(), db(), auth(), partytown()],
   image: {
     service: squooshImageService(),
   },

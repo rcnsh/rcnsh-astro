@@ -55,6 +55,7 @@ export default function Joke() {
     },
     { code: ["r", "o", "n", "n", "i", "e"] },
   );
+
   return (
     <div>
       <AnimatePresence>

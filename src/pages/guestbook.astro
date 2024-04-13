@@ -4,46 +4,19 @@ import { SignIn, SignOut } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
 import { GithubIcon } from "astro-feather";
 import Header from "@components/Header.astro";
-import { db, Guests, desc, eq, asc } from "astro:db";
+import { db, Guests, desc, eq } from "astro:db";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import Filter from "bad-words";
-import { Ratelimit } from "@upstash/ratelimit";
-import { Redis } from "@upstash/redis";
-
-let status = "";
 
 const session = await getSession(Astro.request);
 
-const ratelimit = new Ratelimit({
-  redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(1, "60 s"),
-  analytics: true,
-  prefix: "@upstash/ratelimit",
-});
-
 if (Astro.request.method === "POST") {
-  const { success, reset } = await ratelimit.limit(
-    session?.user?.email as string,
-  );
-  if (!success) {
-    status = `You are posting too fast. Please wait ${new Date(
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      reset,
-    ).toLocaleTimeString("en-GB")}.`;
-    return;
-  } else {
-    status = "";
-  }
+  const filter = new Filter();
 
   const email = session?.user?.email as string;
   const name = session?.user?.name as string;
-  // await db.delete(Guests).where(eq(Guests.email, email));
+  await db.delete(Guests).where(eq(Guests.email, email));
 
   const formData = await Astro.request.formData();
   const uncleanmessage = formData.get("message");
@@ -55,7 +28,7 @@ if (Astro.request.method === "POST") {
     uncleanmessage.length > 0 &&
     uncleanmessage.length <= 100
   ) {
-    const message = new Filter().clean(uncleanmessage);
+    const message = filter.clean(uncleanmessage);
     await db
       .insert(Guests)
       .values({ email, name, message, published: new Date() });
@@ -119,7 +92,6 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
         )
       }
     </section>
-    <span class="text-center text-red-500 text-xs mx-auto">{status}</span>
     <hr class="bg-[#363b3d] border-none h-[2px] mt-2 w-[60%] mx-auto my-8" />
     <section>
       <ul class="flex flex-col justify-center items-center">
