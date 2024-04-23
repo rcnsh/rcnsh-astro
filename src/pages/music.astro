@@ -6,6 +6,7 @@ import Credits from "@components/Credits.astro";
 import Header from "@components/Header.astro";
 import { slide } from "astro:transitions";
 import { GET } from "./api/spotify";
+import { smartTruncate } from "@lib/utils";
 
 const cld = new Cloudinary({
   cloud: {
@@ -100,7 +101,7 @@ artists.forEach((artist) => {
                     />
                     <div class="flex flex-col">
                       <a href={songUrl}>
-                        <h3 class="font-semibold text-neutral-100">{title}</h3>
+                        <h3 class="font-semibold text-neutral-100">{smartTruncate(title, 40, {position: 25})}</h3>
                       </a>
                       <p>
                         {artists.map(({ name, external_urls }, index) => (
@@ -110,7 +111,7 @@ artists.forEach((artist) => {
                           </span>
                         ))}
                       </p>
-                      <a href={album.external_urls.spotify}>{album.name}</a>
+                      <a href={album.external_urls.spotify}>{smartTruncate(album.name, 40, {position: 25})}</a>
                     </div>
                   </div>
                 ),
