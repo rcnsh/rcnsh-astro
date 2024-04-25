@@ -14,7 +14,7 @@ const octokit = new Octokit({
 
 export async function getSpecificRepo(repoName: string) {
   const repoCall = await octokit.request(
-    "GET /repos/RCNOverwatcher/" + repoName,
+    "GET /repos/rcnsh/" + repoName,
     {
       headers: {
         "X-GitHub-Api-Version": "2022-11-28",
@@ -25,8 +25,8 @@ export async function getSpecificRepo(repoName: string) {
 }
 
 export const GET: APIRoute = async () => {
-  const repoCall = await octokit.request("GET /users/RCNOverwatcher/repos", {
-    username: "RCNOverwatcher",
+  const repoCall = await octokit.request("GET /users/rcnsh/repos", {
+    username: "rcnsh",
     headers: {
       "X-GitHub-Api-Version": "2022-11-28",
     },
