@@ -7,31 +7,38 @@ import Header from "@components/Header.astro";
 import { db, Guests, desc, eq } from "astro:db";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
-import Filter from "bad-words";
 
 const session = await getSession(Astro.request);
 
 if (Astro.request.method === "POST") {
-  const filter = new Filter();
-
   const email = session?.user?.email as string;
   const name = session?.user?.name as string;
   await db.delete(Guests).where(eq(Guests.email, email));
 
   const formData = await Astro.request.formData();
-  const uncleanmessage = formData.get("message");
+  const message = formData.get("message");
 
   if (
     typeof email === "string" &&
-    typeof uncleanmessage === "string" &&
+    typeof message === "string" &&
     typeof name === "string" &&
-    uncleanmessage.length > 0 &&
-    uncleanmessage.length <= 100
+    message.length > 0 &&
+    message.length <= 100
   ) {
-    const message = filter.clean(uncleanmessage);
-    await db
-      .insert(Guests)
-      .values({ email, name, message, published: new Date() });
+    const res = await fetch("https://vector.profanity.dev", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message }),
+    });
+    const { isProfanity } = await res.json();
+
+    if (!isProfanity) {
+      await db
+        .insert(Guests)
+        .values({ email, name, message, published: new Date() });
+    } else {
+      return new Response("Profanity detected", { status: 400 });
+    }
   }
 }
 

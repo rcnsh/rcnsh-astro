@@ -13,14 +13,11 @@ const octokit = new Octokit({
 });
 
 export async function getSpecificRepo(repoName: string) {
-  const repoCall = await octokit.request(
-    "GET /repos/rcnsh/" + repoName,
-    {
-      headers: {
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
+  const repoCall = await octokit.request("GET /repos/rcnsh/" + repoName, {
+    headers: {
+      "X-GitHub-Api-Version": "2022-11-28",
     },
-  );
+  });
   return repoCall.data as Repo;
 }
 
