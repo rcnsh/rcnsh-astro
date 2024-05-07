@@ -5,8 +5,12 @@
     pkgs.corepack
   ];
   idx.extensions = [
-    "svelte.svelte-vscode"
-    "vue.volar"
+    "dracula-theme.theme-dracula"
+    "ms-vscode.vscode-typescript-next"
+    "chadalen.vscode-jetbrains-icon-theme"
+    "esbenp.prettier-vscode"
+    "prisma.prisma"
+    "bradlc.vscode-tailwindcss"
   ];
   idx.previews = {
     previews = {
