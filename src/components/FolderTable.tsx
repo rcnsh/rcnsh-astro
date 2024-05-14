@@ -90,7 +90,6 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
           <tr
             key={item.key}
             className="bg-[#373737] cursor-pointer"
-            onClick={() => handleFileClick(fileUrl)}
           >
             <td
               className="px-6 py-4 whitespace-nowrap"
@@ -98,11 +97,12 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
             >
               <div className="flex items-center">
                 <div className="ml-4">
-                  <span
-                    className="text-sm font-medium text-[#c5c0b8] "
+                  <a
+                    className="text-sm font-medium text-[#c5c0b8]"
+                    href={fileUrl}
                   >
                     {item.key.split("/").pop()}
-                  </span>
+                  </a>
                 </div>
               </div>
             </td>
