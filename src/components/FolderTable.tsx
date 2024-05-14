@@ -85,7 +85,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
           </React.Fragment>
         );
       } else {
-        const fileUrl = "https://rcn.ams3.cdn.digitaloceanspaces.com" + item.key;
+        const fileUrl = "https://upload.rcn.sh/" + item.key;
         return (
           <tr
             key={item.key}
