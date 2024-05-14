@@ -94,9 +94,13 @@ if (XMLResult) {
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-sm text-gray-900 dark:text-gray-200">
-                      {item.size / 1024 / 1024 > 1
+                        {item.size / 1024 / 1024 / 1024 > 1
+                        ? (item.size / 1024 / 1024 / 1024).toFixed(2) + " GB"
+                        : item.size / 1024 / 1024 > 1
                         ? (item.size / 1024 / 1024).toFixed(2) + " MB"
-                        : (item.size / 1024).toFixed(2) + " KB"}
+                        : item.size / 1024 > 1
+                        ? (item.size / 1024).toFixed(2) + " KB"
+                        : item.size + " bytes"}
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
