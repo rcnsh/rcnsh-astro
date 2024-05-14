@@ -8,8 +8,6 @@ import Header from "@components/Header.astro";
 import { parseStringPromise } from "xml2js";
 import FolderTable from "@components/FolderTable";
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
 interface FileData {
   key: string;
   size: number;
