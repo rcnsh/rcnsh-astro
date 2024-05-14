@@ -82,7 +82,7 @@ const XMLResult = await fetchXMLData();
 let nestedData: FolderData | null = null;
 if (XMLResult) {
   const fileData: FileData[] = XMLResult.Contents.filter(
-    (item: Content) => parseInt(item.Size[0]) > 0,
+    (item: Content) => parseInt(item.Size[0]) > 64,
   ).map((item: Content) => {
     return {
       key: item.Key[0],
