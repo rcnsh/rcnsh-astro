@@ -134,16 +134,13 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
         <thead className="text-xs text-grey-50 uppercase bg-[#353535]">
           <tr>
             <th scope="col" className="px-6 py-3" style={{ width: "60%" }}>
-              {" "}
-              Name{" "}
+              Name
             </th>
             <th scope="col" className="px-6 py-3" style={{ width: "20%" }}>
-              {" "}
-              Size{" "}
+              Size
             </th>
             <th scope="col" className="px-6 py-3" style={{ width: "20%" }}>
-              {" "}
-              Last Modified{" "}
+              Last Modified
             </th>
           </tr>
         </thead>
