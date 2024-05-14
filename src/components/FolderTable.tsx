@@ -51,7 +51,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
             >
               <td
                 className="px-6 whitespace-nowrap"
-                style={{ paddingLeft: `${depth * 20}px`, width: "60%" }}
+                style={{ paddingLeft: `${(depth * 20) + 12}px`, width: "60%" }}
               >
                 <div className="flex items-center">
                   <div
