@@ -1,0 +1,120 @@
+---
+export const prerender = false;
+
+import Layout from "@layouts/Layout.astro";
+import Footer from "@components/Footer";
+import Credits from "@components/Credits.astro";
+import Header from "@components/Header.astro";
+import { parseStringPromise } from "xml2js";
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
+interface FileData {
+  key: string;
+  size: number;
+  lastModified: string;
+}
+
+let data = [] as FileData[];
+
+interface Content {
+  Key: string[];
+  LastModified: string[];
+  Size: string[];
+}
+
+interface ListBucketResult {
+  Contents: Content[];
+}
+
+const fetchXMLData = async (): Promise<ListBucketResult> => {
+  try {
+    const response = await fetch(
+      "https://upload.rcn.sh.ams3.digitaloceanspaces.com",
+    );
+    const xmlText = await response.text();
+    const result = await parseStringPromise(xmlText);
+    return result.ListBucketResult;
+  } catch (err) {
+    console.error(err);
+    return {} as ListBucketResult;
+  }
+};
+const XMLResult = await fetchXMLData();
+
+if (XMLResult) {
+  data = XMLResult.Contents.map((item: Content) => {
+    return {
+      key: item.Key[0],
+      size: parseInt(item.Size[0]),
+      lastModified: item.LastModified[0],
+    };
+  });
+} else {
+  console.log("Failed to fetch or parse XML data.");
+}
+---
+
+<Layout title="rcn.sh • Home" image="https://rcn.sh/api/og.png?title=">
+  <main
+    class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8 flex flex-col"
+    transition:animate="fade"
+  >
+    <Header />
+    <h1 class="text-center font-mono text-xl lg:text-3xl md:text-2xl">Files</h1>
+    <section
+      class="mx-auto w-[100%] text-[#cdc8c2] md:w-[50%] md:text-left mt-10"
+    >
+      <div class="relative overflow-x-auto">
+        <table
+          class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+        >
+          <thead class="text-xs text-grey-50 uppercase bg-[#353535]">
+            <tr>
+              <th scope="col" class="px-6 py-3"> Key </th>
+              <th scope="col" class="px-6 py-3"> Size </th>
+              <th scope="col" class="px-6 py-3"> Last Modified </th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              data.map((item) => (
+                <tr class="bg-[#404040]">
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="ml-4">
+                        <a
+                          class="text-sm font-medium text-gray-900 dark:text-gray-200"
+                          href={"http://upload.rcn.sh/" + item.key}
+                        >
+                          {item.key}
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900 dark:text-gray-200">
+                      {item.size / 1024 / 1024 > 1
+                        ? (item.size / 1024 / 1024).toFixed(2) + " MB"
+                        : (item.size / 1024).toFixed(2) + " KB"}
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="text-sm text-gray-900 dark:text-gray-200">
+                      {new Date(item.lastModified).toLocaleDateString()}
+                    </div>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <div class="mt-auto">
+      <Footer client:only="react">
+        <Credits />
+      </Footer>
+    </div>
+  </main>
+</Layout>

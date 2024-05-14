@@ -84,3 +84,43 @@ export interface songData {
   songLength: number;
   songProgress: number;
 }
+
+export type ListBucketResult = {
+  declaration: {
+    attributes: {
+      version: string;
+      encoding: string;
+    };
+  };
+  root: {
+    name: "ListBucketResult";
+    attributes: {
+      xmlns: string;
+    };
+    children: Array<{
+      name: 
+        | "Name" 
+        | "Prefix" 
+        | "MaxKeys" 
+        | "IsTruncated"
+        | "Contents"
+        | "Marker";
+      content?: string;
+      children?: Array<{
+        name: 
+          | "Key" 
+          | "LastModified" 
+          | "ETag" 
+          | "Size" 
+          | "StorageClass" 
+          | "Owner" 
+          | "Type";
+        content?: string;
+        children?: Array<{
+          name: "ID" | "DisplayName";
+          content: string;
+        }>;
+      }>;
+    }>;
+  };
+};

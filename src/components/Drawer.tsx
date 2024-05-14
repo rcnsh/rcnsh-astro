@@ -9,6 +9,7 @@ import {
   NotebookIcon,
   CpuIcon,
   ShieldIcon,
+  FileIcon,
 } from "lucide-react";
 import { cn } from "../lib/utils";
 
@@ -163,6 +164,29 @@ export default function MobileDrawer({
                             )}
                           >
                             Guestbook
+                          </span>
+                        </span>
+                      </span>
+                    </a>
+                    <a
+                      href={"/files"}
+                      className={cn(
+                        "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2]",
+                        url.split("/")[3] === "files"
+                          ? "bg-[#25282a] text-[#181818] pointer-events-none"
+                          : "hover:bg-[#25282a]",
+                      )}
+                    >
+                      <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
+                        <span className="flex items-center gap-2">
+                          <FileIcon />
+                          <span
+                            className={cn(
+                              "font-medium",
+                              url.split("/")[3] === "files" && "text-[#cdc8c2]",
+                            )}
+                          >
+                            Files
                           </span>
                         </span>
                       </span>

@@ -12,6 +12,7 @@ import {
   BookIcon,
   CpuIcon,
   ShieldIcon,
+  FileIcon,
 } from "astro-feather";
 
 const title = Astro.url.pathname;
@@ -34,6 +35,10 @@ const LINKS = [
     href: "/guestbook",
     label: "Guestbook",
   },
+  {
+    href: "/files",
+    label: "Files",
+  }
 ];
 
 const getLabelByHref = (title: string) => {
@@ -219,6 +224,34 @@ const getLabelByHref = (title: string) => {
               <Spinner />
             </section>
           </a>
+          <a
+          href={"/files"}
+          class={cn(
+            "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
+            url.split("/")[3] === "files"
+              ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
+              : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
+          )}
+        >
+          <span
+            class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
+          >
+            <span class="flex items-center gap-2">
+              <FileIcon />
+              <span
+                class={cn(
+                  "font-medium",
+                  url.split("/")[3] === "files" && "text-[#cdc8c2]",
+                )}
+              >
+                Files
+              </span>
+            </span>
+          </span>
+          <section class="hidden">
+            <Spinner />
+          </section>
+        </a>
         </div>
       </div>
       <hr class="bg-[#363b3d] border-none h-[2px] mt-2" />
