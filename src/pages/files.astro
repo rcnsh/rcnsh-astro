@@ -65,7 +65,7 @@ const buildNestedStructure = (files: FileData[]): FolderData => {
 const fetchXMLData = async (): Promise<ListBucketResult> => {
   try {
     const response = await fetch(
-      "https://upload.rcn.sh.ams3.digitaloceanspaces.com",
+      "https://rcn.ams3.digitaloceanspaces.com",
     );
     const xmlText = await response.text();
     const result = await parseStringPromise(xmlText);

@@ -85,7 +85,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
           </React.Fragment>
         );
       } else {
-        const fileUrl = "http://upload.rcn.sh/" + item.key;
+        const fileUrl = "https://rcn.ams3.digitaloceanspaces.com" + item.key;
         return (
           <tr
             key={item.key}
@@ -98,12 +98,11 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
             >
               <div className="flex items-center">
                 <div className="ml-4">
-                  <a
+                  <span
                     className="text-sm font-medium text-[#c5c0b8] "
-                    href={"http://upload.rcn.sh/" + item.key}
                   >
                     {item.key.split("/").pop()}
-                  </a>
+                  </span>
                 </div>
               </div>
             </td>
