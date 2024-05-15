@@ -122,7 +122,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
   };
 
   return (
-    <div className="relative overflow-x-auto">
+    <div className="relative">
       <table className="w-full text-sm text-left rtl:text-right text-[#c5c0b8] ">
         <thead className="text-xs text-grey-50 uppercase bg-[#353535]">
           <tr>
