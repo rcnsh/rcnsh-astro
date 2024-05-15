@@ -20,6 +20,7 @@
     "@astrojs/ts-plugin": "^1.7.0",
     "@astrojs/vercel": "^7.6.0",
     "@auth/core": "^0.18.6",
+    "@aws-sdk/client-s3": "^3.576.0",
     "@cloudinary/url-gen": "^1.19.0",
     "@fontsource/geist-mono": "^5.0.3",
     "@octokit/core": "^6.1.2",
@@ -59,6 +60,11 @@
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "typescript": "^5.4.5"
+  },
+  "resolutions": {
+    "@aws-sdk/client-sso-oidc": "3.576.0",
+    "@aws-sdk/client-sts": "3.576.0",
+    "@aws-sdk/token-providers": "3.575.0"
   },
   "packageManager": "pnpm@9.0.6"
 }
