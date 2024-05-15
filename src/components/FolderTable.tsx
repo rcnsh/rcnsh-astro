@@ -16,6 +16,21 @@ interface FolderTableProps {
   data: FolderData;
 }
 
+const getBackgroundColor = (depth: number) => {
+  const baseColor = 39; // Corresponds to #272727
+  const maxDepth = 10;
+  const maxColor = 230;
+
+  const clampedDepth = Math.min(depth, maxDepth);
+
+  const colorValue =
+    baseColor + (maxColor - baseColor) * (clampedDepth / maxDepth);
+
+  const colorHex = Math.round(colorValue).toString(16).padStart(2, "0");
+
+  return `#${colorHex}${colorHex}${colorHex}`;
+};
+
 const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
   const [expandedFolders, setExpandedFolders] = useState<Set<string>>(
     new Set(),
@@ -36,14 +51,29 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
     path: string = "",
     depth: number = 0,
   ): JSX.Element[] => {
-    return folder.contents.map((item) => {
+    const sortedContents = [...folder.contents].sort((a, b) => {
+      if ("contents" in a && !("contents" in b)) {
+        return -1; // a is a folder, b is a file
+      } else if (!("contents" in a) && "contents" in b) {
+        return 1; // a is a file, b is a folder
+      } else if ("contents" in a && "contents" in b) {
+        return a.name.localeCompare(b.name); // both are folders
+      } else if (!("contents" in a) && !("contents" in b)) {
+        return a.key.localeCompare(b.key); // both are files
+      } else {
+        return 0;
+      }
+    });
+
+    return sortedContents.map((item) => {
       if ("contents" in item) {
         const folderPath = `${path}/${item.name}`;
         return (
           <React.Fragment key={folderPath}>
             <tr
-              className="bg-[#272727] cursor-pointer"
+              className="cursor-pointer"
               onClick={() => toggleFolder(folderPath)}
+              style={{ backgroundColor: getBackgroundColor(depth / 3 ) }}
             >
               <td
                 className="px-6 whitespace-nowrap"
