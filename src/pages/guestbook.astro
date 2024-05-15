@@ -107,7 +107,8 @@ const comments = await db.select().from(Guests).orderBy(desc(Guests.published));
             <li class="flex flex-col justify-center items-center my-4">
               <p class="text-center">{comment.message}</p>
               <p class="text-center text-[#c5c0b8] text-xs">
-                {comment.name} - {comment.published.toLocaleTimeString("en-gb").slice(0, -3)}
+                {comment.name} -{" "}
+                {comment.published.toLocaleTimeString("en-gb").slice(0, -3)}
                 {comment.published.toLocaleDateString("en-gb")}
               </p>
             </li>

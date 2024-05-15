@@ -31,10 +31,6 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
     setExpandedFolders(newExpandedFolders);
   };
 
-  const handleFileClick = (fileUrl: string) => {
-    window.location.href = fileUrl;
-  };
-
   const renderFolder = (
     folder: FolderData,
     path: string = "",
@@ -51,7 +47,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
             >
               <td
                 className="px-6 whitespace-nowrap"
-                style={{ paddingLeft: `${(depth * 20) + 12}px`, width: "60%" }}
+                style={{ paddingLeft: `${depth * 20 + 12}px`, width: "60%" }}
               >
                 <div className="flex items-center">
                   <div
@@ -87,10 +83,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
       } else {
         const fileUrl = "https://upload.rcn.sh/" + item.key;
         return (
-          <tr
-            key={item.key}
-            className="bg-[#373737] cursor-pointer"
-          >
+          <tr key={item.key} className="bg-[#373737] cursor-pointer">
             <td
               className="px-6 py-4 whitespace-nowrap"
               style={{ paddingLeft: `${depth * 20}px` }}

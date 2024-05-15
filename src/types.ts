@@ -98,22 +98,22 @@ export type ListBucketResult = {
       xmlns: string;
     };
     children: Array<{
-      name: 
-        | "Name" 
-        | "Prefix" 
-        | "MaxKeys" 
+      name:
+        | "Name"
+        | "Prefix"
+        | "MaxKeys"
         | "IsTruncated"
         | "Contents"
         | "Marker";
       content?: string;
       children?: Array<{
-        name: 
-          | "Key" 
-          | "LastModified" 
-          | "ETag" 
-          | "Size" 
-          | "StorageClass" 
-          | "Owner" 
+        name:
+          | "Key"
+          | "LastModified"
+          | "ETag"
+          | "Size"
+          | "StorageClass"
+          | "Owner"
           | "Type";
         content?: string;
         children?: Array<{
