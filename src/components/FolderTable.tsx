@@ -73,7 +73,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
             <tr
               className="cursor-pointer"
               onClick={() => toggleFolder(folderPath)}
-              style={{ backgroundColor: getBackgroundColor(depth / 3 ) }}
+              style={{ backgroundColor: getBackgroundColor(depth / 3) }}
             >
               <td
                 className="px-6 whitespace-nowrap"
@@ -152,7 +152,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative" style={{ height: "70vh", overflow: "auto" }}>
       <table className="w-full text-sm text-left rtl:text-right text-[#c5c0b8] ">
         <thead className="text-xs text-grey-50 uppercase bg-[#353535]">
           <tr>
