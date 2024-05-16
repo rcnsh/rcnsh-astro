@@ -97,7 +97,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
                     </span>
                   </div>
                   <div className="ml-4 truncate">
-                    <span className="text-sm font-medium text-[#c5c0b8] ">
+                    <span className="text-sm font-medium text-[#c5c0b8] select-none">
                       {item.name}
                     </span>
                   </div>
@@ -121,7 +121,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
               <div className="flex items-center">
                 <div className="ml-4">
                   <a
-                    className="text-sm font-medium text-[#c5c0b8]"
+                    className="text-sm font-medium text-[#c5c0b8] select-none"
                     href={fileUrl}
                   >
                     {item.key.split("/").pop()}
@@ -130,7 +130,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
               </div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm text-[#c5c0b8] ">
+              <div className="text-sm text-[#c5c0b8] select-none">
                 {item.size / 1024 / 1024 / 1024 > 1
                   ? (item.size / 1024 / 1024 / 1024).toFixed(2) + " GB"
                   : item.size / 1024 / 1024 > 1
@@ -141,7 +141,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
               </div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-sm text-[#c5c0b8] ">
+              <div className="text-sm text-[#c5c0b8] select-none">
                 {new Date(item.lastModified).toLocaleDateString()}
               </div>
             </td>
