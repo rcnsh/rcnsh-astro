@@ -96,7 +96,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
                       )}
                     </span>
                   </div>
-                  <div className="ml-4">
+                  <div className="ml-4 truncate">
                     <span className="text-sm font-medium text-[#c5c0b8] ">
                       {item.name}
                     </span>
@@ -115,7 +115,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
         return (
           <tr key={item.key} className="bg-[#373737] cursor-pointer">
             <td
-              className="px-6 py-4 whitespace-nowrap"
+              className="px-6 py-4 whitespace-nowrap truncate"
               style={{ paddingLeft: `${depth * 20}px` }}
             >
               <div className="flex items-center">
@@ -152,7 +152,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
   };
 
   return (
-    <div className="relative" style={{ height: "70vh", overflow: "auto" }}>
+    <div className="h-[70dvh] overflow-auto">
       <table className="w-full text-sm text-left rtl:text-right text-[#c5c0b8] ">
         <thead className="text-xs text-grey-50 uppercase bg-[#353535]">
           <tr>
