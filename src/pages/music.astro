@@ -109,10 +109,11 @@ artists.forEach((artist) => {
                       </a>
                       <p>
                         {artists.map(({ name, external_urls }, index) => (
-                          <span>
-                            <a href={external_urls.spotify}>{name.trim()}</a>
-                            {index < artists.length - 1 ? "," : ""}
-                          </span>
+                          <p>
+                            <a href={external_urls.spotify}>
+                              {name.trim()}{index < artists.length - 1 && ","}
+                            </a>
+                          </p>
                         ))}
                       </p>
                       <a href={album.external_urls.spotify}>
