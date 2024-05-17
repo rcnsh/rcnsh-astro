@@ -9,7 +9,7 @@ import {
   CpuIcon,
   FileIcon,
 } from "lucide-react";
-import { cn } from "../lib/utils";
+import { cn } from "@lib/utils";
 
 export default function MobileDrawer({
   children,

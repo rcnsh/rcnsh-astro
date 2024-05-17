@@ -3,7 +3,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import type { songData } from "types";
 import { cn } from "@lib/utils";
 import MusicBar from "./MusicBar";
-import { GET } from "../pages/api/nowPlaying";
+import { GET } from "@pages/api/nowPlaying";
 import { Image } from "astro:assets";
 
 const reponse = await GET(Astro);
