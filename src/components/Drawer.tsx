@@ -5,7 +5,6 @@ import {
   MusicIcon,
   MonitorIcon,
   GithubIcon,
-  YoutubeIcon,
   NotebookIcon,
   CpuIcon,
   FileIcon,
@@ -204,19 +203,6 @@ export default function MobileDrawer({
                       <span className="flex items-center gap-2">
                         <GithubIcon />
                         <span className="font-medium">GitHub</span>
-                      </span>
-                    </span>
-                  </a>
-                  <a
-                    href="https://go.rcn.sh/yt"
-                    className="group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] hover:bg-[#25282a]"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <span className="flex items-center justify-between gap-2 text-[#cdc8c2] w-full">
-                      <span className="flex items-center gap-2">
-                        <YoutubeIcon />
-                        <span className="font-medium">YouTube</span>
                       </span>
                     </span>
                   </a>
