@@ -3,10 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Github from "@components/Github.astro";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
-import getRCN from "./api/rcn.ts";
 import Header from "@components/Header.astro";
-
-const rcn = getRCN();
 ---
 
 <Layout title="rcn.sh • Home" image="https://rcn.sh/api/og.png?title=">
@@ -15,15 +12,15 @@ const rcn = getRCN();
     transition:animate="fade"
   >
     <Header />
-    <h1 class="text-center font-mono text-xl lg:text-3xl md:text-2xl">
-      {rcn}
+    <h1 class="text-center font-mono text-2xl lg:text-4xl md:text-3xl">
+      Jacob Wiltshire
     </h1>
     <section class="mx-auto w-[100%] text-[#cdc8c2] md:w-[50%] md:text-left">
       <br />
       <section
         class="justify-center p-2 py-5 text-center text-lg leading-relaxed"
       >
-        Hi! I'm <strong>Jacob</strong> (aka RCN), a computer science student in
+        Hey! I'm <strong>Jacob</strong>, a computer science student in
         <strong>Year 13</strong>. I'm currently working on a few projects, such
         as my<strong>
           <a
