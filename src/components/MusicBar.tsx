@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import type { songData } from "types";
-import { backgroundColour } from "@lib/utils";
 
 export default function MusicBar({
   duration,
@@ -11,32 +9,16 @@ export default function MusicBar({
   progress: number;
   isPlaying: boolean;
 }) {
-  async function updateUI() {
-    await fetch("https://rcn.sh/api/nowPlaying")
-      .then((response) => response.json() as Promise<songData>)
-      .then((data) => {
-        document.getElementById("nowPlayingTitle")!.innerText = data.title;
-        document.getElementById("nowPlayingArtist")!.innerText = data.artist;
-        document.getElementById("nowPlayingAlbum")!.innerText = data.album;
-
-        setDuration(data.songLength);
-        setProgress(data.songProgress);
-        setIsSongPlaying(data.isPlaying);
-
-        backgroundColour();
-      });
-  }
-  const [isSongPlaying, setIsSongPlaying] = useState<boolean>(isPlaying);
   const [currentProgress, setProgress] = useState(progress);
-  const [currentSongDuration, setDuration] = useState(duration);
-  const progressPercent = (currentProgress / currentSongDuration) * 100;
+
+  const progressPercent = (currentProgress / duration) * 100;
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
-    if (isSongPlaying) {
+    if (isPlaying) {
       interval = setInterval(() => {
         setProgress((currentProgress) => {
-          if (currentProgress < currentSongDuration) {
+          if (currentProgress < duration - 1000) {
             return currentProgress + 1000;
           } else {
             clearInterval(interval);
@@ -45,15 +27,13 @@ export default function MusicBar({
         });
       }, 1000);
     }
-    const updateUIInterval = setInterval(updateUI, 60000);
 
     return () => {
       if (interval) {
         clearInterval(interval);
       }
-      clearInterval(updateUIInterval);
     };
-  }, [isPlaying, currentSongDuration]);
+  }, [isPlaying, duration]);
 
   return (
     <>
@@ -66,8 +46,7 @@ export default function MusicBar({
           {isPlaying && new Date(currentProgress).toISOString().slice(14, 19)}
         </span>
         <span>
-          {isPlaying &&
-            new Date(currentSongDuration).toISOString().slice(14, 19)}
+          {isPlaying && new Date(duration).toISOString().slice(14, 19)}
         </span>
       </p>
       <div
