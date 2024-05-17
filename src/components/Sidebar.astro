@@ -40,7 +40,7 @@ const LINKS = [
 
 const getLabelByHref = (title: string) => {
   const link = LINKS.find((link) => link.href === title);
-  return link ? link.label : null;
+  return link ? link.label : "404";
 };
 ---
 
