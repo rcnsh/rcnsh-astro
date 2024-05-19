@@ -1,5 +1,5 @@
 ---
-import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
+import { S3Client, ListObjectsV2Command, GetObjectAclCommand } from "@aws-sdk/client-s3";
 import Layout from "@layouts/Layout.astro";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
@@ -56,19 +56,44 @@ const buildNestedStructure = (files: FileData[]): FolderData => {
   return root;
 };
 
+const isPubliclyReadable = async (bucket: string, key: string): Promise<boolean> => {
+  try {
+    const command = new GetObjectAclCommand({ Bucket: bucket, Key: key });
+    const response = await client.send(command);
+
+    return response.Grants?.some(grant =>
+      grant.Grantee?.Type === "Group" &&
+      grant.Grantee?.URI === "http://acs.amazonaws.com/groups/global/AllUsers" &&
+      grant.Permission === "READ"
+    ) ?? false;
+  } catch (error) {
+    console.error(`Error getting ACL for ${key}:`, error);
+    return false;
+  }
+};
+
 const listBucketContents = async (): Promise<FileData[]> => {
   try {
     const command = new ListObjectsV2Command({ Bucket: "rcn" });
     const response = await client.send(command);
 
     if (response.Contents) {
-      return response.Contents.filter(
-        (item) => item.Size && item.Size > 64,
-      ).map((item) => ({
-        key: item.Key!,
-        size: item.Size!,
-        lastModified: item.LastModified!.toISOString(),
-      }));
+      const filteredFiles = await Promise.all(
+        response.Contents.filter((item) => item.Size && item.Size > 64)
+          .map(async (item) => {
+            const isReadable = await isPubliclyReadable("rcn", item.Key!);
+            if (isReadable) {
+              return {
+                key: item.Key!,
+                size: item.Size!,
+                lastModified: item.LastModified!.toISOString(),
+              };
+            }
+            return null;
+          })
+      );
+
+      return filteredFiles.filter((file): file is FileData => file !== null);
     } else {
       console.log("The bucket is empty.");
       return [];
