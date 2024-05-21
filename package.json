@@ -35,7 +35,6 @@
     "@vercel/speed-insights": "^1.0.10",
     "astro": "^4.8.6",
     "astro-feather": "^1.0.0",
-    "astro-loading-indicator": "^0.4.0",
     "auth-astro": "^4.1.1",
     "bad-words": "^3.0.4",
     "clsx": "^2.1.1",

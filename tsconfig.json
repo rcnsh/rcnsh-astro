@@ -1,7 +1,10 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "module": "es2022",
+    "moduleResolution": "Node",
     "baseUrl": "src",
+    "jsx": "react-jsx",
     "paths": {
       "@assets/*": ["assets/*"],
       "@config": ["config.ts"],

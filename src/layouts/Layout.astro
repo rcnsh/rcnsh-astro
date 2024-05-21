@@ -19,14 +19,12 @@ import "@fontsource/geist-mono";
 import { ViewTransitions } from "astro:transitions";
 import Sidebar from "@components/Sidebar.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
-import LoadingIndicator from "astro-loading-indicator/component";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <ViewTransitions />
-    <LoadingIndicator color="#305b99" animationDuration={1000} />
     <meta charset="UTF-8" />
     <meta name="description" content="My personal website" />
     <meta property="og:image" content={image} />
@@ -81,6 +79,7 @@ import LoadingIndicator from "astro-loading-indicator/component";
   <body class="bg-[#202020] flex">
     <Sidebar transition:persist />
     <slot />
+    {/* @ts-expect-error typescript doesnt like astro page speed insights*/}
     <SpeedInsights />
   </body>
 </html>
