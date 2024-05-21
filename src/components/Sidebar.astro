@@ -1,7 +1,8 @@
 ---
-import { cn } from "@lib/utils";
+import { LINKS } from "@lib/constants";
 import Spotify from "./Spotify.astro";
-import Spinner from "./Spinner.astro";
+import MenuTab from "./MenuTab.astro";
+import LinkTab from "./LinkTab.astro";
 import {
   HomeIcon,
   MusicIcon,
@@ -13,30 +14,6 @@ import {
 } from "astro-feather";
 
 const title = Astro.url.pathname;
-const url = Astro.url.toString();
-
-const LINKS = [
-  {
-    href: "/",
-    label: "Home",
-  },
-  {
-    href: "/games",
-    label: "Games",
-  },
-  {
-    href: "/music",
-    label: "Music",
-  },
-  {
-    href: "/guestbook",
-    label: "Guestbook",
-  },
-  {
-    href: "/files",
-    label: "Files",
-  },
-];
 
 const getLabelByHref = (title: string) => {
   const link = LINKS.find((link) => link.href === title);
@@ -44,29 +21,6 @@ const getLabelByHref = (title: string) => {
 };
 ---
 
-<script is:inline>
-  function linkProcessing() {
-    const links = document.querySelectorAll("a.process");
-
-    links.forEach((link) => {
-      link.addEventListener("click", (event) => {
-        links.forEach((otherLink) => {
-          if (otherLink !== event.currentTarget) {
-            otherLink.classList.add("pointer-events-none");
-          } else {
-            const loadingSpinner = otherLink.querySelector("section");
-            if (loadingSpinner) {
-              loadingSpinner.classList.remove("hidden");
-            }
-          }
-        });
-      });
-    });
-  }
-  document.addEventListener("astro:after-swap", linkProcessing);
-
-  document.addEventListener("DOMContentLoaded", linkProcessing);
-</script>
 <main
   class={"hidden bg-gradient-to-br from-[#111111] to-[#303030] lg:flex lg:flex-col lg:border-r lg:min-w-[21rem] h-screen lg:border-[#cdc8c2] max-w-[21rem]"}
 >
@@ -109,180 +63,34 @@ const getLabelByHref = (title: string) => {
           </div>
         </div>
         <div class="flex flex-col gap-1">
-          <a
-            href={"/"}
-            class={cn(
-              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
-              url.split("/")[3] === ""
-                ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#181818] pointer-events-none"
-                : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
-            )}
-          >
-            <span
-              class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
-            >
-              <span class="flex items-center gap-2">
-                <HomeIcon />
-                <span
-                  class={cn(
-                    "font-medium",
-                    url.split("/")[3] === "" && "text-[#cdc8c2]",
-                  )}
-                >
-                  Home
-                </span>
-              </span>
-            </span>
-            <section class="hidden">
-              <Spinner />
-            </section>
-          </a>
-          <a
-            href={"/games"}
-            class={cn(
-              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
-              url.split("/")[3] === "games"
-                ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
-                : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
-            )}
-          >
-            <span
-              class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
-            >
-              <span class="flex items-center gap-2">
-                <MonitorIcon />
-                <span
-                  class={cn(
-                    "font-medium",
-                    url.split("/")[3] === "games" && "text-[#cdc8c2]",
-                  )}
-                >
-                  Games
-                </span>
-              </span>
-            </span>
-            <section class="hidden">
-              <Spinner />
-            </section>
-          </a>
-          <a
-            href={"/music"}
-            class={cn(
-              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
-              url.split("/")[3] === "music"
-                ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#181818] pointer-events-none"
-                : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
-            )}
-          >
-            <span
-              class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
-            >
-              <span class="flex items-center gap-2">
-                <MusicIcon />
-                <span
-                  class={cn(
-                    "font-medium",
-                    url.split("/")[3] === "music" && "text-[#cdc8c2]",
-                  )}
-                >
-                  Music
-                </span>
-              </span>
-            </span>
-            <section class="hidden">
-              <Spinner />
-            </section>
-          </a>
-          <a
-            href={"/guestbook"}
-            class={cn(
-              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
-              url.split("/")[3] === "guestbook"
-                ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
-                : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
-            )}
-          >
-            <span
-              class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
-            >
-              <span class="flex items-center gap-2">
-                <BookIcon />
-                <span
-                  class={cn(
-                    "font-medium",
-                    url.split("/")[3] === "guestbook" && "text-[#cdc8c2]",
-                  )}
-                >
-                  Guestbook
-                </span>
-              </span>
-            </span>
-            <section class="hidden">
-              <Spinner />
-            </section>
-          </a>
-          <a
-            href={"/files"}
-            class={cn(
-              "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
-              url.split("/")[3] === "files"
-                ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#cdc8c2] pointer-events-none"
-                : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
-            )}
-          >
-            <span
-              class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
-            >
-              <span class="flex items-center gap-2">
-                <FileIcon />
-                <span
-                  class={cn(
-                    "font-medium",
-                    url.split("/")[3] === "files" && "text-[#cdc8c2]",
-                  )}
-                >
-                  Files
-                </span>
-              </span>
-            </span>
-            <section class="hidden">
-              <Spinner />
-            </section>
-          </a>
+          <MenuTab>
+            <HomeIcon />
+          </MenuTab>
+          <MenuTab currentTab="Games">
+            <MonitorIcon />
+          </MenuTab>
+          <MenuTab currentTab="Music">
+            <MusicIcon />
+          </MenuTab>
+          <MenuTab currentTab="Guestbook">
+            <BookIcon />
+          </MenuTab>
+          <MenuTab currentTab="Files">
+            <FileIcon />
+          </MenuTab>
         </div>
       </div>
       <hr class="bg-[#363b3d] border-none h-[2px] mt-2" />
       <div class="gap-2 mt-2">
-        <a
-          href="https://go.rcn.sh/github"
-          class="group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] hover:bg-gradient-to-br from-[#303030] to-[#111111]"
-          rel="noopener noreferrer"
-          target="_blank"
+        <LinkTab LinkName="GitHub" LinkUrl="https://go.rcn.sh/github">
+          <GithubIcon />
+        </LinkTab>
+        <LinkTab
+          LinkName="Valorant Tracker"
+          LinkUrl="https://go.rcn.sh/valorant"
         >
-          <span
-            class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
-          >
-            <span class="flex items-center gap-2">
-              <GithubIcon />
-              <span class="font-medium">GitHub</span>
-            </span>
-          </span>
-        </a>
-        <a
-          href="https://go.rcn.sh/valorant"
-          class="group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] hover:bg-gradient-to-br from-[#303030] to-[#111111]"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <span
-            class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
-          >
-            <span class="flex items-center gap-2">
-              <CpuIcon />
-              <span class="font-medium">Valorant Tracker</span>
-            </span>
-          </span>
-        </a>
+          <CpuIcon />
+        </LinkTab>
       </div>
       <div class="mx-auto absolute bottom-8">
         <Spotify transition:persist />

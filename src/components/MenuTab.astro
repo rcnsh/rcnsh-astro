@@ -1,0 +1,57 @@
+---
+import {cn} from "@lib/utils";
+import Spinner from "./Spinner.astro";
+const url = Astro.url.toString();
+const { currentTab = "" } = Astro.props;
+---
+<script is:inline>
+  function linkProcessing() {
+    const links = document.querySelectorAll("a.process");
+
+    links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        links.forEach((otherLink) => {
+          if (otherLink !== event.currentTarget) {
+            otherLink.classList.add("pointer-events-none");
+          } else {
+            const loadingSpinner = otherLink.querySelector("section");
+            if (loadingSpinner) {
+              loadingSpinner.classList.remove("hidden");
+            }
+          }
+        });
+      });
+    });
+  }
+  document.addEventListener("astro:after-swap", linkProcessing);
+
+  document.addEventListener("DOMContentLoaded", linkProcessing);
+</script>
+<a
+href={`/${currentTab.toLowerCase()}`}
+class={cn(
+  "group flex items-center justify-between rounded-lg p-2 text-[#cdc8c2] process",
+  url.split("/")[3] === currentTab.toLowerCase()
+    ? "bg-gradient-to-br from-[#303030] to-[#111111] text-[#181818] pointer-events-none"
+    : "hover:bg-gradient-to-br from-[#303030] to-[#111111]",
+)}
+>
+<span
+  class="flex items-center justify-between gap-2 text-[#cdc8c2] w-full"
+>
+  <span class="flex items-center gap-2">
+    <slot/>
+    <span
+      class={cn(
+        "font-medium",
+        url.split("/")[3] === currentTab.toLowerCase() && "text-[#cdc8c2]",
+      )}
+    >
+      {currentTab === "" ? "Home" : currentTab}
+    </span>
+  </span>
+</span>
+<section class="hidden">
+  <Spinner />
+</section>
+</a>
