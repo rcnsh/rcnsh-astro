@@ -28,7 +28,7 @@ export default defineConfig({
   }),
   vite: {
     plugins: [
-      million.vite({ mode: "react", server: true, auto: true }),
+      million.vite({ mode: "react", server: true }),
       MillionLint.vite(),
     ],
   },
