@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, Fragment } from "react";
 import { MdExpandMore, MdExpandLess } from "react-icons/md";
 
 interface FileData {
@@ -69,7 +69,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
       if ("contents" in item) {
         const folderPath = `${path}/${item.name}`;
         return (
-          <React.Fragment key={folderPath}>
+          <Fragment key={folderPath}>
             <tr
               className="cursor-pointer"
               onClick={() => toggleFolder(folderPath)}
@@ -108,7 +108,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
             </tr>
             {expandedFolders.has(folderPath) &&
               renderFolder(item, folderPath, depth + 1)}
-          </React.Fragment>
+          </Fragment>
         );
       } else {
         const fileUrl = "https://upload.rcn.sh/" + item.key;
