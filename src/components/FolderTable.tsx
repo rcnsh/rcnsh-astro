@@ -46,6 +46,28 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
     setExpandedFolders(newExpandedFolders);
   };
 
+  const handleFileClick = async (fileKey: string) => {
+    try {
+      const response = await fetch(`/api/getPresignedUrl`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ fileKey }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch signed URL");
+      }
+
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch (error) {
+      console.error("Error generating signed URL:", error);
+    }
+  };
+
+
   const renderFolder = (
     folder: FolderData,
     path: string = "",
@@ -111,21 +133,17 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
           </Fragment>
         );
       } else {
-        const fileUrl = "https://rcn.ams3.digitaloceanspaces.com/" + item.key;
         return (
-          <tr key={item.key} className="bg-[#373737] cursor-pointer">
+          <tr key={item.key} className="bg-[#373737] cursor-pointer" onClick={() => handleFileClick(item.key)}>
             <td
               className="px-6 py-4 whitespace-nowrap truncate"
               style={{ paddingLeft: `${depth * 20}px` }}
             >
               <div className="flex items-center">
                 <div className="ml-4">
-                  <a
-                    className="text-sm font-medium text-[#c5c0b8] select-none"
-                    href={fileUrl}
-                  >
+                  <span className="text-sm font-medium text-[#c5c0b8] select-none">
                     {item.key.split("/").pop()}
-                  </a>
+                  </span>
                 </div>
               </div>
             </td>
