@@ -111,7 +111,7 @@ const FolderTable: React.FC<FolderTableProps> = ({ data }) => {
           </Fragment>
         );
       } else {
-        const fileUrl = "https://rcn.ams3.digitaloceanspaces.com" + item.key;
+        const fileUrl = "https://rcn.ams3.digitaloceanspaces.com/" + item.key;
         return (
           <tr key={item.key} className="bg-[#373737] cursor-pointer">
             <td
