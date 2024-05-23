@@ -14,7 +14,7 @@ export default defineConfig({
   trailingSlash: "never",
   site: "https://rcn.sh",
   prefetch: {
-    defaultStrategy: "viewport",
+    defaultStrategy: "hover",
   },
   integrations: [tailwind(), react(), sitemap(), db(), auth(), partytown()],
   output: "server",
