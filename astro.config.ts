@@ -23,6 +23,7 @@ export default defineConfig({
   },
   adapter: cloudflare({
     imageService: "cloudflare",
+    wasmModuleImports: true,
   }),
   vite: {
     plugins: [
