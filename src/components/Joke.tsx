@@ -68,7 +68,7 @@ export default function Joke() {
               setCurrentJoke("ip");
             }}
           >
-            Press me :)
+            Press me :D
           </button>
         )}
         {currentJoke === "ip" && <Ip />}

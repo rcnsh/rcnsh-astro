@@ -22,12 +22,12 @@ interface FolderData {
 }
 
 const client = new S3Client({
-  endpoint: "https://ams3.digitaloceanspaces.com",
+  endpoint: "https://31e51704ff7169c03d7014c3a1e5f110.r2.cloudflarestorage.com",
   credentials: {
     accessKeyId: import.meta.env.S3_ACCESS_KEY_ID,
     secretAccessKey: import.meta.env.S3_SECRET_ACCESS_KEY,
   },
-  region: "ams3",
+  region: "us-east-1",
 });
 
 const buildNestedStructure = (files: FileData[]): FolderData => {
@@ -60,28 +60,6 @@ const buildNestedStructure = (files: FileData[]): FolderData => {
   return root;
 };
 
-const isPubliclyReadable = async (
-  bucket: string,
-  key: string,
-): Promise<boolean> => {
-  try {
-    const command = new GetObjectAclCommand({ Bucket: bucket, Key: key });
-    const response = await client.send(command);
-
-    return (
-      response.Grants?.some(
-        (grant) =>
-          grant.Grantee?.Type === "Group" &&
-          grant.Grantee?.URI ===
-            "http://acs.amazonaws.com/groups/global/AllUsers" &&
-          grant.Permission === "READ",
-      ) ?? false
-    );
-  } catch (error) {
-    console.error(`Error getting ACL for ${key}:`, error);
-    return false;
-  }
-};
 
 const listBucketContents = async (): Promise<FileData[]> => {
   try {
@@ -92,15 +70,11 @@ const listBucketContents = async (): Promise<FileData[]> => {
       const filteredFiles = await Promise.all(
         response.Contents.filter((item) => item.Size && item.Size > 64).map(
           async (item) => {
-            const isReadable = await isPubliclyReadable("rcn", item.Key!);
-            if (isReadable) {
               return {
                 key: item.Key!,
                 size: item.Size!,
                 lastModified: item.LastModified!.toISOString(),
               };
-            }
-            return null;
           },
         ),
       );
