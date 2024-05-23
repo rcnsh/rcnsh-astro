@@ -29,6 +29,12 @@ export default defineConfig({
     ssr: {
       noExternal: ["auth-astro"],
     },
+    resolve: {
+      alias: {
+        "node:path": "path-browserify",
+        "node:url": "url",
+      },
+    },
     plugins: [
       million.vite({
         mode: "react",
