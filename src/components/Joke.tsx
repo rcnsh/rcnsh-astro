@@ -4,8 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Ip from "./Ip";
 import getRCN from "@pages/api/rcn.ts";
 
-const rcn = getRCN();
-
 export default function Joke() {
   const [currentJoke, setCurrentJoke] = useState("");
 
@@ -58,6 +56,8 @@ export default function Joke() {
     },
     { code: ["r", "o", "n", "n", "i", "e"] },
   );
+
+  const rcn = getRCN();
 
   return (
     <div>

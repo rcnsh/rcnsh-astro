@@ -60,7 +60,6 @@ const buildNestedStructure = (files: FileData[]): FolderData => {
   return root;
 };
 
-
 const listBucketContents = async (): Promise<FileData[]> => {
   try {
     const command = new ListObjectsV2Command({ Bucket: "rcn" });
@@ -70,11 +69,11 @@ const listBucketContents = async (): Promise<FileData[]> => {
       const filteredFiles = await Promise.all(
         response.Contents.filter((item) => item.Size && item.Size > 64).map(
           async (item) => {
-              return {
-                key: item.Key!,
-                size: item.Size!,
-                lastModified: item.LastModified!.toISOString(),
-              };
+            return {
+              key: item.Key!,
+              size: item.Size!,
+              lastModified: item.LastModified!.toISOString(),
+            };
           },
         ),
       );
