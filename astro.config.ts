@@ -1,4 +1,4 @@
-import { defineConfig, squooshImageService } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
@@ -18,7 +18,7 @@ export default defineConfig({
   },
   integrations: [tailwind(), react(), sitemap(), db(), auth(), partytown()],
   image: {
-    service: squooshImageService(),
+    service: passthroughImageService(),
   },
   output: "server",
   adapter: vercel({
