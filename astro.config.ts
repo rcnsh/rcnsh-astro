@@ -26,9 +26,6 @@ export default defineConfig({
     wasmModuleImports: true,
   }),
   vite: {
-    ssr: {
-      noExternal: ["auth-astro"],
-    },
     plugins: [
       million.vite({
         mode: "react",
