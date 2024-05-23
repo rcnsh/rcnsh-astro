@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
+    "@astrojs/cloudflare": "^10.2.6",
     "@astrojs/db": "^0.11.4",
     "@astrojs/partytown": "^2.1.0",
     "@astrojs/react": "^3.4.0",
@@ -34,7 +35,7 @@
     "@vercel/node": "^3.1.5",
     "@vercel/og": "^0.6.2",
     "@vercel/speed-insights": "^1.0.10",
-    "astro": "^4.9.0",
+    "astro": "^4.9.1",
     "astro-feather": "^1.0.0",
     "auth-astro": "^4.1.1",
     "bad-words": "^3.0.4",

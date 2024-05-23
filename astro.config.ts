@@ -1,13 +1,13 @@
-import { defineConfig, squooshImageService } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
-import vercel from "@astrojs/vercel/serverless";
 import sitemap from "@astrojs/sitemap";
 import db from "@astrojs/db";
 import auth from "auth-astro";
 import million from "million/compiler";
 import MillionLint from "@million/lint";
 import partytown from "@astrojs/partytown";
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,18 +17,19 @@ export default defineConfig({
     defaultStrategy: "hover",
   },
   integrations: [tailwind(), react(), sitemap(), db(), auth(), partytown()],
-  image: {
-    service: squooshImageService(),
-  },
   output: "server",
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
+  image: {
+    service: passthroughImageService(),
+  },
+  adapter: cloudflare({
+    imageService: "cloudflare",
   }),
   vite: {
     plugins: [
-      million.vite({ mode: "react", server: true }),
+      million.vite({
+        mode: "react",
+        server: true,
+      }),
       MillionLint.vite(),
     ],
   },
