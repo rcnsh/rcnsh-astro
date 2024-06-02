@@ -109,16 +109,21 @@ artists.forEach((artist) => {
                       </a>
                       <p>
                         {artists.map(({ name, external_urls }, index) => (
-                          <p>
-                            <a href={external_urls.spotify}>
-                              {name.trim()}
-                              {index < artists.length - 1 && ","}
-                            </a>
-                          </p>
+                          <span>
+                            {index < artists.length - 1 ? (
+                              <a href={external_urls.spotify}>
+                                {name.trim().concat(",")}
+                              </a>
+                            ) : (
+                              <a href={external_urls.spotify}>{name.trim()}</a>
+                            )}
+                          </span>
                         ))}
                       </p>
                       <a href={album.external_urls.spotify}>
-                        {smartTruncate(album.name, 40, { position: 25 })}
+                        {album.name.length > 40
+                          ? album.name.slice(0, 40) + "..."
+                          : album.name}
                       </a>
                     </div>
                   </div>
