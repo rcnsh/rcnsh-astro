@@ -1,22 +1,41 @@
 ---
-import { GET } from "@pages/api/github";
-
-interface Repo {
-  websiteRepos: {
-    name: string;
-    description: string;
-    html_url: string;
-    stargazers_count: number;
-  }[];
-}
-
-const response = await GET(Astro);
-const data = (await response.json()) as Repo;
+const github = [
+  {
+    name: "rcnsh-astro",
+    description: "My personal website, built with Astro.",
+    html_url: "https://github.com/rcnsh/rcnsh-astro",
+  },
+  {
+    name: " Edexcel-Large-Data-Set-Analysis",
+    description: "A python script to analyse data from the Edexcel Statistics 1 Large Data set.",
+    html_url: "https://github.com/rcnsh/Edexcel-Large-Data-Set-Analysis",
+  },
+  {
+    name: "pmt_bypass",
+    description: "A browser extension to bypass Physics and Maths Tutor ads.",
+    html_url: "https://github.com/rcnsh/pmt_bypass",
+  },
+  {
+    name:"RaspberryPyGame",
+    description: "A pygame project made as an entry to the Raspberry Pi Competition 2022/2023.",
+    html_url: "https://github.com/rcnsh/RaspberryPyGame",
+  },
+  {
+    name: "virtue-gymnastics-website",
+    description: "Y13 Computer Science Project - Eduqas",
+    html_url: "https://github.com/rcnsh/virtue-gymnastics-website",
+  },
+  {
+    name: "notes",
+    description: "A collection of notes from my A-Level courses - made using Obsidian.",
+    html_url: "https://github.com/rcnsh/notes",
+  }
+]
 ---
 
 <div class="grid grid-cols-2 gap-4 xl:grid-cols-3">
   {
-    data.websiteRepos.map((repo) => (
+    github.map((repo) => (
       <>
         <div class="flex-col rounded-xl p-4 shadow-md text-center bg-black/5">
           <a

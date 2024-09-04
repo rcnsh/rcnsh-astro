@@ -8,7 +8,7 @@ import Header from "@components/Header.astro";
 
 <Layout title="rcn.sh • Home" image="https://rcn.sh/api/og.png?title=">
   <main
-    class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8 flex flex-col"
+    class="text-[#c5c0b8] h-[100dvh] min-h-[100dvh] w-[100dvw] overflow-x-hidden py-8 flex flex-col justify-center"
     transition:animate="fade"
   >
     <Header />
@@ -16,7 +16,6 @@ import Header from "@components/Header.astro";
       Jacob Wiltshire
     </h1>
     <section class="mx-auto w-[100%] text-[#cdc8c2] md:w-[50%] md:text-left">
-      <br />
       <section
         class="justify-center p-2 py-5 text-center text-lg leading-relaxed"
       >
@@ -27,56 +26,58 @@ import Header from "@components/Header.astro";
           rel="noopener noreferrer"
           target="_blank">Newcastle University</a
         >.
-      <section
-        class={"justify-center p-2 py-5 text-center text-lg leading-relaxed"}
-      >
-        My main programming language is <span
-          class="text-[#7C82C0] hover:text-[#9095cc]"
-          ><a
-            href="https://www.typescriptlang.org/"
-            target="_blank"
-            rel="noopener noreferer">Typescript</a
-          ></span
-        >, with my primary frontend frameworks being <span
-          class="text-[#7C82C0] hover:text-[#9095cc]"
-          ><a
-            href="https://nextjs.org/"
-            target="_blank"
-            rel="noopener noreferer">Next.js</a
-          ></span
-        > and <span
-          class="text-[#7C82C0] hover:text-[#9095cc]"
-          ><a
-            href="https://astro.build/"
-            target="_blank"
-            rel="noopener noreferer">Astro</a
-          ></span
-        > (which is what this site is built with!). I'm also familiar with working
-        with <span class="text-[#7C82C0] hover:text-[#9095cc]"
-          ><a
-            href="https://www.linux.org/"
-            target="_blank"
-            rel="noopener noreferer">Linux</a
-          ></span
-        > systems and <span class="text-[#7C82C0] hover:text-[#9095cc]"
-          ><a
-            href="https://python.org/"
-            target="_blank"
-            rel="noopener noreferer">Python</a
-          ></span
-        >.
+        <section
+          class={"justify-center p-2 py-5 text-center text-lg leading-relaxed"}
+        >
+          My main programming language is <span
+            class="text-[#7C82C0] hover:text-[#9095cc]"
+            ><a
+              href="https://www.typescriptlang.org/"
+              target="_blank"
+              rel="noopener noreferer">Typescript</a
+            ></span
+          >, with my primary frontend frameworks being <span
+            class="text-[#7C82C0] hover:text-[#9095cc]"
+            ><a
+              href="https://nextjs.org/"
+              target="_blank"
+              rel="noopener noreferer">Next.js</a
+            ></span
+          > and <span class="text-[#7C82C0] hover:text-[#9095cc]"
+            ><a
+              href="https://astro.build/"
+              target="_blank"
+              rel="noopener noreferer">Astro</a
+            ></span
+          > (which is what this site is built with!). I'm also familiar with working
+          with <span class="text-[#7C82C0] hover:text-[#9095cc]"
+            ><a
+              href="https://www.linux.org/"
+              target="_blank"
+              rel="noopener noreferer">Linux</a
+            ></span
+          > systems and <span class="text-[#7C82C0] hover:text-[#9095cc]"
+            ><a
+              href="https://python.org/"
+              target="_blank"
+              rel="noopener noreferer">Python</a
+            ></span
+          >.
+        </section>
+        <section class={"py-5"}>
+          <h2
+            class={"flex justify-center py-4 text-xl font-bold text-[#e2dfdb]"}
+          >
+            My GitHub Repositories: Spotlight
+          </h2>
+          <Github />
+        </section>
       </section>
-      <section class={"py-5"}>
-        <h2 class={"flex justify-center py-4 text-xl font-bold text-[#e2dfdb]"}>
-          My GitHub Repositories: Spotlight
-        </h2>
-        <Github />
-      </section>
+      <div class="mt-auto">
+        <Footer client:only="react">
+          <Credits />
+        </Footer>
+      </div>
     </section>
-    <div class="mt-auto">
-      <Footer client:only="react">
-        <Credits />
-      </Footer>
-    </div>
   </main>
 </Layout>
