@@ -40,12 +40,6 @@ export default function Joke() {
   );
   useKonami(
     () => {
-      setCurrentJoke("veli");
-    },
-    { code: ["v", "e", "l", "i"] },
-  );
-  useKonami(
-    () => {
       window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     },
     { code: ["a", "l", "a", "s", "t", "a", "i", "r"] },
@@ -112,23 +106,6 @@ export default function Joke() {
             <audio
               controls
               src="https://res.cloudinary.com/dtqhs8nvm/video/upload/f_auto:video,q_auto/coldrain"
-            />
-          </motion.span>
-        )}
-        {currentJoke === "veli" && (
-          <motion.span
-            className="w-[40%]"
-            exit={{ opacity: 0 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <img
-              src="https://res.cloudinary.com/dtqhs8nvm/image/upload/f_auto,q_auto/veli"
-              alt="Veli"
-              width={128}
-              height={128}
-              loading="eager"
             />
           </motion.span>
         )}

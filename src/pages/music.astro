@@ -1,7 +1,7 @@
 ---
 import { Cloudinary } from "@cloudinary/url-gen";
 import Layout from "@layouts/Layout.astro";
-import Footer from "@components/Footer";
+import Footer from "@components/Footer.astro";
 import Credits from "@components/Credits.astro";
 import Header from "@components/Header.astro";
 import { slide } from "astro:transitions";
@@ -164,7 +164,7 @@ artists.forEach((artist) => {
       </div>
     </section>
     <div class="mt-auto">
-      <Footer client:only="react" transition:persist>
+      <Footer transition:persist>
         <Credits />
       </Footer>
     </div>
