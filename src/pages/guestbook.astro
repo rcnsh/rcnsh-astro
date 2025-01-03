@@ -7,10 +7,8 @@ import Header from "@components/Header.astro";
 import { db, Guests, desc, eq } from "astro:db";
 import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
-import { Resend } from "resend";
 
 const session = await getSession(Astro.request);
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 if (Astro.request.method === "POST") {
   const email = session?.user?.email as string;
@@ -38,20 +36,6 @@ if (Astro.request.method === "POST") {
       await db
         .insert(Guests)
         .values({ email, name, message, published: new Date() });
-      (async function () {
-        const { data, error } = await resend.emails.send({
-          from: "Myself <rcn@mail.rcn.sh>",
-          to: ["jacob@rcn.sh"],
-          subject: "New guestbook entry from " + name,
-          html: "<p>" + message + "</p>",
-        });
-
-        if (error) {
-          return console.error({ error });
-        }
-
-        console.log({ data });
-      })();
     } else {
       return new Response("Profanity detected", { status: 400 });
     }
