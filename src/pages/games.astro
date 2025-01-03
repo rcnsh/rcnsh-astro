@@ -4,7 +4,7 @@ import Layout from "@layouts/Layout.astro";
 import { GET } from "./api/steam";
 import { InfiniteMovingCardsTwoWeeks } from "@components/InfiniteSteamCardsTwoWeeks";
 import { InfiniteMovingCardsAll } from "@components/InfiniteSteamCardsAll";
-import Footer from "@components/Footer.astro";
+import Footer from "@components/Footer";
 import Credits from "@components/Credits.astro";
 import Header from "@components/Header.astro";
 
@@ -123,7 +123,7 @@ steamGames.recent.response.games.forEach((game) => {
       </section>
     </section>
     <div class="mt-auto">
-      <Footer transition:persist>
+      <Footer client:only="react">
         <Credits />
       </Footer>
     </div>
