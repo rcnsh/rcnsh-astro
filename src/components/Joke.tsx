@@ -15,12 +15,6 @@ export default function Joke() {
   );
   useKonami(
     () => {
-      setCurrentJoke("sonja");
-    },
-    { code: ["s", "o", "n", "j", "a"] },
-  )
-  useKonami(
-    () => {
       setCurrentJoke("rcn");
     },
     { code: ["r", "c", "n"] },
@@ -115,26 +109,6 @@ export default function Joke() {
             />
           </motion.span>
         )}
-        {
-          currentJoke === "sonja" && (
-            <motion.span
-              className="w-[40%] flex flex-col"
-              exit={{ opacity: 0 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 2, ease: "easeOut", delay: 1 }}
-            >
-              <img
-                src="https://res.cloudinary.com/dtqhs8nvm/image/upload/f_auto,q_auto/m9oakj9po66akhfnqp6e"
-                alt="Sonja"
-                width={128}
-                height={128}
-                loading="eager"
-              />
-              <b>Sonja</b>
-            </motion.span>
-          )
-        }
       </AnimatePresence>
     </div>
   );
