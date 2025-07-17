@@ -66,7 +66,7 @@ export default function MobileDrawer({
                     </svg>
                     <div className="flex flex-col">
                       <span className="font-semibold tracking-tight text-[#cdc8c2]">
-                        Jacob Wiltshire
+                        Jacob
                       </span>
                       <span className="text-[#cdc8c2]">Student</span>
                     </div>
